@@ -59,6 +59,9 @@ function Navbar({ mode = 'illustration' }) {
               </li>
             ))}
           </ul>
+          <div className="mobile-nav-panel__switch" onClick={() => setOpen(false)}>
+            <ModeSwitchButton to={mode === 'illustration' ? '/design' : '/illustration'} label={mode === 'illustration' ? 'Switch to Design' : 'Switch to Art'} />
+          </div>
         </div>
       ) : null}
     </header>
