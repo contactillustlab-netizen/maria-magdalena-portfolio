@@ -13,7 +13,8 @@ function Navbar({ mode = 'illustration' }) {
         { to: '/illustration/covers', label: 'Covers' }
       ]
     : [
-        { to: '/design', label: 'Branding' },
+        { to: '/design', label: 'Graphic Design' },
+        { to: '/design/branding', label: 'Branding' },
         { to: '/design/ui-design', label: 'UI Design' },
         { to: '/design/marketing-design', label: 'Marketing Design' }
       ];

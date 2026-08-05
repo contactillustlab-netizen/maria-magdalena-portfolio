@@ -8,7 +8,7 @@ function UiDesignPage() {
         eyebrow="Design"
         title="UI Design"
         subtitle="Digital products built with clarity and restraint"
-        image="/images/placeholders/design-hero.jpg"
+        image="/images/gallery/design/hero.webp"
         variant="design"
       />
       <div className="placeholder-page">

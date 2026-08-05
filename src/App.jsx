@@ -4,7 +4,8 @@ import IllustrationPage from './pages/illustration/IllustrationPage';
 import SketchesPage from './pages/illustration/SketchesPage';
 import ConceptPage from './pages/illustration/ConceptPage';
 import CoversPage from './pages/illustration/CoversPage';
-import DesignPage from './pages/design/DesignPage';
+import GraphicDesignPage from './pages/design/GraphicDesignPage';
+import CaseStudyPage from './pages/design/CaseStudyPage';
 import BrandingPage from './pages/design/BrandingPage';
 import UiDesignPage from './pages/design/UiDesignPage';
 import MarketingDesignPage from './pages/design/MarketingDesignPage';
@@ -25,7 +26,8 @@ function App() {
           <Route path="/illustration/sketches" element={<SketchesPage />} />
           <Route path="/illustration/concept" element={<ConceptPage />} />
           <Route path="/illustration/covers" element={<CoversPage />} />
-          <Route path="/design" element={<DesignPage />} />
+          <Route path="/design" element={<GraphicDesignPage />} />
+          <Route path="/design/graphic-design/:slug" element={<CaseStudyPage />} />
           <Route path="/design/branding" element={<BrandingPage />} />
           <Route path="/design/ui-design" element={<UiDesignPage />} />
           <Route path="/design/marketing-design" element={<MarketingDesignPage />} />

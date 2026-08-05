@@ -8,7 +8,7 @@ function MarketingDesignPage() {
         eyebrow="Design"
         title="Marketing Design"
         subtitle="Promotional storytelling and polished campaigns"
-        image="/images/placeholders/design-hero.jpg"
+        image="/images/gallery/design/hero.webp"
         variant="design"
       />
       <div className="placeholder-page">

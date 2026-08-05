@@ -8,7 +8,7 @@ function BrandingPage() {
         eyebrow="Design"
         title="Branding"
         subtitle="Identity systems and editorial direction"
-        image="/images/placeholders/design-hero.jpg"
+        image="/images/gallery/design/hero.webp"
         variant="design"
       />
       <div className="placeholder-page">
