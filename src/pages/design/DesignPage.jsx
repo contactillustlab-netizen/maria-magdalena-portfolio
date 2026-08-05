@@ -10,7 +10,7 @@ function DesignPage() {
         eyebrow="Design"
         title="HELLO!"
         subtitle="At Illustlab, I turn ideas into bold, meaningful visuals — from brand identities and UI design to promotional materials, pitch decks, and everything in between."
-        image="/images/placeholders/design-hero.jpg"
+        image="/images/gallery/design/hero.webp"
         variant="design"
       />
 

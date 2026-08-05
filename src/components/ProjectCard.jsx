@@ -1,10 +1,11 @@
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SmartImage from './SmartImage';
 
 function ProjectCard({ title, description, image, link }) {
   return (
     <article className="project-card">
-      <img src={image} alt={title} loading="lazy" />
+      <SmartImage src={image} alt={title} loading="lazy" />
       <div className="project-card__content">
         <h3>{title}</h3>
         <p>{description}</p>

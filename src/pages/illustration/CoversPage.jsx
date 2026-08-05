@@ -10,7 +10,7 @@ function CoversPage() {
         eyebrow="Illustration"
         title="Covers"
         subtitle="Editorial and publication design work"
-        image="/images/gallery/covers/pans-labyrinth.jpg"
+        image="/images/gallery/covers/pans-labyrinth.webp"
         variant="illustration"
       />
 

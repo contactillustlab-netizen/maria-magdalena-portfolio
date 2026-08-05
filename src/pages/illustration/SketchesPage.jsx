@@ -10,7 +10,7 @@ function SketchesPage() {
         eyebrow="Illustration"
         title="Sketches"
         subtitle="A collection of studies in atmosphere and gesture"
-        image="/images/gallery/sketches/raven-cloak-study.jpg"
+        image="/images/gallery/sketches/raven-cloak-study.webp"
         variant="illustration"
       />
 

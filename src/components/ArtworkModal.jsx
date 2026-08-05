@@ -1,4 +1,5 @@
 import { X } from 'lucide-react';
+import SmartImage from './SmartImage';
 
 function ArtworkModal({ item, onClose }) {
   if (!item) return null;
@@ -10,7 +11,7 @@ function ArtworkModal({ item, onClose }) {
         <button className="modal__close" onClick={onClose} type="button" aria-label="Close modal">
           <X size={20} />
         </button>
-        <img src={item.image} alt={item.title} />
+        <SmartImage src={item.image} alt={item.title} />
         <div className="modal__body">
           <p className="modal__eyebrow">{item.category}</p>
           <h3>{item.title}</h3>

@@ -9,7 +9,7 @@ function IllustrationPage() {
       <HeroSection
         title="VIZIREANU MARIA-MAGDALENA"
         subtitle="ILLUSTRATOR / GRAPHIC DESIGNER / CONCEPT ARTIST"
-        image="/images/placeholders/hero-art.jpg"
+        image="/images/gallery/illustration/hero.webp"
         variant="illustration"
       />
 

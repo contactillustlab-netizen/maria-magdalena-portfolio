@@ -10,7 +10,7 @@ function ConceptPage() {
         eyebrow="Illustration"
         title="Concept"
         subtitle="Mood, character and narrative direction"
-        image="/images/gallery/concept/desert-camp.jpg"
+        image="/images/gallery/concept/desert-camp.webp"
         variant="illustration"
       />
 

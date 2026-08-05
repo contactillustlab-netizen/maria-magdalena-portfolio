@@ -1,10 +1,11 @@
 import { ArrowUpRight } from 'lucide-react';
+import SmartImage from './SmartImage';
 
 function GalleryItem({ item, onSelect }) {
   return (
     <article className="gallery-item">
       <button className="gallery-item__button" onClick={() => onSelect(item)} type="button" aria-label={`View ${item.title}`}>
-        <img src={item.image} alt={item.title} loading="lazy" />
+        <SmartImage src={item.image} alt={item.title} loading="lazy" />
         <span className="gallery-item__overlay">
           <span className="gallery-item__label">View project</span>
           <ArrowUpRight size={16} />
