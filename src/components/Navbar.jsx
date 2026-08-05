@@ -33,7 +33,7 @@ function Navbar({ mode = 'illustration' }) {
           <ul>
             {links.map((link) => (
               <li key={link.to}>
-                <NavLink to={link.to} className={({ isActive }) => isActive ? 'active' : ''}>
+                <NavLink to={link.to} end className={({ isActive }) => isActive ? 'active' : ''}>
                   {link.label}
                 </NavLink>
               </li>
@@ -53,7 +53,7 @@ function Navbar({ mode = 'illustration' }) {
           <ul>
             {links.map((link) => (
               <li key={link.to}>
-                <NavLink to={link.to} onClick={() => setOpen(false)}>
+                <NavLink to={link.to} end onClick={() => setOpen(false)} className={({ isActive }) => isActive ? 'active' : ''}>
                   {link.label}
                 </NavLink>
               </li>

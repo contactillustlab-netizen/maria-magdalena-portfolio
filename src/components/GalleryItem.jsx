@@ -7,15 +7,18 @@ function GalleryItem({ item, onSelect }) {
       <button className="gallery-item__button" onClick={() => onSelect(item)} type="button" aria-label={`View ${item.title}`}>
         <SmartImage src={item.image} alt={item.title} loading="lazy" />
         <span className="gallery-item__overlay">
-          <span className="gallery-item__label">View project</span>
-          <ArrowUpRight size={16} />
+          <span className="gallery-item__overlay-text">
+            <span className="gallery-item__title">{item.title}</span>
+            <span className="gallery-item__category">
+              {item.category}
+              {item.year ? ` · ${item.year}` : ''}
+            </span>
+          </span>
+          <span className="gallery-item__label">
+            View project <ArrowUpRight size={16} />
+          </span>
         </span>
       </button>
-      <div className="gallery-item__meta">
-        <h3>{item.title}</h3>
-        <p>{item.category}</p>
-        {item.year ? <p>{item.year}</p> : null}
-      </div>
     </article>
   );
 }

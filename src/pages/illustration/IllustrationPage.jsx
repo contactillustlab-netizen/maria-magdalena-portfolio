@@ -1,6 +1,5 @@
 import HeroSection from '../../components/HeroSection';
 import MasonryGallery from '../../components/MasonryGallery';
-import SectionHeader from '../../components/SectionHeader';
 import { illustrationProjects } from '../../data/illustrationProjects';
 
 function IllustrationPage() {
@@ -14,11 +13,6 @@ function IllustrationPage() {
       />
 
       <section className="section section--gallery">
-        <SectionHeader
-          eyebrow="Selected Work"
-          title="Editorial and cinematic illustrations"
-          description="A curated collection of monochrome studies, concept pieces and visual narratives."
-        />
         <MasonryGallery items={illustrationProjects} />
       </section>
     </>
