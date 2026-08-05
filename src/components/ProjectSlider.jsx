@@ -9,6 +9,7 @@ function ProjectSlider({ items, basePath }) {
   const trackRef = useRef(null);
   const interactingRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(0);
   const loopItems = [...items, ...items];
 
   useEffect(() => {
@@ -49,12 +50,32 @@ function ProjectSlider({ items, basePath }) {
     };
   }, []);
 
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+    const handleScroll = () => {
+      const cardWidth = track.firstElementChild?.getBoundingClientRect().width || 1;
+      const index = Math.round(track.scrollLeft / cardWidth) % items.length;
+      setActiveIndex(index);
+    };
+    track.addEventListener('scroll', handleScroll, { passive: true });
+    return () => track.removeEventListener('scroll', handleScroll);
+  }, [items.length]);
+
   const scrollByCard = (direction) => {
     const track = trackRef.current;
     if (!track) return;
     setIsPlaying(false);
     const cardWidth = track.firstElementChild?.getBoundingClientRect().width || 0;
     track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+  };
+
+  const scrollToIndex = (index) => {
+    const track = trackRef.current;
+    if (!track) return;
+    setIsPlaying(false);
+    const cardWidth = track.firstElementChild?.getBoundingClientRect().width || 0;
+    track.scrollTo({ left: index * cardWidth, behavior: 'smooth' });
   };
 
   return (
@@ -77,7 +98,7 @@ function ProjectSlider({ items, basePath }) {
         ))}
       </div>
 
-      <div className="project-slider__nav" aria-hidden="false">
+      <div className="project-slider__nav">
         <button
           type="button"
           className="project-slider__control project-slider__control--prev"
@@ -105,6 +126,20 @@ function ProjectSlider({ items, basePath }) {
       >
         {isPlaying ? <Pause size={18} /> : <Play size={18} />}
       </button>
+
+      <div className="project-slider__dots" role="tablist" aria-label="Slide navigation">
+        {items.map((item, index) => (
+          <button
+            key={item.id}
+            type="button"
+            role="tab"
+            className={`project-slider__dot${index === activeIndex ? ' is-active' : ''}`}
+            onClick={() => scrollToIndex(index)}
+            aria-label={`Go to ${item.title}`}
+            aria-selected={index === activeIndex}
+          />
+        ))}
+      </div>
     </div>
   );
 }
