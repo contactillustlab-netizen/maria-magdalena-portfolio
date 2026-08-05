@@ -1,4 +1,5 @@
 import { ArrowUpRight, Facebook, Instagram, Linkedin, Send, PenTool } from 'lucide-react';
+import { NavLink } from 'react-router-dom';
 
 function Footer() {
   const socialLinks = [
@@ -16,6 +17,10 @@ function Footer() {
           <h2>Let’s Work<br />Together</h2>
           <div className="site-footer__divider" />
         </div>
+        <nav className="site-footer__links" aria-label="Secondary navigation">
+          <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>About</NavLink>
+          <NavLink to="/contact" className={({ isActive }) => isActive ? 'active' : ''}>Contact</NavLink>
+        </nav>
         <div className="site-footer__contact">
           <a href="mailto:contact.illustlab@gmail.com">contact.illustlab@gmail.com</a>
           <p>România, Galați</p>

@@ -10,16 +10,12 @@ function Navbar({ mode = 'illustration' }) {
         { to: '/illustration', label: 'Illustration' },
         { to: '/illustration/sketches', label: 'Sketches' },
         { to: '/illustration/concept', label: 'Concept' },
-        { to: '/illustration/covers', label: 'Covers' },
-        { to: '/about', label: 'About' },
-        { to: '/contact', label: 'Contact' }
+        { to: '/illustration/covers', label: 'Covers' }
       ]
     : [
         { to: '/design', label: 'Branding' },
         { to: '/design/ui-design', label: 'UI Design' },
-        { to: '/design/marketing-design', label: 'Marketing Design' },
-        { to: '/about', label: 'About' },
-        { to: '/contact', label: 'Contact' }
+        { to: '/design/marketing-design', label: 'Marketing Design' }
       ];
 
   return (
