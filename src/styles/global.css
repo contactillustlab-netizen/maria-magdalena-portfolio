@@ -74,7 +74,7 @@ main { flex: 1; }
   font-size: var(--btn-font-size); line-height: var(--btn-line-height); font-weight: var(--btn-font-weight); letter-spacing: var(--btn-letter-spacing);
   transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition);
 }
-.mode-switch, .mode-switch:visited, .mode-switch span { color: #000000; }
+.mode-switch, .mode-switch:visited, .mode-switch > span:first-child { color: #000000; }
 .mode-switch:hover { transform: translateX(2px); box-shadow: 0 10px 24px rgba(255,255,255,.18); background: #f0f0f0; }
 .mode-switch:active { transform: translateX(1px) scale(0.97); box-shadow: 0 4px 12px rgba(255,255,255,.14); background: #d9d9d9; }
 .mode-switch:focus-visible { outline: 2px solid #ffffff; outline-offset: 3px; }
@@ -202,7 +202,7 @@ main { flex: 1; }
 
 .project-slider__nav { position: absolute; top: 0; bottom: 0; left: 0; right: 0; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding: 0; pointer-events: none; }
 .project-slider__control {
-  pointer-events: auto; width: var(--btn-height); height: var(--btn-height); border-radius: 0;
+  pointer-events: auto; width: var(--btn-height); height: var(--btn-height); border-radius: 50%;
   border: 1px solid #ffffff; background: rgba(0,0,0,.5); color: #ffffff;
   display: grid; place-items: center; cursor: pointer; transition: background-color var(--transition), transform var(--transition);
 }
