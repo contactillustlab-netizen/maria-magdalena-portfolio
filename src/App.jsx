@@ -1,5 +1,6 @@
-import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Layout from './layouts/Layout';
+import LandingPage from './pages/LandingPage';
 import IllustrationPage from './pages/illustration/IllustrationPage';
 import SketchesPage from './pages/illustration/SketchesPage';
 import ConceptPage from './pages/illustration/ConceptPage';
@@ -21,7 +22,7 @@ function App() {
     <Layout>
       <PageTransition key={location.pathname}>
         <Routes location={location}>
-          <Route path="/" element={<Navigate to="/illustration" replace />} />
+          <Route path="/" element={<LandingPage />} />
           <Route path="/illustration" element={<IllustrationPage />} />
           <Route path="/illustration/sketches" element={<SketchesPage />} />
           <Route path="/illustration/concept" element={<ConceptPage />} />

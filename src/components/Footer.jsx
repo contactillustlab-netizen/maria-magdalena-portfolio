@@ -15,7 +15,6 @@ function Footer() {
       <div className="site-footer__top">
         <div>
           <h2>Let’s Work<br />Together</h2>
-          <div className="site-footer__divider" />
         </div>
         <nav className="site-footer__links" aria-label="Secondary navigation">
           <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>About</NavLink>

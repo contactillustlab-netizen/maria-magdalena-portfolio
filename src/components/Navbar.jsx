@@ -5,7 +5,7 @@ import ModeSwitchButton from './ModeSwitchButton';
 
 function Navbar({ mode = 'illustration' }) {
   const [open, setOpen] = useState(false);
-  const links = mode === 'illustration'
+  const sectionLinks = mode === 'illustration'
     ? [
         { to: '/illustration', label: 'Illustration' },
         { to: '/illustration/sketches', label: 'Sketches' },
@@ -18,6 +18,11 @@ function Navbar({ mode = 'illustration' }) {
         { to: '/design/ui-design', label: 'UI Design' },
         { to: '/design/marketing-design', label: 'Marketing Design' }
       ];
+  const links = [
+    ...sectionLinks,
+    { to: '/about', label: 'About' },
+    { to: '/contact', label: 'Contact' }
+  ];
 
   return (
     <header className="site-header">
