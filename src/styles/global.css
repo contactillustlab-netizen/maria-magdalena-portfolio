@@ -343,7 +343,7 @@ main { flex: 1; }
 .about-page__block-footer { margin-top: 2.5rem; }
 
 .cta-pill {
-  display: inline-flex; align-items: center; gap: 1rem; padding: .4rem .4rem .4rem 1.25rem;
+  display: inline-flex; align-items: center; gap: 1rem; height: var(--btn-height); padding: 4px 4px 4px 1.25rem;
   border-radius: 999px; background: var(--color-surface); border: 1px solid var(--color-border);
   color: var(--color-text); font-size: .95rem; white-space: nowrap;
   transition: border-color var(--transition), background-color var(--transition), transform var(--transition);
