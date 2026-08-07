@@ -1,10 +1,11 @@
 import { X } from 'lucide-react';
+import { createPortal } from 'react-dom';
 import SmartImage from './SmartImage';
 
 function ArtworkModal({ item, onClose }) {
   if (!item) return null;
 
-  return (
+  return createPortal(
     <div className="modal" role="dialog" aria-modal="true" aria-label={item.title}>
       <div className="modal__backdrop" onClick={onClose} />
       <div className="modal__content">
@@ -19,7 +20,8 @@ function ArtworkModal({ item, onClose }) {
           <p>{item.description}</p>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 

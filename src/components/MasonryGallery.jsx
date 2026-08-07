@@ -7,6 +7,16 @@ function MasonryGallery({ items }) {
   const [visibleItems, setVisibleItems] = useState([]);
 
   useEffect(() => {
+    const overflow = selectedItem ? 'hidden' : '';
+    document.documentElement.style.overflow = overflow;
+    document.body.style.overflow = overflow;
+    return () => {
+      document.documentElement.style.overflow = '';
+      document.body.style.overflow = '';
+    };
+  }, [selectedItem]);
+
+  useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
