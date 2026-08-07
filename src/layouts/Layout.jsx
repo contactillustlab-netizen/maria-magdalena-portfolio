@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import CtaBanner from '../components/CtaBanner';
+import BackToTop from '../components/BackToTop';
 
 function Layout({ children }) {
   const location = useLocation();
@@ -24,6 +25,7 @@ function Layout({ children }) {
       <main>{children}</main>
       <CtaBanner />
       <Footer />
+      <BackToTop />
     </div>
   );
 }
