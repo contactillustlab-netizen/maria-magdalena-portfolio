@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import CtaBanner from '../components/CtaBanner';
 
 function Layout({ children }) {
   const location = useLocation();
@@ -21,6 +22,7 @@ function Layout({ children }) {
     <div className="app-shell">
       <Navbar mode={mode} />
       <main>{children}</main>
+      <CtaBanner />
       <Footer />
     </div>
   );

@@ -1,9 +1,11 @@
+import { Link } from 'react-router-dom';
 import HeroSection from '../../components/HeroSection';
-import SectionHeader from '../../components/SectionHeader';
+import SmartImage from '../../components/SmartImage';
+import { brandingProjects } from '../../data/brandingProjects';
 
 function BrandingPage() {
   return (
-    <section className="section section--placeholder">
+    <>
       <HeroSection
         eyebrow="Design"
         title="Branding"
@@ -11,10 +13,24 @@ function BrandingPage() {
         image="/images/gallery/design/hero.webp"
         variant="design"
       />
-      <div className="placeholder-page">
-        <SectionHeader title="Branding projects" description="This page will host brand identities, visual systems and campaign direction." />
-      </div>
-    </section>
+
+      <section className="section section--branding">
+        <div className="branding-grid">
+          {brandingProjects.map((project) => (
+            <Link key={project.id} to={`/design/branding/${project.slug}`} className="branding-grid__item">
+              <div className="branding-grid__image" style={{ aspectRatio: project.aspectRatio }}>
+                <SmartImage src={project.image} alt={project.title} loading="lazy" />
+                <span className="branding-grid__year">{project.year}</span>
+              </div>
+              <div className="branding-grid__caption">
+                <h3 className="branding-grid__title">{project.title}</h3>
+                <p className="branding-grid__tag">{project.tag}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+    </>
   );
 }
 

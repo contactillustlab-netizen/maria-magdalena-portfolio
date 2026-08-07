@@ -10,16 +10,57 @@ function Footer() {
     { label: 'Behance', href: 'https://www.behance.net', icon: <PenTool size={18} /> }
   ];
 
+  const artLinks = [
+    { to: '/illustration', label: 'Illustration' },
+    { to: '/illustration/sketches', label: 'Sketches' },
+    { to: '/illustration/concept', label: 'Concept' },
+    { to: '/illustration/covers', label: 'Covers' }
+  ];
+
+  const designLinks = [
+    { to: '/design', label: 'Graphic Design' },
+    { to: '/design/branding', label: 'Branding' },
+    { to: '/design/ui-design', label: 'UI Design' },
+    { to: '/design/marketing-design', label: 'Marketing Design' }
+  ];
+
+  const infoLinks = [
+    { to: '/about', label: 'About' },
+    { to: '/contact', label: 'Contact' }
+  ];
+
   return (
     <footer className="site-footer">
       <div className="site-footer__top">
         <div>
           <h2>Let’s Work<br />Together</h2>
         </div>
-        <nav className="site-footer__links" aria-label="Secondary navigation">
-          <NavLink to="/about" className={({ isActive }) => isActive ? 'active' : ''}>About</NavLink>
-          <NavLink to="/contact" className={({ isActive }) => isActive ? 'active' : ''}>Contact</NavLink>
-        </nav>
+        <div className="site-footer__nav-groups">
+          <nav className="site-footer__nav-group" aria-label="Art navigation">
+            <span className="site-footer__nav-title">Art</span>
+            <div className="site-footer__links">
+              {artLinks.map((link) => (
+                <NavLink key={link.to} to={link.to} end className={({ isActive }) => isActive ? 'active' : ''}>{link.label}</NavLink>
+              ))}
+            </div>
+          </nav>
+          <nav className="site-footer__nav-group" aria-label="Design navigation">
+            <span className="site-footer__nav-title">Design</span>
+            <div className="site-footer__links">
+              {designLinks.map((link) => (
+                <NavLink key={link.to} to={link.to} end className={({ isActive }) => isActive ? 'active' : ''}>{link.label}</NavLink>
+              ))}
+            </div>
+          </nav>
+          <nav className="site-footer__nav-group" aria-label="Secondary navigation">
+            <span className="site-footer__nav-title">Info</span>
+            <div className="site-footer__links">
+              {infoLinks.map((link) => (
+                <NavLink key={link.to} to={link.to} className={({ isActive }) => isActive ? 'active' : ''}>{link.label}</NavLink>
+              ))}
+            </div>
+          </nav>
+        </div>
         <div className="site-footer__contact">
           <a href="mailto:contact.illustlab@gmail.com">contact.illustlab@gmail.com</a>
           <p>România, Galați</p>

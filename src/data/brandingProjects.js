@@ -1,0 +1,80 @@
+export const brandingProjects = [
+  {
+    id: 1,
+    slug: 'solstice-coffee-roasters',
+    title: 'Solstice Coffee Roasters',
+    tag: 'Brand Identity',
+    year: 2024,
+    role: 'Lead Brand Designer',
+    client: 'Solstice Coffee Roasters',
+    aspectRatio: '4 / 5',
+    image: null,
+    description: 'Solstice needed an identity that felt as warm as the beans they roast. I built a mark, palette and packaging system drawn from sunrise light and slow mornings.',
+    galleryCount: 6
+  },
+  {
+    id: 2,
+    slug: 'nordlys-skincare',
+    title: 'Nordlys Skincare',
+    tag: 'Visual System',
+    year: 2024,
+    role: 'Lead Brand Designer',
+    client: 'Nordlys Skincare',
+    aspectRatio: '1 / 1',
+    image: null,
+    description: 'A restrained, clinical-meets-natural visual system for a Nordic skincare line, built to feel calm on shelf and confident online.',
+    galleryCount: 5
+  },
+  {
+    id: 3,
+    slug: 'halcyon-studio',
+    title: 'Halcyon Studio',
+    tag: 'Logo & Identity',
+    year: 2023,
+    role: 'Lead Brand Designer',
+    client: 'Halcyon Studio',
+    aspectRatio: '3 / 4',
+    image: null,
+    description: 'A logo and identity suite for an interior design studio, built around a single confident mark that scales from business card to storefront.',
+    galleryCount: 6
+  },
+  {
+    id: 4,
+    slug: 'marrow-and-oak',
+    title: 'Marrow & Oak',
+    tag: 'Packaging Design',
+    year: 2023,
+    role: 'Lead Brand Designer',
+    client: 'Marrow & Oak',
+    aspectRatio: '5 / 4',
+    image: null,
+    description: 'Packaging and shelf identity for a small-batch butchery, balancing craft-market warmth with a system tidy enough to scale to retail.',
+    galleryCount: 4
+  },
+  {
+    id: 5,
+    slug: 'terra-verde-wines',
+    title: 'Terra Verde Wines',
+    tag: 'Brand Strategy',
+    year: 2022,
+    role: 'Lead Brand Designer',
+    client: 'Terra Verde Wines',
+    aspectRatio: '16 / 9',
+    image: null,
+    description: 'A full repositioning for a family vineyard, from naming direction through label design, built to read as premium without losing warmth.',
+    galleryCount: 5
+  },
+  {
+    id: 6,
+    slug: 'kindred-press',
+    title: 'Kindred Press',
+    tag: 'Editorial Identity',
+    year: 2022,
+    role: 'Lead Brand Designer',
+    client: 'Kindred Press',
+    aspectRatio: '4 / 5',
+    image: null,
+    description: 'An editorial identity for an independent publisher, pairing a quiet wordmark with a flexible grid system built for covers and campaigns alike.',
+    galleryCount: 5
+  }
+];

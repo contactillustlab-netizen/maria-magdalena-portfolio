@@ -1,8 +1,21 @@
-import { useEffect, useState } from 'react';
-import { ArrowDown } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import lottie from 'lottie-web';
+import scrollDownAnimation from '../assets/scroll-down.json';
 
 function HeroSection({ eyebrow, title, subtitle, image, variant = 'illustration' }) {
   const [showImage, setShowImage] = useState(false);
+  const scrollIconRef = useRef(null);
+
+  useEffect(() => {
+    const anim = lottie.loadAnimation({
+      container: scrollIconRef.current,
+      renderer: 'svg',
+      loop: true,
+      autoplay: true,
+      animationData: scrollDownAnimation
+    });
+    return () => anim.destroy();
+  }, []);
 
   useEffect(() => {
     if (!image) {
@@ -32,8 +45,7 @@ function HeroSection({ eyebrow, title, subtitle, image, variant = 'illustration'
         {subtitle ? <p className="hero__subtitle">{subtitle}</p> : null}
       </div>
       <div className="hero__scroll" aria-hidden="true">
-        <span>Scroll</span>
-        <ArrowDown size={18} />
+        <div ref={scrollIconRef} className="hero__scroll-icon" />
       </div>
     </section>
   );
