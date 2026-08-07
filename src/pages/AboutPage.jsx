@@ -44,7 +44,7 @@ function AboutPage() {
 
         <div className="about-page__main">
           <section className="about-page__block">
-            <SectionHeader eyebrow="About" title="A multidisciplinary practice shaped by narrative and form" description="" />
+            <SectionHeader eyebrow="About" title="Vizireanu Maria-Magdalena" description="Illustrator & Graphic Designer" />
             <p className="about-page__text">I am an illustrator, graphic designer, and concept artist focused on transforming ideas into distinctive visual experiences. My work combines storytelling, visual identity, digital design, and artistic exploration.</p>
             <h3>Services</h3>
             <ul>
