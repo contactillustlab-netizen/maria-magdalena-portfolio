@@ -124,21 +124,40 @@ main { flex: 1; }
 
 .landing { height: 100%; display: flex; background: #000000; }
 .landing__panel {
-  position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
-  text-decoration: none; text-align: center; padding: 2rem;
+  position: relative; z-index: 0; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-decoration: none; text-align: center; padding: 2rem; overflow: hidden;
   transition: flex 480ms ease, background-color var(--transition), color var(--transition);
 }
+.landing__panel::before {
+  content: ''; position: absolute; inset: 0; z-index: -2; background-size: cover; background-position: center;
+  filter: grayscale(1); transition: filter .5s ease; pointer-events: none;
+}
+.landing__panel::after {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+}
+.landing__panel:hover::before, .landing__panel:focus-visible::before { filter: grayscale(0); }
 .landing__panel--design { background-color: #dcdcdc; color: #0a0a0a; }
+.landing__panel--design::before { background-image: url('/pictures/landing-design.webp'); }
+.landing__panel--design::after { background: rgba(255,255,255,.5); }
 .landing__panel--design h2,
 .landing__panel--design p,
 .landing__panel--design .landing__panel-cta { color: #0a0a0a; }
 .landing__panel--art { background-color: #000000; color: #ffffff; }
+.landing__panel--art::before { background-image: url('/pictures/landing-art.webp'); }
+.landing__panel--art::after { background: rgba(0,0,0,.5); }
 .landing__panel--art h2,
 .landing__panel--art p,
 .landing__panel--art .landing__panel-cta { color: #ffffff; }
 .landing:has(.landing__panel--art:hover) .landing__panel--design,
 .landing:has(.landing__panel--design:hover) .landing__panel--art { flex: 0.86; }
 .landing__panel:focus-visible { outline: 2px solid currentColor; outline-offset: -6px; }
+
+.landing__panel-content {
+  position: relative; z-index: 1; padding: 2.5rem 3rem; border-radius: var(--radius-lg);
+  display: flex; flex-direction: column; align-items: center;
+}
+.landing__panel--design .landing__panel-content { background: rgba(255,255,255,.78); }
+.landing__panel--art .landing__panel-content { background: rgba(0,0,0,.6); }
 
 .landing__panel h2 {
   margin: 0 0 .9rem; font-size: var(--text-display-lg); line-height: var(--leading-display-lg); text-transform: uppercase;
