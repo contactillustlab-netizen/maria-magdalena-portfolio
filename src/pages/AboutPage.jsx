@@ -1,20 +1,35 @@
 import { ArrowRight, Facebook, FileText, Instagram, Linkedin, PenTool, Send } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SectionHeader from '../components/SectionHeader';
+import SmartImage from '../components/SmartImage';
 
 const tools = ['Tool 01', 'Tool 02', 'Tool 03', 'Tool 04', 'Tool 05', 'Tool 06'];
 
 const experience = [
-  { id: 1, start: '2023', end: 'Present', role: 'Illustrator & Graphic Designer', company: 'Independent Practice' },
-  { id: 2, start: '2021', end: '2023', role: 'Role title', company: 'Company / Studio' },
-  { id: 3, start: '2019', end: '2021', role: 'Role title', company: 'Company / Studio' },
-  { id: 4, start: '2018', end: '2019', role: 'Role title', company: 'Company / Studio' }
+  { id: 1, start: '2021', end: 'Present', role: 'Illustrator & UI Designer', company: 'IVFuture SRL, Galati RO /  IT & SaaS Company' },
+  { id: 2, start: '2017', end: 'Present', role: 'Illustrator & Graphic Designer', company: 'Freelancing' },
+  { id: 3, start: '2016', end: '2017', role: 'Illustrator & T-Shirt Designer', company: 'Tshirt-Factory.ro RO' }
 ];
 
 const testimonials = [
-  { id: 1, quote: 'Add a testimonial from a client or collaborator here.', name: 'Client name', role: 'Role, Company' },
-  { id: 2, quote: 'Swap this in for real feedback about working together.', name: 'Client name', role: 'Role, Company' },
-  { id: 3, quote: 'A short quote about your work goes here.', name: 'Client name', role: 'Role, Company' }
+  {
+    id: 1,
+    quote: 'An absolute pleasure to work with! Created an awesome illustration for my coffee shop that I will be using for various different products.  A great talent!',
+    name: 'Austin Fittock',
+    role: 'AJF ESSEX LTD'
+  },
+  {
+    id: 2,
+    quote: "I've gotten over 30 designs from Vizireanu Maria Magdalena and will do more and more business with her. Her work is amazing, she is amazing and does everything she can to get you exactly what you need. Everything from t shirt designs to art for my videos, podcast and channels. She has countless styles and if she has never done a certain type of style she can pull it off after a little research. Im hoping to one day to get a real life physical work of art from her, thats how good she is and definetly deserves alot more notice for her abilities. I found her on a whim and i couldnt be more grateful.  Thank you Magda!!",
+    name: 'Jason Young',
+    role: 'STONER SOCIETY LIMITED CO.'
+  },
+  {
+    id: 3,
+    quote: 'Magda did an amazing job with all the info I gave her! Super professional and understanding of my needs! I love the illustration that she did for the hot sauce! Thank you again!!!',
+    name: 'Lucinda Fortin',
+    role: 'Tapesayeule'
+  }
 ];
 
 function AboutPage() {
@@ -31,7 +46,7 @@ function AboutPage() {
       <div className="about-page__layout">
         <aside className="about-page__sidebar">
           <div className="about-page__portrait">
-            <div className="image-placeholder" aria-label="Portrait placeholder" />
+            <SmartImage src="/pictures/portrait.webp" alt="Vizireanu Maria-Magdalena portrait" orientation="portrait" />
           </div>
           <div className="about-page__tools" aria-hidden="true">
             <div className="about-page__tools-track">
@@ -106,7 +121,7 @@ function AboutPage() {
             </div>
             <div className="about-page__block-footer">
               <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" className="cta-pill">
-                Read on Linkedin
+                Check Linkedin
                 <span className="cta-pill__icon"><Linkedin size={18} /></span>
               </a>
             </div>
