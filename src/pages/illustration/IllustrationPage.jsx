@@ -6,8 +6,8 @@ function IllustrationPage() {
   return (
     <>
       <HeroSection
-        title="VIZIREANU MARIA-MAGDALENA"
-        subtitle="ILLUSTRATOR / GRAPHIC DESIGNER / CONCEPT ARTIST"
+        title="Illustration"
+        subtitle="Character-driven fantasy art and narrative scenes"
         image="/pictures/diablo-fbackground.webp"
         variant="illustration"
       />

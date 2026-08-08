@@ -1,7 +1,9 @@
-import { ArrowRight, Facebook, FileText, Instagram, Linkedin, PenTool, Send } from 'lucide-react';
+import { ArrowRight, Facebook, FileText, Instagram, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SectionHeader from '../components/SectionHeader';
 import SmartImage from '../components/SmartImage';
+import ArtStationIcon from '../components/icons/ArtStationIcon';
+import BehanceIcon from '../components/icons/BehanceIcon';
 
 const tools = [
   { name: 'Adobe Creative Cloud', logo: '/logos/adobe-creative-cloud.svg' },
@@ -47,11 +49,11 @@ const testimonials = [
 
 function AboutPage() {
   const socials = [
-    { label: 'LinkedIn', href: 'https://www.linkedin.com', icon: <Linkedin size={18} /> },
-    { label: 'Facebook', href: 'https://www.facebook.com', icon: <Facebook size={18} /> },
-    { label: 'Instagram', href: 'https://www.instagram.com', icon: <Instagram size={18} /> },
-    { label: 'ArtStation', href: 'https://www.artstation.com', icon: <Send size={18} /> },
-    { label: 'Behance', href: 'https://www.behance.net', icon: <PenTool size={18} /> }
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/maria-magdalena-vizireanu/', icon: <Linkedin size={18} /> },
+    { label: 'Facebook', href: 'https://www.facebook.com/vmmartist', icon: <Facebook size={18} /> },
+    { label: 'Instagram', href: 'https://www.instagram.com/magdamariav/', icon: <Instagram size={18} /> },
+    { label: 'ArtStation', href: 'https://vizireanumariamagdalena.artstation.com/', icon: <ArtStationIcon size={18} /> },
+    { label: 'Behance', href: 'https://www.behance.net/mady21v', icon: <BehanceIcon size={18} /> }
   ];
 
   return (
@@ -132,7 +134,7 @@ function AboutPage() {
               ))}
             </div>
             <div className="about-page__block-footer">
-              <a href="https://www.linkedin.com" target="_blank" rel="noreferrer" className="cta-pill">
+              <a href="https://www.linkedin.com/in/maria-magdalena-vizireanu/" target="_blank" rel="noreferrer" className="cta-pill">
                 Check Linkedin
                 <span className="cta-pill__icon"><Linkedin size={18} /></span>
               </a>

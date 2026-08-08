@@ -38,5 +38,20 @@ export const conceptProjects = [
     image: '/images/gallery/concept/desert-camp.webp',
     orientation: 'landscape',
     description: 'A weathered expedition tent interior, built out prop by prop for a desert-set story.'
+  },
+  {
+    id: 6,
+    title: 'Moonbinders',
+    category: 'Character Concept',
+    image: '/pictures/moonbinders.webp',
+    images: [
+      '/pictures/moonbinders.webp',
+      '/pictures/old-witch.webp',
+      '/pictures/red-witch.webp',
+      '/pictures/wizard.webp',
+      '/pictures/young-witch.webp'
+    ],
+    orientation: 'landscape',
+    description: 'A coven lineup for the Moonbinders series, four witches and warlocks designed from lantern-worn elder to raven-familiar sorcerer.'
   }
 ];

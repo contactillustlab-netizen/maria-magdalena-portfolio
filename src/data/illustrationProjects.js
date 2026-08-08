@@ -118,5 +118,141 @@ export const illustrationProjects = [
     image: '/pictures/david.webp',
     orientation: 'portrait',
     description: 'A striking character study rendered in fine detail.'
+  },
+  {
+    id: 26,
+    title: 'Storm Bear',
+    category: 'Narrative Illustration',
+    image: '/pictures/storm-bear.webp',
+    orientation: 'portrait',
+    description: 'A storm-wreathed bear looms over the coastline as a lone van races beneath its monstrous, lightning-lit gaze.'
+  },
+  {
+    id: 27,
+    title: 'Abyssal Hunter',
+    category: 'Narrative Illustration',
+    image: '/pictures/abyssal-hunter.webp',
+    orientation: 'landscape',
+    description: 'A colossal, red-eyed shark drifts above two divers descending through inky open water, danger coiled just out of reach.'
+  },
+  {
+    id: 28,
+    title: 'Undertow',
+    category: 'Character Illustration',
+    image: '/pictures/undertow.webp',
+    orientation: 'portrait',
+    description: 'A pale figure surfaces mid-storm, one glowing eye locked on the viewer as a wave curls into a half-formed face behind her.'
+  },
+  {
+    id: 29,
+    title: 'Fingers Crossed',
+    category: 'Narrative Illustration',
+    image: '/pictures/fingers-crossed.webp',
+    orientation: 'portrait',
+    description: "A book cover study in warm candlelight, a bound heroine's crossed fingers hinting at the gamble behind her back."
+  },
+  {
+    id: 30,
+    title: 'The Crimson Trail',
+    category: 'Environment Illustration',
+    image: '/pictures/crimson-trail.webp',
+    orientation: 'landscape',
+    description: 'A blood-red road winds past a windmill and a smoke-lit cottage, arrows and a forgotten axe marking the way through a darkening wood.'
+  },
+  {
+    id: 31,
+    title: 'Guardian',
+    category: 'Character Illustration',
+    image: '/pictures/guardian.webp',
+    orientation: 'portrait',
+    description: 'A gunslinger perches cross-legged above a shattered skyline, twin moons and drifting petals framing her quiet vigilance.'
+  },
+  {
+    id: 32,
+    title: 'The Haunting',
+    category: 'Environment Illustration',
+    image: '/pictures/the-haunting.webp',
+    orientation: 'portrait',
+    description: "A crumbling Gothic manor glows from within as crows gather on its rooftops and jack-o'-lanterns line a cobweb-draped porch."
+  },
+  {
+    id: 33,
+    title: 'Swamp Hunt',
+    category: 'Narrative Illustration',
+    image: '/pictures/swamp-hunt.webp',
+    orientation: 'landscape',
+    description: 'A centaur archer draws her bow at full gallop, arrows already spent against a monstrous scorpion rising from the swamp.'
+  },
+  {
+    id: 34,
+    title: 'Made of Dust',
+    category: 'Environment Illustration',
+    image: '/pictures/made-of-dust.webp',
+    orientation: 'landscape',
+    description: "A dryad's withered stump-body watches over a sunset canyon of glowing runes and ancient stone, roots dissolving into mist."
+  },
+  {
+    id: 35,
+    title: 'Between Tides',
+    category: 'Character Illustration',
+    image: '/pictures/between-tides.webp',
+    orientation: 'landscape',
+    description: 'A monochrome mermaid drags herself through reed-choked shallows beneath a ribbon of aurora light, her gaze fixed and unreadable.'
+  },
+  {
+    id: 36,
+    title: 'Blood Moon Owl',
+    category: 'Character Illustration',
+    image: '/pictures/blood-moon-owl.webp',
+    orientation: 'portrait',
+    description: 'Bathed entirely in red, a small owl fixes an unblinking, occult-marked stare through a circle of pale moonlight.'
+  },
+  {
+    id: 37,
+    title: "Pan's Labyrinth",
+    category: 'Narrative Illustration',
+    image: '/pictures/pans-labyrinth.webp',
+    orientation: 'landscape',
+    description: 'Fan art for a gothic fairy tale: a towering, hollow-eyed faun looms over a small girl bathed in otherworldly blue light.'
+  },
+  {
+    id: 38,
+    title: 'Sweet Poison',
+    category: 'Character Illustration',
+    image: '/pictures/sweet-poison.webp',
+    orientation: 'portrait',
+    description: 'Flowers crown her hair and blood stains her blade — a quiet, unflinching portrait of danger dressed as grace.'
+  },
+  {
+    id: 39,
+    title: 'Evening Company',
+    category: 'Character Illustration',
+    image: '/pictures/evening-company.webp',
+    orientation: 'portrait',
+    description: 'A girl and her menagerie — hound, piglet, and crow — share a lantern-lit evening beneath a canopy of glass and green.'
+  },
+  {
+    id: 40,
+    title: 'Run, Little, Run',
+    category: 'Narrative Illustration',
+    image: '/pictures/run-little-run.webp',
+    orientation: 'portrait',
+    description: "A grinning scarecrow bounds through a cornfield at dusk, jack-o'-lantern in hand, as a terrified mouse flees for its life."
+  },
+  {
+    id: 41,
+    title: 'Troubled Mind',
+    category: 'Narrative Illustration',
+    image: '/pictures/troubled-mind.webp',
+    orientation: 'portrait',
+    description: 'Disembodied hands close in around a woman’s face beneath a blood-red sky — a cover study in anxiety made visible.'
+  },
+  {
+    id: 42,
+    title: 'Vanessa & Ethan',
+    category: 'Narrative Illustration',
+    image: '/pictures/vanessa-and-ethan.webp',
+    orientation: 'portrait',
+    description: 'A hooded stranger and a scorpion-marked woman lean forehead to forehead beneath a crescent moon, blood tracing the space between them.'
   }
 ];

@@ -1,10 +1,32 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import ModeSwitchButton from './ModeSwitchButton';
 
 function Navbar({ mode = 'illustration' }) {
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
+
+  useEffect(() => {
+    lastScrollY.current = window.scrollY;
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      const delta = currentScrollY - lastScrollY.current;
+      if (currentScrollY < 88 || delta < 0) {
+        setHidden(false);
+      } else if (delta > 0) {
+        setHidden(true);
+      }
+      lastScrollY.current = currentScrollY;
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (open) setHidden(false);
+  }, [open]);
   const sectionLinks = mode === 'illustration'
     ? [
         { to: '/illustration', label: 'Illustration' },
@@ -25,7 +47,7 @@ function Navbar({ mode = 'illustration' }) {
   ];
 
   return (
-    <header className="site-header">
+    <header className={`site-header${hidden && !open ? ' site-header--hidden' : ''}`}>
       <div className="site-header__inner">
         <NavLink to={mode === 'illustration' ? '/illustration' : '/design'} className="site-logo" aria-label="Go to homepage">
           {mode === 'illustration' ? <img src="/images/logos/mm-mark-white.svg" alt="MM logo" /> : <img src="/images/logos/illustlab-mark-white.svg" alt="Illustlab logo" />}

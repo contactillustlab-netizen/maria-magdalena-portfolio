@@ -1,13 +1,15 @@
-import { ArrowUpRight, Facebook, Instagram, Linkedin, Send, PenTool } from 'lucide-react';
+import { ArrowUpRight, Facebook, Instagram, Linkedin } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
+import ArtStationIcon from './icons/ArtStationIcon';
+import BehanceIcon from './icons/BehanceIcon';
 
 function Footer() {
   const socialLinks = [
-    { label: 'LinkedIn', href: 'https://www.linkedin.com', icon: <Linkedin size={18} /> },
-    { label: 'Facebook', href: 'https://www.facebook.com', icon: <Facebook size={18} /> },
-    { label: 'Instagram', href: 'https://www.instagram.com', icon: <Instagram size={18} /> },
-    { label: 'ArtStation', href: 'https://www.artstation.com', icon: <Send size={18} /> },
-    { label: 'Behance', href: 'https://www.behance.net', icon: <PenTool size={18} /> }
+    { label: 'LinkedIn', href: 'https://www.linkedin.com/in/maria-magdalena-vizireanu/', icon: <Linkedin size={18} /> },
+    { label: 'Facebook', href: 'https://www.facebook.com/vmmartist', icon: <Facebook size={18} /> },
+    { label: 'Instagram', href: 'https://www.instagram.com/magdamariav/', icon: <Instagram size={18} /> },
+    { label: 'ArtStation', href: 'https://vizireanumariamagdalena.artstation.com/', icon: <ArtStationIcon size={18} /> },
+    { label: 'Behance', href: 'https://www.behance.net/mady21v', icon: <BehanceIcon size={18} /> }
   ];
 
   const artLinks = [
