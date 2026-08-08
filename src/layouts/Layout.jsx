@@ -8,6 +8,7 @@ import BackToTop from '../components/BackToTop';
 function Layout({ children }) {
   const location = useLocation();
   const isLanding = location.pathname === '/';
+  const isContact = location.pathname === '/contact';
   const [mode, setMode] = useState(() => (location.pathname.startsWith('/design') ? 'design' : 'illustration'));
 
   useEffect(() => {
@@ -23,7 +24,7 @@ function Layout({ children }) {
     <div className="app-shell">
       <Navbar mode={mode} />
       <main>{children}</main>
-      <CtaBanner />
+      {isContact ? null : <CtaBanner />}
       <Footer />
       <BackToTop />
     </div>

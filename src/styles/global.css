@@ -674,6 +674,7 @@ main { flex: 1; }
   .site-header__inner { padding: 0 1rem; }
   .breadcrumbs { padding: 0 1rem; }
   .site-nav { display: none; }
+  .graphic-design__tags { justify-content: center; }
   .project-slider__control--prev, .project-slider__control--next { display: none; }
   .mode-switch { display: none; }
   .mobile-nav-toggle { display: inline-flex; }
