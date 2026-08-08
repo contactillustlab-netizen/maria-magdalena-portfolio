@@ -3,7 +3,20 @@ import { Link } from 'react-router-dom';
 import SectionHeader from '../components/SectionHeader';
 import SmartImage from '../components/SmartImage';
 
-const tools = ['Tool 01', 'Tool 02', 'Tool 03', 'Tool 04', 'Tool 05', 'Tool 06'];
+const tools = [
+  { name: 'Adobe Creative Cloud', logo: '/logos/adobe-creative-cloud.svg' },
+  { name: 'Affinity', logo: '/logos/affinity.svg' },
+  { name: 'ChatGPT', logo: '/logos/chatgpt.svg' },
+  { name: 'Claude', logo: '/logos/claude.svg' },
+  { name: 'Figma', logo: '/logos/figma.svg' },
+  { name: 'Illustrator', logo: '/logos/illustrator.svg' },
+  { name: 'Lightroom', logo: '/logos/lightroom.svg' },
+  { name: 'Photoshop', logo: '/logos/photoshop.svg' },
+  { name: 'Premiere Pro', logo: '/logos/premiere.svg' },
+  { name: 'Slack', logo: '/logos/slack.svg' }
+];
+
+const services = ['Illustration', 'Concept Art', 'Character Design', 'Brand Identity', 'UI Design', 'Marketing Materials', 'Pitch Deck Design'];
 
 const experience = [
   { id: 1, start: '2021', end: 'Present', role: 'Illustrator & UI Designer', company: 'IVFuture SRL, Galati RO /  IT & SaaS Company' },
@@ -51,7 +64,10 @@ function AboutPage() {
           <div className="about-page__tools" aria-hidden="true">
             <div className="about-page__tools-track">
               {[...tools, ...tools].map((tool, index) => (
-                <span key={index} className="about-page__tool">{tool}</span>
+                <span key={index} className="about-page__tool">
+                  <img src={tool.logo} alt="" />
+                  {tool.name}
+                </span>
               ))}
             </div>
           </div>
@@ -62,15 +78,11 @@ function AboutPage() {
             <SectionHeader eyebrow="About" title="Vizireanu Maria-Magdalena" description="Illustrator & Graphic Designer" />
             <p className="about-page__text">I am an illustrator, graphic designer, and concept artist focused on transforming ideas into distinctive visual experiences. My work combines storytelling, visual identity, digital design, and artistic exploration.</p>
             <h3>Services</h3>
-            <ul>
-              <li>Illustration</li>
-              <li>Concept Art</li>
-              <li>Character Design</li>
-              <li>Brand Identity</li>
-              <li>UI Design</li>
-              <li>Marketing Materials</li>
-              <li>Pitch Deck Design</li>
-            </ul>
+            <div className="about-page__tags">
+              {services.map((service) => (
+                <span key={service} className="about-page__tag">{service}</span>
+              ))}
+            </div>
             <h3>Selected clients</h3>
             <p>Editorial, cultural and independent projects in development.</p>
             <Link to="/contact" className="about-page__cta">
