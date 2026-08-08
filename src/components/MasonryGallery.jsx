@@ -3,18 +3,18 @@ import GalleryItem from './GalleryItem';
 import ArtworkModal from './ArtworkModal';
 
 function MasonryGallery({ items }) {
-  const [selectedItem, setSelectedItem] = useState(null);
+  const [selectedIndex, setSelectedIndex] = useState(null);
   const [visibleItems, setVisibleItems] = useState([]);
 
   useEffect(() => {
-    const overflow = selectedItem ? 'hidden' : '';
+    const overflow = selectedIndex !== null ? 'hidden' : '';
     document.documentElement.style.overflow = overflow;
     document.body.style.overflow = overflow;
     return () => {
       document.documentElement.style.overflow = '';
       document.body.style.overflow = '';
     };
-  }, [selectedItem]);
+  }, [selectedIndex]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,13 +39,18 @@ function MasonryGallery({ items }) {
   return (
     <>
       <div className="masonry-gallery" role="list">
-        {items.map((item) => (
+        {items.map((item, index) => (
           <div key={item.id} role="listitem">
-            <GalleryItem item={item} onSelect={setSelectedItem} />
+            <GalleryItem item={item} onSelect={() => setSelectedIndex(index)} />
           </div>
         ))}
       </div>
-      <ArtworkModal item={selectedItem} onClose={() => setSelectedItem(null)} />
+      <ArtworkModal
+        items={items}
+        index={selectedIndex}
+        onClose={() => setSelectedIndex(null)}
+        onNavigate={setSelectedIndex}
+      />
     </>
   );
 }

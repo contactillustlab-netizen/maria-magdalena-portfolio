@@ -1,73 +1,33 @@
 export const illustrationProjects = [
   {
+    id: 25,
+    title: 'West',
+    category: 'Environment Illustration',
+    image: '/pictures/west.webp',
+    orientation: 'landscape',
+    description: 'A sweeping westward landscape bathed in atmospheric light.'
+  },
+  {
     id: 1,
     title: 'Lilith',
     category: 'Character Illustration',
-    image: '/images/gallery/illustration/lilith.webp',
+    image: '/pictures/lilith.webp',
     orientation: 'portrait',
-    description: 'A demonic queen rendered in dramatic chiaroscuro, horns and gems catching the last of the light.'
-  },
-  {
-    id: 2,
-    title: 'Verdant Sorceress',
-    category: 'Character Illustration',
-    image: '/images/gallery/illustration/verdant-sorceress.webp',
-    orientation: 'landscape',
-    description: 'A rogue spellcaster conjures light in a derelict industrial hollow, tattoos glowing beneath her skin.'
-  },
-  {
-    id: 3,
-    title: 'Smoke & Velvet',
-    category: 'Character Illustration',
-    image: '/images/gallery/illustration/smoke-and-velvet.webp',
-    orientation: 'portrait',
-    description: 'A quiet portrait study in candlelight, pipe smoke curling through gold embroidery.'
-  },
-  {
-    id: 4,
-    title: "Centaur's Charge",
-    category: 'Narrative Illustration',
-    image: '/images/gallery/illustration/centaurs-charge.webp',
-    orientation: 'landscape',
-    description: 'A mythic skirmish of fauns and centaurs beneath a burning phoenix, painted for a personal fantasy series.'
+    description: 'A skeletal demon queen crowned in curling horns, twin flames burning where her eyes should be, ribs bared beneath a haze of infernal light.'
   },
   {
     id: 5,
     title: 'Guardians of the Valley',
     category: 'Environment Illustration',
-    image: '/images/gallery/illustration/guardians-of-the-valley.webp',
+    image: '/pictures/guardians-of-the-valley.webp',
     orientation: 'landscape',
     description: 'Carved deity heads watch over a sunlit canyon as a lone traveler surveys the water below.'
-  },
-  {
-    id: 6,
-    title: 'High Noon Duel',
-    category: 'Character Illustration',
-    image: '/images/gallery/illustration/high-noon-duel.webp',
-    orientation: 'landscape',
-    description: 'A gunslinger holds her ground against a desert backdrop, twin revolvers drawn.'
-  },
-  {
-    id: 7,
-    title: 'Quiet Devotion',
-    category: 'Character Illustration',
-    image: '/images/gallery/illustration/quiet-devotion.webp',
-    orientation: 'portrait',
-    description: 'An intimate moment between two fae figures, rendered in cool jewel tones and fine linework.'
-  },
-  {
-    id: 8,
-    title: "Dragon's Trust",
-    category: 'Narrative Illustration',
-    image: '/images/gallery/illustration/dragons-trust.webp',
-    orientation: 'landscape',
-    description: 'A knight rests against her long-tamed companion, framed through the ruins of a greenhouse.'
   },
   {
     id: 9,
     title: 'Tavern Tales',
     category: 'Character Illustration',
-    image: '/images/gallery/illustration/tavern-tales.webp',
+    image: '/pictures/tavern-tales.webp',
     orientation: 'landscape',
     description: 'A horned bard charms a smoky tavern crowd mid-performance, music notes drifting into the rafters.'
   },
@@ -75,40 +35,88 @@ export const illustrationProjects = [
     id: 10,
     title: 'Under the Lamp',
     category: 'Narrative Illustration',
-    image: '/images/gallery/illustration/under-the-lamp.webp',
+    image: '/pictures/interogation.webp',
     orientation: 'portrait',
     description: 'A noir interrogation scene lit by a single swinging bulb, tension held in every glance.'
   },
   {
-    id: 11,
-    title: 'Ranger of the Grove',
+    id: 15,
+    title: 'Lagertha',
     category: 'Character Illustration',
-    image: '/images/gallery/illustration/ranger-of-the-grove.webp',
-    orientation: 'landscape',
-    description: 'A centaur archer draws her bow beneath mossy canopy, a fallen scorpion-tail relic behind her.'
-  },
-  {
-    id: 12,
-    title: "Fortune's Toll",
-    category: 'Character Illustration',
-    image: '/images/gallery/illustration/fortunes-toll.webp',
+    image: '/pictures/lagartha.webp',
     orientation: 'portrait',
-    description: 'A tarot reader bathed in violet light, scorpion choker glinting as she turns the next card.'
+    description: 'A battle-worn shieldmaiden rests on her carved throne, a barn owl perched at her shoulder and a goblet of wine loose in her bloodied hand.'
   },
   {
-    id: 13,
-    title: 'Quick Draw',
+    id: 16,
+    title: 'Milady',
     category: 'Character Illustration',
-    image: '/images/gallery/illustration/quick-draw.webp',
-    orientation: 'landscape',
-    description: 'A masked duelist parries beneath a clockwork ceiling, cloak caught mid-motion.'
+    image: '/pictures/milady.webp',
+    orientation: 'portrait',
+    description: "A masked-in-shadow noblewoman exhales pipe smoke shaped like a wolf's snarl, rings glinting beneath the brim of her feathered hat."
   },
   {
-    id: 14,
-    title: "All Hallows' Manor",
-    category: 'Environment Illustration',
-    image: '/images/gallery/illustration/all-hallows-manor.webp',
+    id: 17,
+    title: 'Whispers & Whiskers',
+    category: 'Character Illustration',
+    image: '/pictures/sketch-character.webp',
     orientation: 'portrait',
-    description: 'A gothic manor glows from within on a foggy autumn night, ravens perched along its eaves.'
+    description: 'A dreadlocked rogue presses a finger to her lips beside her deadpan rabbit companion, dusk light softening the mischief in her eye.'
+  },
+  {
+    id: 18,
+    title: 'Lady Maria',
+    category: 'Character Illustration',
+    image: '/pictures/lady-maria.webp',
+    orientation: 'landscape',
+    description: 'A silver-haired hunter duels a hulking foe before a wall of ticking clockwork, blade drawn and cloak billowing crimson.'
+  },
+  {
+    id: 19,
+    title: 'The Catcher',
+    category: 'Character Illustration',
+    image: '/pictures/catcher.webp',
+    orientation: 'landscape',
+    description: 'A tattooed conjurer summons a glowing orb of light amid rusted industrial pipework, talismans swaying at her hips.'
+  },
+  {
+    id: 20,
+    title: 'Nightcap',
+    category: 'Character Illustration',
+    image: '/pictures/nightcap.webp',
+    orientation: 'landscape',
+    description: 'A vampire savors a champagne flute laced with blood in a neon-lit alley, bats scattering across the dusk sky behind her.'
+  },
+  {
+    id: 21,
+    title: 'Port of Call',
+    category: 'Character Illustration',
+    image: '/pictures/port-of-call.webp',
+    orientation: 'portrait',
+    description: 'A plumed privateer leans against a vine-draped balcony, her white cockatoo perched close as a bridge stretches into the mist.'
+  },
+  {
+    id: 22,
+    title: 'The Archaeologist',
+    category: 'Character Illustration',
+    image: '/pictures/the-archaeologist.webp',
+    orientation: 'landscape',
+    description: 'A field archaeologist raises a hand to her hat, sketchbook and satchel in tow, her own ghostly likeness looming faint behind her.'
+  },
+  {
+    id: 23,
+    title: 'Crimson Embrace',
+    category: 'Narrative Illustration',
+    image: '/pictures/crimson-embrace.webp',
+    orientation: 'portrait',
+    description: 'A silver-haired vampire cradles his swooning conquest, crimson trailing from her throat as ancient raven sigils glow behind them.'
+  },
+  {
+    id: 24,
+    title: 'David',
+    category: 'Character Illustration',
+    image: '/pictures/david.webp',
+    orientation: 'portrait',
+    description: 'A striking character study rendered in fine detail.'
   }
 ];

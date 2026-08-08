@@ -5,7 +5,7 @@ function GalleryItem({ item, onSelect }) {
   return (
     <article className="gallery-item">
       <button className="gallery-item__button" onClick={() => onSelect(item)} type="button" aria-label={`View ${item.title}`}>
-        <SmartImage src={item.image} alt={item.title} loading="lazy" />
+        <SmartImage src={item.image} alt={item.title} orientation={item.orientation} loading="lazy" />
         <span className="gallery-item__overlay">
           <span className="gallery-item__overlay-text">
             <span className="gallery-item__title">{item.title}</span>
