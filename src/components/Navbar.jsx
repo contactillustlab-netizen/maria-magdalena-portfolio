@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Menu, X } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import ModeSwitchButton from './ModeSwitchButton';
@@ -72,7 +73,7 @@ function Navbar({ mode = 'illustration' }) {
         </button>
       </div>
 
-      {open ? (
+      {open ? createPortal(
         <div className="mobile-nav-panel">
           <ul>
             {links.map((link) => (
@@ -86,7 +87,8 @@ function Navbar({ mode = 'illustration' }) {
           <div className="mobile-nav-panel__switch" onClick={() => setOpen(false)}>
             <ModeSwitchButton to={mode === 'illustration' ? '/design' : '/illustration'} label={mode === 'illustration' ? 'Switch to Design' : 'Switch to Art'} />
           </div>
-        </div>
+        </div>,
+        document.body
       ) : null}
     </header>
   );
