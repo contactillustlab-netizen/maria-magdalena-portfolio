@@ -43,20 +43,22 @@ function ConceptGallery({ items }) {
           return (
             <div key={item.id} className="concept-project">
               <div className={`concept-project__grid${details.length ? '' : ' concept-project__grid--solo'}`}>
-                <button
-                  type="button"
-                  className="concept-project__cover gallery-item__button"
-                  onClick={() => setSelection({ index, image: item.image })}
-                  aria-label={`View ${item.title}`}
-                >
-                  <SmartImage src={item.image} alt={item.title} orientation={item.orientation} loading="lazy" />
-                  <span className="gallery-item__overlay">
-                    <span className="gallery-item__overlay-text">
-                      <span className="gallery-item__title">{item.title}</span>
-                      <span className="gallery-item__category">{item.category}</span>
+                <div className="concept-project__cover-cell">
+                  <button
+                    type="button"
+                    className="concept-project__cover gallery-item__button"
+                    onClick={() => setSelection({ index, image: item.image })}
+                    aria-label={`View ${item.title}`}
+                  >
+                    <SmartImage src={item.image} alt={item.title} orientation={item.orientation} loading="lazy" />
+                    <span className="gallery-item__overlay">
+                      <span className="gallery-item__overlay-text">
+                        <span className="gallery-item__title">{item.title}</span>
+                        <span className="gallery-item__category">{item.category}</span>
+                      </span>
                     </span>
-                  </span>
-                </button>
+                  </button>
+                </div>
 
                 {details.length ? (
                   <div className="concept-project__details">

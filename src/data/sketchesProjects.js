@@ -134,5 +134,85 @@ export const sketchesProjects = [
     image: '/pictures/witches-sketch.webp',
     orientation: 'landscape',
     description: 'A character study exploring a coven of witches in composition.'
+  },
+  {
+    id: 20,
+    title: 'Field Explorer Costume Studies',
+    category: 'Character Sketch',
+    image: '/pictures/explorer-costume-sketch.webp',
+    orientation: 'portrait',
+    description: 'Six costume and pose iterations for a field-worker explorer, testing silhouettes from trench coat to apron and tool belt.'
+  },
+  {
+    id: 21,
+    title: 'Sci-Fi Suit Iterations',
+    category: 'Character Sketch',
+    image: '/pictures/scifi-suit-iterations.webp',
+    orientation: 'landscape',
+    description: 'Three costume iterations for a sleek sci-fi operative, refining collar, belt, and skirt-panel details across each pass.'
+  },
+  {
+    id: 22,
+    title: 'Steampunk Gunslinger — Turnaround',
+    category: 'Character Sketch',
+    image: '/pictures/gunslinger-turnaround.webp',
+    orientation: 'landscape',
+    description: 'Pose refinement for a steampunk sharpshooter, carried from loose lineart through to a fully rendered color pass.'
+  },
+  {
+    id: 23,
+    title: 'Archaeologist Costume Variants',
+    category: 'Character Sketch',
+    image: '/pictures/archaeologist-costume-variants.webp',
+    orientation: 'landscape',
+    description: "Two wardrobe variants for a field archaeologist, comparing a pressed explorer's outfit against a patched, well-traveled version."
+  },
+  {
+    id: 24,
+    title: 'Lantern Explorer — Pose Sheet',
+    category: 'Character Sketch',
+    image: '/pictures/lantern-explorer-poses-1.webp',
+    orientation: 'landscape',
+    description: 'A pose exploration sheet for a lantern-carrying explorer, testing stance and gear silhouette across five variations.'
+  },
+  {
+    id: 25,
+    title: 'Lantern Explorer — Pose Sheet II',
+    category: 'Character Sketch',
+    image: '/pictures/lantern-explorer-poses-2.webp',
+    orientation: 'landscape',
+    description: 'Further pose studies for the lantern explorer, focused on dynamic movement and salute-ready stances.'
+  },
+  {
+    id: 26,
+    title: 'Little Planet City Study',
+    category: 'Environment Sketch',
+    image: '/pictures/little-planet-city.webp',
+    orientation: 'landscape',
+    description: "A fisheye 'little planet' perspective study of a dense city block, built from construction lines and vanishing points."
+  },
+  {
+    id: 27,
+    title: 'Repair Heroes — Flight Poses',
+    category: 'Character Sketch',
+    image: '/pictures/repair-heroes-flight.webp',
+    orientation: 'landscape',
+    description: 'Dynamic flight poses for a pair of household-hero mascots, spray bottle and drill raised mid-air over rooftops.'
+  },
+  {
+    id: 28,
+    title: 'Repair Heroes — Kitchen Scene',
+    category: 'Narrative Sketch',
+    image: '/pictures/repair-heroes-kitchen.webp',
+    orientation: 'landscape',
+    description: 'A domestic repair-and-clean duo caught mid-chore in a sketched kitchen interior, props and appliances blocked in.'
+  },
+  {
+    id: 29,
+    title: 'Desert Camp — Tent Studies',
+    category: 'Environment Sketch',
+    image: '/pictures/desert-camp-tent-studies.webp',
+    orientation: 'landscape',
+    description: 'Two rough interior studies for a weathered expedition tent, testing prop placement and canvas drape.'
   }
 ];

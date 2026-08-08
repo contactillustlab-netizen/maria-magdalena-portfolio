@@ -250,9 +250,10 @@ main { flex: 1; }
 .concept-project.is-visible { opacity: 1; transform: translateY(0); }
 .concept-project__grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 8px; }
 .concept-project__grid--solo { grid-template-columns: 1fr; }
-.concept-project__cover.gallery-item__button { height: 100%; }
-.concept-project__cover.gallery-item__button img,
-.concept-project__cover.gallery-item__button .image-placeholder { height: 100%; object-fit: cover; aspect-ratio: auto; }
+.concept-project__grid:not(.concept-project__grid--solo) .concept-project__cover-cell { position: relative; }
+.concept-project__grid:not(.concept-project__grid--solo) .concept-project__cover.gallery-item__button { position: absolute; inset: 0; height: 100%; }
+.concept-project__grid:not(.concept-project__grid--solo) .concept-project__cover.gallery-item__button img,
+.concept-project__grid:not(.concept-project__grid--solo) .concept-project__cover.gallery-item__button .image-placeholder { height: 100%; object-fit: cover; aspect-ratio: auto; }
 .concept-project__details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; align-content: start; }
 .concept-project__detail.gallery-item__button { border-radius: 12px; }
 .concept-project__detail.gallery-item__button img,
@@ -307,11 +308,11 @@ main { flex: 1; }
 .modal__thumbs { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 12px; max-width: min(90vw, 720px); }
 .modal__thumb {
   width: 72px; height: 72px; flex-shrink: 0; border-radius: 8px; overflow: hidden; padding: 0; border: 2px solid transparent;
-  opacity: .5; cursor: pointer; transition: opacity var(--transition), border-color var(--transition), width var(--transition), height var(--transition);
+  opacity: .5; cursor: pointer; transition: opacity var(--transition), border-color var(--transition);
 }
 .modal__thumb img, .modal__thumb .image-placeholder { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; }
 .modal__thumb:hover { opacity: .8; }
-.modal__thumb--active { width: 96px; height: 96px; border-color: #ffffff; opacity: 1; cursor: default; }
+.modal__thumb--active { border-color: #ffffff; opacity: 1; cursor: default; }
 
 .project-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
 .project-card { border: 1px solid var(--color-border); border-radius: 16px; overflow: hidden; background: var(--color-surface); transition: transform var(--transition), border-color var(--transition); }
@@ -661,8 +662,10 @@ main { flex: 1; }
   .skills-timeline__item { grid-template-columns: 1fr; gap: 1rem; }
   .branding-case-study__meta { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .concept-project__grid { grid-template-columns: 1fr; }
-  .concept-project__cover.gallery-item__button img,
-  .concept-project__cover.gallery-item__button .image-placeholder { height: auto; aspect-ratio: 3 / 2; }
+  .concept-project__grid:not(.concept-project__grid--solo) .concept-project__cover-cell { position: static; }
+  .concept-project__grid:not(.concept-project__grid--solo) .concept-project__cover.gallery-item__button { position: static; height: auto; }
+  .concept-project__grid:not(.concept-project__grid--solo) .concept-project__cover.gallery-item__button img,
+  .concept-project__grid:not(.concept-project__grid--solo) .concept-project__cover.gallery-item__button .image-placeholder { height: auto; aspect-ratio: 3 / 2; }
   .concept-divider { margin: 2rem 0; }
 }
 
@@ -683,7 +686,6 @@ main { flex: 1; }
   .modal__stage { max-height: 45vh; }
   .modal__stage img, .modal__stage .image-placeholder { max-height: 45vh; }
   .modal__thumb { width: 56px; height: 56px; }
-  .modal__thumb--active { width: 72px; height: 72px; }
   .project-slider__card { flex: 0 0 50vw; width: 50vw; }
   .site-footer { padding: 2.5rem 1rem 1.5rem; }
   .branding-grid { grid-template-columns: 1fr; gap: 2.75rem; }
@@ -702,7 +704,6 @@ main { flex: 1; }
   .modal__content { --modal-edge: 12px; padding: 4rem .75rem 1.5rem; gap: 1rem; }
   .modal__icon-btn, .modal__control { width: 36px; height: 36px; }
   .modal__thumb { width: 48px; height: 48px; }
-  .modal__thumb--active { width: 60px; height: 60px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

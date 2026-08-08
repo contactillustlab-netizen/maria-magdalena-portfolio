@@ -35,7 +35,7 @@ function Navbar({ mode = 'illustration' }) {
         { to: '/illustration/covers', label: 'Covers' }
       ]
     : [
-        { to: '/design', label: 'Graphic Design' },
+        { to: '/design', label: 'Design' },
         { to: '/design/branding', label: 'Branding' },
         { to: '/design/ui-design', label: 'UI Design' },
         { to: '/design/marketing-design', label: 'Marketing Design' }
@@ -49,9 +49,9 @@ function Navbar({ mode = 'illustration' }) {
   return (
     <header className={`site-header${hidden && !open ? ' site-header--hidden' : ''}`}>
       <div className="site-header__inner">
-        <NavLink to={mode === 'illustration' ? '/illustration' : '/design'} className="site-logo" aria-label="Go to homepage">
-          {mode === 'illustration' ? <img src="/images/logos/mm-mark-white.svg" alt="MM logo" /> : <img src="/images/logos/illustlab-mark-white.svg" alt="Illustlab logo" />}
-        </NavLink>
+        <span className="site-logo">
+          <img src="/images/logos/mm-mark-white.svg" alt="MM logo" />
+        </span>
 
         <nav className="site-nav" aria-label="Primary navigation">
           <ul>

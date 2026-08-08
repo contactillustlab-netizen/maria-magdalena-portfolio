@@ -1,45 +1,5 @@
 export const conceptProjects = [
   {
-    id: 1,
-    title: 'Witch of Wanderlust',
-    category: 'Character Concept',
-    image: '/images/gallery/concept/witch-of-wanderlust.webp',
-    orientation: 'portrait',
-    description: 'Full-color design paired with its value study, following a traveling witch and her familiar.'
-  },
-  {
-    id: 2,
-    title: 'Lantern Keeper',
-    category: 'Character Concept',
-    image: '/images/gallery/concept/lantern-keeper.webp',
-    orientation: 'portrait',
-    description: 'Costume and prop exploration for an elder swamp-witch, lantern and pipe included.'
-  },
-  {
-    id: 3,
-    title: "Coven's Ember",
-    category: 'Character Concept',
-    image: '/images/gallery/concept/covens-ember.webp',
-    orientation: 'portrait',
-    description: 'A fire-hearted witch concept, spiders and cauldron smoke woven into the silhouette.'
-  },
-  {
-    id: 4,
-    title: "Explorer's Journal",
-    category: 'Character Concept',
-    image: '/images/gallery/concept/explorers-journal.webp',
-    orientation: 'portrait',
-    description: 'A field-sketching adventurer, designed with a working satchel and annotated notebook.'
-  },
-  {
-    id: 5,
-    title: 'Desert Camp',
-    category: 'Environment Concept',
-    image: '/images/gallery/concept/desert-camp.webp',
-    orientation: 'landscape',
-    description: 'A weathered expedition tent interior, built out prop by prop for a desert-set story.'
-  },
-  {
     id: 6,
     title: 'Moonbinders',
     category: 'Character Concept',
@@ -53,5 +13,35 @@ export const conceptProjects = [
     ],
     orientation: 'landscape',
     description: 'A coven lineup for the Moonbinders series, four witches and warlocks designed from lantern-worn elder to raven-familiar sorcerer.'
+  },
+  {
+    id: 7,
+    title: 'Surya',
+    category: 'Character Concept',
+    image: '/pictures/surya.webp',
+    images: [
+      '/pictures/surya.webp',
+      '/pictures/surya-lineart.webp',
+      '/pictures/surya-sketches.webp',
+      '/pictures/surya-color.webp',
+      '/pictures/surya-details.webp'
+    ],
+    orientation: 'landscape',
+    description: "Full character build for Surya (Under Strange Suns), from expression sketches and clean lineart to a color-explored, fully rendered turnaround with staff and glowing tattoos."
+  },
+  {
+    id: 8,
+    title: 'The Archeologist',
+    category: 'Character & Environment Concept',
+    image: '/pictures/archeologist.webp',
+    images: [
+      '/pictures/archeologist.webp',
+      '/pictures/archeologist-sketches.webp',
+      '/pictures/archeologist-color.webp',
+      '/pictures/archeologist-site-sketches.webp',
+      '/pictures/archeologist-site-color.webp'
+    ],
+    orientation: 'landscape',
+    description: 'A field archeologist and her desert dig site, built from character design sketches and color exploration through to a fully rendered tent interior.'
   }
 ];
