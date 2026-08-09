@@ -1,3 +1,13 @@
+export const illustrationTags = [
+  'Fantasy Art',
+  'Character Design',
+  'Environment Design',
+  'Editorial Illustration',
+  'Cover Books',
+  'Children Illustration',
+  'Story Boarding'
+];
+
 export const illustrationProjects = [
   {
     id: 25,
