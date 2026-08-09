@@ -81,8 +81,14 @@ function AboutPage() {
             <p className="about-page__text">I am an illustrator, graphic designer, and concept artist focused on transforming ideas into distinctive visual experiences. My work combines storytelling, visual identity, digital design, and artistic exploration.</p>
             <h3>Services</h3>
             <div className="about-page__tags">
-              {services.map((service) => (
-                <span key={service} className="about-page__tag">{service}</span>
+              {services.map((service, index) => (
+                <span
+                  key={service}
+                  className="about-page__tag"
+                  style={{ '--tag-hue': Math.round((index / services.length) * 360) }}
+                >
+                  {service}
+                </span>
               ))}
             </div>
             <h3>Selected clients</h3>

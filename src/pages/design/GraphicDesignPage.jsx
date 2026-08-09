@@ -37,8 +37,14 @@ function GraphicDesignPage() {
 
       <section className="section section--graphic-design">
         <ul className="graphic-design__tags">
-          {graphicDesignTags.map((tag) => (
-            <li key={tag} className="graphic-design__tag">{tag}</li>
+          {graphicDesignTags.map((tag, index) => (
+            <li
+              key={tag}
+              className="graphic-design__tag"
+              style={{ '--tag-hue': Math.round((index / graphicDesignTags.length) * 360) }}
+            >
+              {tag}
+            </li>
           ))}
         </ul>
 
