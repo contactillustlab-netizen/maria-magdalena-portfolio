@@ -10,7 +10,7 @@ function BrandingPage() {
         eyebrow="Design"
         title="Branding"
         subtitle="Identity systems and editorial direction"
-        image="/images/gallery/design/hero.webp"
+        image="/pictures/branding-hero.webp"
         variant="design"
       />
 

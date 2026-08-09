@@ -29,9 +29,9 @@ function GraphicDesignPage() {
     <>
       <HeroSection
         eyebrow="Design"
-        title="Branding"
+        title="Design"
         subtitle="Identity systems and editorial direction"
-        image="/images/gallery/design/hero.webp"
+        image="/pictures/design-hero.webp"
         variant="design"
       />
 

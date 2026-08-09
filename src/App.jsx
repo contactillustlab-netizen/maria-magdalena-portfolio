@@ -18,12 +18,14 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import NotFoundPage from './pages/NotFoundPage';
 import PageTransition from './components/PageTransition';
+import CursorGlow from './components/CursorGlow';
 
 function App() {
   const location = useLocation();
 
   return (
     <Layout>
+      <CursorGlow />
       <PageTransition key={location.pathname}>
         <Routes location={location}>
           <Route path="/" element={<LandingPage />} />

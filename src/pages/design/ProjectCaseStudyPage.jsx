@@ -11,12 +11,19 @@ function ProjectCaseStudyPage({ projects, listPath, sectionLabel }) {
     return <Navigate to={listPath} replace />;
   }
 
-  const galleryItems = Array.from({ length: project.galleryCount }, (_, index) => ({
-    id: index + 1,
-    title: `${project.title} — Visual ${index + 1}`,
-    category: project.tag,
-    image: null
-  }));
+  const galleryItems = project.images
+    ? project.images.map((src, index) => ({
+        id: index + 1,
+        title: `${project.title} — Visual ${index + 1}`,
+        category: project.tag,
+        image: src
+      }))
+    : Array.from({ length: project.galleryCount }, (_, index) => ({
+        id: index + 1,
+        title: `${project.title} — Visual ${index + 1}`,
+        category: project.tag,
+        image: null
+      }));
 
   return (
     <div className="branding-case-study">

@@ -22,7 +22,7 @@ function HeroSection({ eyebrow, title, subtitle, image, variant = 'illustration'
         className={`hero__image ${showImage ? '' : 'hero__image--placeholder'}`}
         style={showImage ? { backgroundImage: `url(${image})` } : undefined}
       >
-        {!showImage ? <span className="hero__image-label">Visual Placeholder</span> : null}
+        {!showImage ? <span className="hero__image-label">Coming soon...</span> : null}
       </div>
       <div className="hero__overlay" />
       <div className="hero__content">

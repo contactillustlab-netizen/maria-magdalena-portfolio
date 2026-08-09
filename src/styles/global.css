@@ -190,21 +190,21 @@ main { flex: 1; }
 }
 .hero__image, .hero__overlay { position: absolute; inset: 0; }
 .hero__image { background-size: cover; background-position: center; filter: grayscale(1); transition: filter .5s ease; }
-.hero.hero--illustration:hover .hero__image { filter: grayscale(0); }
+.hero.hero--illustration:hover .hero__image, .hero.hero--design:hover .hero__image { filter: grayscale(0); }
 .hero__image--placeholder { display: grid; place-items: center; background: linear-gradient(135deg, #111111, #242424); }
 .hero__image-label { color: var(--color-muted); text-transform: uppercase; letter-spacing: .24em; font-size: var(--text-label-md); line-height: var(--leading-label-md); }
 .hero__overlay { background: linear-gradient(180deg, rgba(0,0,0,0.48), rgba(0,0,0,0.7)); }
 .hero__content { position: relative; z-index: 2; max-width: var(--container-width); padding: 2rem; text-align: center; }
 .hero__eyebrow { font-size: var(--text-label-md); line-height: var(--leading-label-md); letter-spacing: .3em; text-transform: uppercase; color: var(--color-muted); margin-bottom: 1rem; }
 .hero h1 { margin: 0; font-size: var(--text-display-lg); line-height: var(--leading-display-lg); letter-spacing: .24em; text-transform: uppercase; font-family: var(--font-family-primary); }
-.hero.hero--illustration h1 {
+.hero.hero--illustration h1, .hero.hero--design h1 {
   font-size: max(.95rem, min(3.4rem, calc((100vw - 64px) / 22)));
   letter-spacing: .12em;
   white-space: nowrap;
 }
 .hero__subtitle { margin-top: 1rem; font-size: var(--text-label-lg); line-height: var(--leading-label-lg); letter-spacing: .28em; text-transform: uppercase; color: #d6d6d6; }
-.hero.hero--illustration .hero__content { position: absolute; left: 50%; bottom: 104px; transform: translateX(-50%); filter: blur(0); transition: filter .5s ease; }
-.hero.hero--illustration:hover .hero__content { animation: hero-obscure 2.6s ease-in-out infinite; }
+.hero.hero--illustration .hero__content, .hero.hero--design .hero__content { position: absolute; left: 50%; bottom: 104px; transform: translateX(-50%); filter: blur(0); transition: filter .5s ease; }
+.hero.hero--illustration:hover .hero__content, .hero.hero--design:hover .hero__content { animation: hero-obscure 2.6s ease-in-out infinite; }
 @keyframes hero-obscure {
   0%, 100% { filter: blur(0); opacity: 1; }
   50% { filter: blur(9px); opacity: .5; }
@@ -231,6 +231,9 @@ main { flex: 1; }
 }
 .gallery-item { opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; break-inside: avoid; margin-bottom: 8px; }
 .gallery-item.is-visible { opacity: 1; transform: translateY(0); }
+
+.branding-case-study .masonry-gallery { columns: unset; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: start; }
+.branding-case-study .gallery-item { margin-bottom: 0; }
 .gallery-item__button { position: relative; width: 100%; border: 0; padding: 0; background: transparent; text-align: left; overflow: hidden; border-radius: 16px; cursor: pointer; }
 .gallery-item__button img { width: 100%; height: auto; display: block; transition: transform .5s ease; }
 .gallery-item__button .image-placeholder { min-height: 0; aspect-ratio: 4 / 5; }
@@ -648,6 +651,7 @@ main { flex: 1; }
 @media (max-width: 1024px) {
   .hero { height: 600px; }
   .masonry-gallery { columns: 2; }
+  .branding-case-study .masonry-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .project-grid { grid-template-columns: 1fr; }
   .about-page { padding-top: 3rem; padding-bottom: 3rem; }
   .about-page__layout {
@@ -711,4 +715,21 @@ main { flex: 1; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+.cursor-glow {
+  position: fixed; top: 0; left: 0; z-index: 5;
+  width: 220px; height: 220px; margin: -110px 0 0 -110px;
+  border-radius: 50%; pointer-events: none;
+  background: radial-gradient(circle, rgba(255,255,255,.16) 0%, rgba(255,255,255,.07) 45%, rgba(255,255,255,0) 72%);
+  opacity: 0; mix-blend-mode: screen; will-change: transform, opacity;
+  transition: opacity 500ms ease;
+}
+
+@media (max-width: 1024px), (pointer: coarse) {
+  .cursor-glow { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-glow { display: none; }
 }
