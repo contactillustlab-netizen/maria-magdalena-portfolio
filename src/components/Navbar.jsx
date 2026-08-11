@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import ModeSwitchButton from './ModeSwitchButton';
 
-function Navbar({ mode = 'illustration' }) {
+function Navbar({ mode = 'art' }) {
   const [open, setOpen] = useState(false);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
@@ -28,12 +28,12 @@ function Navbar({ mode = 'illustration' }) {
   useEffect(() => {
     if (open) setHidden(false);
   }, [open]);
-  const sectionLinks = mode === 'illustration'
+  const sectionLinks = mode === 'art'
     ? [
-        { to: '/illustration', label: 'Illustration' },
-        { to: '/illustration/sketches', label: 'Sketches' },
-        { to: '/illustration/concept', label: 'Concept' },
-        { to: '/illustration/covers', label: 'Covers' }
+        { to: '/art', label: 'Illustration' },
+        { to: '/art/sketches', label: 'Sketches' },
+        { to: '/art/concept', label: 'Concept' },
+        { to: '/art/covers', label: 'Covers' }
       ]
     : [
         { to: '/design', label: 'Design' },
@@ -46,27 +46,27 @@ function Navbar({ mode = 'illustration' }) {
     { to: '/about', label: 'About' },
     { to: '/contact', label: 'Contact' }
   ];
+  const switchTo = mode === 'art' ? '/design' : '/art';
+  const switchLabel = mode === 'art' ? 'Switch to Design' : 'Switch to Art';
 
   return (
     <header className={`site-header${hidden && !open ? ' site-header--hidden' : ''}`}>
       <div className="site-header__inner">
-        <span className="site-logo">
-          <img src="/images/logos/mm-mark-white.svg" alt="MM logo" />
-        </span>
+        <div className="nav-pill">
+          <ModeSwitchButton to={switchTo} label={switchLabel} />
 
-        <nav className="site-nav" aria-label="Primary navigation">
-          <ul>
-            {links.map((link) => (
-              <li key={link.to}>
-                <NavLink to={link.to} end className={({ isActive }) => isActive ? 'active' : ''}>
-                  {link.label}
-                </NavLink>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        <ModeSwitchButton to={mode === 'illustration' ? '/design' : '/illustration'} label={mode === 'illustration' ? 'Switch to Design' : 'Switch to Art'} />
+          <nav className="site-nav" aria-label="Primary navigation">
+            <ul>
+              {links.map((link) => (
+                <li key={link.to}>
+                  <NavLink to={link.to} end className={({ isActive }) => isActive ? 'active' : ''}>
+                    {link.label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
 
         <button className="mobile-nav-toggle" type="button" onClick={() => setOpen((prev) => !prev)} aria-expanded={open} aria-label="Toggle navigation">
           {open ? <X size={20} /> : <Menu size={20} />}
@@ -85,7 +85,7 @@ function Navbar({ mode = 'illustration' }) {
             ))}
           </ul>
           <div className="mobile-nav-panel__switch" onClick={() => setOpen(false)}>
-            <ModeSwitchButton to={mode === 'illustration' ? '/design' : '/illustration'} label={mode === 'illustration' ? 'Switch to Design' : 'Switch to Art'} />
+            <ModeSwitchButton to={switchTo} label={switchLabel} />
           </div>
         </div>,
         document.body

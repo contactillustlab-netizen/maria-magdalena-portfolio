@@ -16,6 +16,8 @@ import { uiDesignProjects } from './data/uiDesignProjects';
 import { marketingDesignProjects } from './data/marketingDesignProjects';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import CookiesPage from './pages/CookiesPage';
 import NotFoundPage from './pages/NotFoundPage';
 import PageTransition from './components/PageTransition';
 import CursorGlow from './components/CursorGlow';
@@ -29,10 +31,10 @@ function App() {
       <PageTransition key={location.pathname}>
         <Routes location={location}>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/illustration" element={<IllustrationPage />} />
-          <Route path="/illustration/sketches" element={<SketchesPage />} />
-          <Route path="/illustration/concept" element={<ConceptPage />} />
-          <Route path="/illustration/covers" element={<CoversPage />} />
+          <Route path="/art" element={<IllustrationPage />} />
+          <Route path="/art/sketches" element={<SketchesPage />} />
+          <Route path="/art/concept" element={<ConceptPage />} />
+          <Route path="/art/covers" element={<CoversPage />} />
           <Route path="/design" element={<GraphicDesignPage />} />
           <Route path="/design/graphic-design/:slug" element={<ProjectCaseStudyPage projects={graphicDesignProjects} listPath="/design" sectionLabel="Graphic Design" />} />
           <Route path="/design/branding" element={<BrandingPage />} />
@@ -43,6 +45,8 @@ function App() {
           <Route path="/design/marketing-design/:slug" element={<ProjectCaseStudyPage projects={marketingDesignProjects} listPath="/design/marketing-design" sectionLabel="Marketing Design" />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+          <Route path="/cookies" element={<CookiesPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </PageTransition>

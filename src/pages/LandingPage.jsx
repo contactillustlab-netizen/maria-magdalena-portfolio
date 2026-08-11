@@ -11,7 +11,7 @@ function LandingPage() {
         </div>
       </Link>
 
-      <Link to="/illustration" className="landing__panel landing__panel--art" aria-label="Enter Art">
+      <Link to="/art" className="landing__panel landing__panel--art" aria-label="Enter Art">
         <div className="landing__panel-content">
           <h2>Art</h2>
           <p>Illustration. Sketches. Concept art</p>

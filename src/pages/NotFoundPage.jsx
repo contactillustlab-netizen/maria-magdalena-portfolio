@@ -5,7 +5,7 @@ function NotFoundPage() {
     <section className="section not-found">
       <h1>Page not found</h1>
       <p>The page you requested does not exist yet.</p>
-      <Link to="/illustration">Return to portfolio</Link>
+      <Link to="/art">Return to portfolio</Link>
     </section>
   );
 }

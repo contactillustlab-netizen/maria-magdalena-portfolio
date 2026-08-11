@@ -1,13 +1,14 @@
-import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-function ModeSwitchButton({ to, label, variant = 'art' }) {
+const LOGO_SRC = '/images/logos/mm-mark-white.svg';
+
+function ModeSwitchButton({ to, label }) {
   return (
     <Link to={to} className="mode-switch" aria-label={label}>
-      <span>{label}</span>
       <span className="mode-switch__icon" aria-hidden="true">
-        <ArrowRight size={18} />
+        <img src={LOGO_SRC} alt="" />
       </span>
+      <span className="mode-switch__label">{label}</span>
     </Link>
   );
 }

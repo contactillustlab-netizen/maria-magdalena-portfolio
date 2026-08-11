@@ -4,20 +4,30 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import CtaBanner from '../components/CtaBanner';
 import BackToTop from '../components/BackToTop';
+import WhatsAppWidget from '../components/WhatsAppWidget';
 
 function Layout({ children }) {
   const location = useLocation();
   const isLanding = location.pathname === '/';
   const isContact = location.pathname === '/contact';
-  const [mode, setMode] = useState(() => (location.pathname.startsWith('/design') ? 'design' : 'illustration'));
+  const [mode, setMode] = useState(() => (location.pathname.startsWith('/design') ? 'design' : 'art'));
 
   useEffect(() => {
     if (location.pathname.startsWith('/design')) setMode('design');
-    else if (location.pathname.startsWith('/illustration')) setMode('illustration');
+    else if (location.pathname.startsWith('/art')) setMode('art');
   }, [location.pathname]);
 
+  useEffect(() => {
+    document.body.dataset.theme = mode;
+  }, [mode]);
+
   if (isLanding) {
-    return <div className="app-shell app-shell--landing">{children}</div>;
+    return (
+      <div className="app-shell app-shell--landing">
+        {children}
+        <WhatsAppWidget />
+      </div>
+    );
   }
 
   return (
@@ -27,6 +37,7 @@ function Layout({ children }) {
       {isContact ? null : <CtaBanner />}
       <Footer />
       <BackToTop />
+      <WhatsAppWidget />
     </div>
   );
 }

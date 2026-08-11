@@ -13,10 +13,10 @@ function Footer() {
   ];
 
   const artLinks = [
-    { to: '/illustration', label: 'Illustration' },
-    { to: '/illustration/sketches', label: 'Sketches' },
-    { to: '/illustration/concept', label: 'Concept' },
-    { to: '/illustration/covers', label: 'Covers' }
+    { to: '/art', label: 'Illustration' },
+    { to: '/art/sketches', label: 'Sketches' },
+    { to: '/art/concept', label: 'Concept' },
+    { to: '/art/covers', label: 'Covers' }
   ];
 
   const designLinks = [
@@ -28,7 +28,9 @@ function Footer() {
 
   const infoLinks = [
     { to: '/about', label: 'About' },
-    { to: '/contact', label: 'Contact' }
+    { to: '/contact', label: 'Contact' },
+    { to: '/privacy-policy', label: 'Privacy Policy' },
+    { to: '/cookies', label: 'Cookie Policy' }
   ];
 
   return (

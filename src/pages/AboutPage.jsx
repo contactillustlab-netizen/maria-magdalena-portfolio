@@ -1,4 +1,5 @@
-import { ArrowRight, Facebook, FileText, Instagram, Linkedin } from 'lucide-react';
+import { ArrowRight, Facebook, FileText, Instagram, Linkedin, Star } from 'lucide-react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import SectionHeader from '../components/SectionHeader';
 import SmartImage from '../components/SmartImage';
@@ -48,6 +49,17 @@ const testimonials = [
 ];
 
 function AboutPage() {
+  const [expandedTestimonials, setExpandedTestimonials] = useState(() => new Set());
+
+  const toggleTestimonial = (id) => {
+    setExpandedTestimonials((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
   const socials = [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/maria-magdalena-vizireanu/', icon: <Linkedin size={18} /> },
     { label: 'Facebook', href: 'https://www.facebook.com/vmmartist', icon: <Facebook size={18} /> },
@@ -67,7 +79,11 @@ function AboutPage() {
             <div className="about-page__tools-track">
               {[...tools, ...tools].map((tool, index) => (
                 <span key={index} className="about-page__tool">
-                  <img src={tool.logo} alt="" />
+                  <img
+                    src={tool.logo}
+                    alt=""
+                    className={tool.name === 'ChatGPT' ? 'about-page__tool-logo--chatgpt' : undefined}
+                  />
                   {tool.name}
                 </span>
               ))}
@@ -131,13 +147,28 @@ function AboutPage() {
           <section className="about-page__block">
             <p className="section-header__eyebrow">Testimonials</p>
             <div className="about-page__testimonials">
-              {testimonials.map((testimonial) => (
-                <div key={testimonial.id} className="about-page__testimonial">
-                  <p className="about-page__testimonial-quote">&ldquo;{testimonial.quote}&rdquo;</p>
-                  <p className="about-page__testimonial-name">{testimonial.name}</p>
-                  <p className="about-page__testimonial-role">{testimonial.role}</p>
-                </div>
-              ))}
+              {testimonials.map((testimonial) => {
+                const isExpanded = expandedTestimonials.has(testimonial.id);
+                return (
+                  <div key={testimonial.id} className="about-page__testimonial">
+                    <div className="about-page__testimonial-rating" aria-label="5 out of 5 stars">
+                      <span className="about-page__testimonial-rating-value">5.0</span>
+                      <Star size={16} fill="none" strokeWidth={1.5} />
+                    </div>
+                    <button
+                      type="button"
+                      className={`about-page__testimonial-quote${isExpanded ? ' is-expanded' : ''}`}
+                      onClick={() => toggleTestimonial(testimonial.id)}
+                      aria-expanded={isExpanded}
+                    >
+                      &ldquo;{testimonial.quote}&rdquo;
+                    </button>
+                    <span className="about-page__testimonial-toggle">{isExpanded ? 'Read less' : 'Read more'}</span>
+                    <p className="about-page__testimonial-name">{testimonial.name}</p>
+                    <p className="about-page__testimonial-role">{testimonial.role}</p>
+                  </div>
+                );
+              })}
             </div>
             <div className="about-page__block-footer">
               <a href="https://www.linkedin.com/in/maria-magdalena-vizireanu/" target="_blank" rel="noreferrer" className="cta-pill">
