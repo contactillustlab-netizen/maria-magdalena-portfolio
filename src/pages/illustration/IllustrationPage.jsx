@@ -6,10 +6,11 @@ function IllustrationPage() {
   return (
     <>
       <HeroSection
-        title="Illustration"
+        title="Enter a world shaped by imagination."
         subtitle="Character-driven fantasy art and narrative scenes"
         image="/pictures/diablo-fbackground.webp"
         variant="illustration"
+        titleVariant="sentence"
       />
 
       <section className="section section--gallery">

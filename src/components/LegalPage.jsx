@@ -1,10 +1,10 @@
 import Breadcrumbs from './Breadcrumbs';
 
-function LegalPage({ eyebrow, title, updated, intro, sections }) {
+function LegalPage({ eyebrow, title, updated, intro, sections, wide = false }) {
   return (
     <>
       <Breadcrumbs items={[{ to: '/', label: 'Home' }, { label: title }]} />
-      <section className="section legal-page">
+      <section className={`section legal-page${wide ? ' legal-page--wide' : ''}`}>
         <p className="section-header__eyebrow">{eyebrow}</p>
         <h1 className="legal-page__title">{title}</h1>
         {updated ? <p className="legal-page__updated">Last updated: {updated}</p> : null}

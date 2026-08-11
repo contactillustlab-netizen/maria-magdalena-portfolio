@@ -21,6 +21,10 @@ function Layout({ children }) {
     document.body.dataset.theme = mode;
   }, [mode]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   if (isLanding) {
     return (
       <div className="app-shell app-shell--landing">

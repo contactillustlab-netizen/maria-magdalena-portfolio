@@ -30,7 +30,7 @@ function Navbar({ mode = 'art' }) {
   }, [open]);
   const sectionLinks = mode === 'art'
     ? [
-        { to: '/art', label: 'Illustration' },
+        { to: '/art', label: 'Art' },
         { to: '/art/sketches', label: 'Sketches' },
         { to: '/art/concept', label: 'Concept' },
         { to: '/art/covers', label: 'Covers' }
@@ -84,9 +84,6 @@ function Navbar({ mode = 'art' }) {
               </li>
             ))}
           </ul>
-          <div className="mobile-nav-panel__switch" onClick={() => setOpen(false)}>
-            <ModeSwitchButton to={switchTo} label={switchLabel} />
-          </div>
         </div>,
         document.body
       ) : null}

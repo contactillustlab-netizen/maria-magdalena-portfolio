@@ -13,7 +13,7 @@ function Footer() {
   ];
 
   const artLinks = [
-    { to: '/art', label: 'Illustration' },
+    { to: '/art', label: 'Art' },
     { to: '/art/sketches', label: 'Sketches' },
     { to: '/art/concept', label: 'Concept' },
     { to: '/art/covers', label: 'Covers' }
@@ -66,6 +66,10 @@ function Footer() {
           </nav>
         </div>
         <div className="site-footer__contact">
+          <div className="site-footer__brand">
+            <img src="/images/logos/mm-mark-white.svg" alt="" className="site-footer__brand-mark" />
+            <span className="site-footer__brand-name">Maria-Magdalena<br />Vizireanu</span>
+          </div>
           <a href="mailto:contact.illustlab@gmail.com">contact.illustlab@gmail.com</a>
           <p>România, Galați</p>
         </div>

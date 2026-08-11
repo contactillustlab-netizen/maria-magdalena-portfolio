@@ -6,6 +6,7 @@ function PrivacyPolicyPage() {
       eyebrow="Legal"
       title="Privacy Policy"
       updated="August 2026"
+      wide
       intro="This portfolio is a static website. It does not use accounts, contact forms, or any backend that stores your personal data. This page explains the little information that does pass through the site."
       sections={[
         {
