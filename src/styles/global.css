@@ -121,8 +121,16 @@ main { flex: 1; }
   /* Pill is inverted relative to the page theme: 18% white glass on dark art
      pages, 18% #050505 glass on light design pages. */
   background: rgba(var(--nav-accent-rgb),.18); border: 1px solid var(--color-border);
-  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   min-width: 0;
+}
+/* Split from the rule above: CSS minifiers (esbuild/lightningcss) treat
+   backdrop-filter and -webkit-backdrop-filter as the same logical property
+   and silently drop whichever comes first, which strips the standard
+   property that current Chromium (Brave, Chrome) needs. Keeping it in its
+   own @supports block stops that merge so both survive the build. */
+@supports (backdrop-filter: blur(1px)) {
+  .nav-pill { backdrop-filter: blur(16px); }
 }
 
 .site-nav ul, .mobile-nav-panel ul { list-style: none; padding: 0; margin: 0; display: flex; gap: var(--space-2); }
@@ -173,7 +181,10 @@ body[data-theme="design"] .mode-switch__icon img { filter: none; }
   display: none; flex-direction: column;
   position: fixed; top: var(--nav-height); left: 0; right: 0; bottom: 0; z-index: 15;
   padding: 2rem 2rem 32px; border-top: 1px solid var(--color-border); overflow-y: auto;
-  background: rgba(var(--color-bg-rgb),.5); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  background: rgba(var(--color-bg-rgb),.5); -webkit-backdrop-filter: blur(16px);
+}
+@supports (backdrop-filter: blur(1px)) {
+  .mobile-nav-panel { backdrop-filter: blur(16px); }
 }
 .mobile-nav-panel ul { flex-direction: column; gap: 0; }
 
@@ -1004,7 +1015,10 @@ body[data-theme="design"] .site-footer__brand-mark { filter: brightness(0); }
   /* Full-bleed, square glass bar behind the switch button + menu icon together.
      Same background/blur formula as .mobile-nav-panel so the two read as one
      continuous surface once the panel opens underneath it. */
-  .site-header { background: rgba(var(--color-bg-rgb),.5); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); }
+  .site-header { background: rgba(var(--color-bg-rgb),.5); -webkit-backdrop-filter: blur(16px); }
+  @supports (backdrop-filter: blur(1px)) {
+    .site-header { backdrop-filter: blur(16px); }
+  }
   .site-header__inner { padding: 16px 1rem 0; justify-content: space-between; }
   .nav-pill {
     flex: 1; gap: var(--space-1); min-width: 0;
