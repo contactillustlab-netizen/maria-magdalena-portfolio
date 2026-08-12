@@ -827,10 +827,6 @@ body[data-theme="design"] .about-page__tool-logo--chatgpt { filter: brightness(0
 .site-footer__links a.active { color: var(--color-contrast); }
 .site-footer__links a:focus-visible { outline: 2px solid var(--color-contrast); outline-offset: 4px; border-radius: 2px; }
 .site-footer__contact { display: flex; flex-direction: column; gap: .5rem; color: var(--color-muted); }
-.site-footer__brand { display: flex; align-items: center; gap: .75rem; margin-bottom: .5rem; }
-.site-footer__brand-mark { width: 48px; height: 48px; object-fit: contain; flex-shrink: 0; transition: filter var(--transition); }
-body[data-theme="design"] .site-footer__brand-mark { filter: brightness(0); }
-.site-footer__brand-name { font-family: var(--font-family-primary); font-weight: 400; text-transform: uppercase; letter-spacing: 4px; font-size: var(--text-title-md); line-height: var(--leading-title-md); color: var(--color-text); }
 .site-footer__contact a { position: relative; color: var(--color-text); width: fit-content; transition: color var(--transition); }
 .site-footer__contact a:hover { color: var(--color-contrast); }
 .site-footer__contact a:active { color: #cfcfcf; }

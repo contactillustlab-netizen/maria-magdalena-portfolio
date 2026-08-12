@@ -6,6 +6,7 @@ function CookiesPage() {
       eyebrow="Legal"
       title="Cookie Policy"
       updated="August 2026"
+      wide
       intro="This site doesn’t set any cookies by default. The only thing that turns on is Google Analytics, and only if you accept it in the cookie banner."
       sections={[
         {
