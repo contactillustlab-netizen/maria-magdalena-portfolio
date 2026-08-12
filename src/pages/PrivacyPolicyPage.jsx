@@ -17,6 +17,13 @@ function PrivacyPolicyPage() {
           ]
         },
         {
+          heading: 'Analytics (optional)',
+          body: [
+            'This site only turns on Google Analytics if you accept it in the cookie banner. If you decline, or never choose, no analytics data is collected about you.',
+            <>When active, Google Analytics counts visits and page views to help improve the site. Google processes this data on its own servers, which may be outside the EU — see <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google’s privacy policy</a>. You can change your choice anytime from the Cookie Policy page.</>
+          ]
+        },
+        {
           heading: 'Hosting and server logs',
           body: [
             'Like virtually any website, the hosting provider that serves these pages may automatically log basic technical information — such as IP address, browser type, and request timestamps — for security and performance purposes. This site does not have access to or use these logs for tracking.'

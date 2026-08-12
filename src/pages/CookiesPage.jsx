@@ -6,12 +6,34 @@ function CookiesPage() {
       eyebrow="Legal"
       title="Cookie Policy"
       updated="August 2026"
-      intro="This site does not use cookies to track, identify, or advertise to visitors. No analytics or advertising cookies are set by this site, and no cookie consent banner is needed because none are used."
+      intro="This site doesn’t set any cookies by default. The only thing that turns on is Google Analytics, and only if you accept it in the cookie banner."
       sections={[
         {
           heading: 'Cookies set by this site',
           body: [
-            'None. This is a static portfolio site with no forms, accounts, or analytics scripts, so it does not set any first-party cookies.'
+            'By default, this site sets no cookies at all. Your accept/decline choice is remembered in your browser’s local storage, not a cookie, so we don’t ask again on your next visit.',
+            'If you accept, Google Analytics sets its own cookies (such as _ga and _ga_*) to count visits and page views. If you decline, or never choose, those cookies are never set.'
+          ]
+        },
+        {
+          heading: 'Google Analytics (optional)',
+          body: [
+            'When active, Google Analytics helps us see which pages get visited and roughly how people navigate the site. It doesn’t identify you by name.',
+            <>Google processes this data on its own servers, which may be outside the EU. See <a href="https://policies.google.com/privacy" target="_blank" rel="noreferrer">Google’s privacy policy</a> for details.</>
+          ]
+        },
+        {
+          heading: 'How to change your choice',
+          body: [
+            'You can accept or decline analytics cookies at any time.',
+            <button
+              key="manage"
+              type="button"
+              className="about-page__cta"
+              onClick={() => window.dispatchEvent(new Event('open-cookie-preferences'))}
+            >
+              Manage cookie preferences
+            </button>
           ]
         },
         {
@@ -29,7 +51,7 @@ function CookiesPage() {
         {
           heading: 'Changes to this policy',
           body: [
-            'If cookies are ever introduced to this site in the future (for example, for analytics), this page will be updated first, along with an updated “last updated” date.'
+            'If cookies are ever introduced beyond what’s described above, this page will be updated first, along with a new “last updated” date.'
           ]
         },
         {

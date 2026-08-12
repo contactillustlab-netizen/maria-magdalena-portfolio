@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import CtaBanner from '../components/CtaBanner';
 import BackToTop from '../components/BackToTop';
 import WhatsAppWidget from '../components/WhatsAppWidget';
+import SiteNotice from '../components/SiteNotice';
 
 function Layout({ children }) {
   const location = useLocation();
@@ -30,6 +31,7 @@ function Layout({ children }) {
       <div className="app-shell app-shell--landing">
         {children}
         <WhatsAppWidget />
+        <SiteNotice />
       </div>
     );
   }
@@ -42,6 +44,7 @@ function Layout({ children }) {
       <Footer />
       <BackToTop />
       <WhatsAppWidget />
+      <SiteNotice />
     </div>
   );
 }
