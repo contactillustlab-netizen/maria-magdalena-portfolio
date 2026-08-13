@@ -1,5 +1,5 @@
 import { ArrowRight, Facebook, FileText, Instagram, Linkedin, Star } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import SectionHeader from '../components/SectionHeader';
 import SmartImage from '../components/SmartImage';
@@ -50,6 +50,8 @@ const testimonials = [
 
 function AboutPage() {
   const [expandedTestimonials, setExpandedTestimonials] = useState(() => new Set());
+  const [overflowingTestimonials, setOverflowingTestimonials] = useState(() => new Set());
+  const quoteRefs = useRef({});
 
   const toggleTestimonial = (id) => {
     setExpandedTestimonials((prev) => {
@@ -59,6 +61,28 @@ function AboutPage() {
       return next;
     });
   };
+
+  useEffect(() => {
+    // Only the "Read more" toggle needs this: a quote only gets it once its clamped
+    // height actually overflows, so short testimonials never show a pointless control.
+    const measure = () => {
+      setOverflowingTestimonials((prev) => {
+        const next = new Set(prev);
+        testimonials.forEach((testimonial) => {
+          if (expandedTestimonials.has(testimonial.id)) return;
+          const el = quoteRefs.current[testimonial.id];
+          if (!el) return;
+          if (el.scrollHeight > el.clientHeight + 1) next.add(testimonial.id);
+          else next.delete(testimonial.id);
+        });
+        return next;
+      });
+    };
+    measure();
+    window.addEventListener('resize', measure);
+    document.fonts?.ready?.then(measure);
+    return () => window.removeEventListener('resize', measure);
+  }, [expandedTestimonials]);
 
   const socials = [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/maria-magdalena-vizireanu/', icon: <Linkedin size={18} /> },
@@ -149,21 +173,26 @@ function AboutPage() {
             <div className="about-page__testimonials">
               {testimonials.map((testimonial) => {
                 const isExpanded = expandedTestimonials.has(testimonial.id);
+                const canToggle = isExpanded || overflowingTestimonials.has(testimonial.id);
                 return (
                   <div key={testimonial.id} className="about-page__testimonial">
                     <div className="about-page__testimonial-rating" aria-label="5 out of 5 stars">
                       <span className="about-page__testimonial-rating-value">5.0</span>
-                      <Star size={16} fill="none" strokeWidth={1.5} />
+                      <Star size={16} fill="currentColor" strokeWidth={1.5} />
                     </div>
                     <button
                       type="button"
+                      ref={(el) => { quoteRefs.current[testimonial.id] = el; }}
                       className={`about-page__testimonial-quote${isExpanded ? ' is-expanded' : ''}`}
-                      onClick={() => toggleTestimonial(testimonial.id)}
-                      aria-expanded={isExpanded}
+                      onClick={canToggle ? () => toggleTestimonial(testimonial.id) : undefined}
+                      aria-expanded={canToggle ? isExpanded : undefined}
+                      disabled={!canToggle}
                     >
                       &ldquo;{testimonial.quote}&rdquo;
                     </button>
-                    <span className="about-page__testimonial-toggle">{isExpanded ? 'Read less' : 'Read more'}</span>
+                    {canToggle ? (
+                      <span className="about-page__testimonial-toggle">{isExpanded ? 'Read less' : 'Read more'}</span>
+                    ) : null}
                     <p className="about-page__testimonial-name">{testimonial.name}</p>
                     <p className="about-page__testimonial-role">{testimonial.role}</p>
                   </div>

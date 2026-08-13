@@ -141,6 +141,13 @@ main { flex: 1; }
 /* Desktop pill nav text contrasts against the PAGE background (the glass tint is only 5%,
    too subtle to flip the read), so it's #ffffff in art mode and #050505 in design mode. */
 .site-nav a { color: rgb(var(--nav-accent-rgb)); }
+/* Each tab renders its label stacked on top of the equivalent label from the other
+   mode (invisible, aria-hidden). Grid auto-sizing takes the wider of the two, so
+   e.g. "Covers" reserves the same width as "Marketing Design" — the art and design
+   pills come out the same total length without a hardcoded width anywhere. */
+.nav-tab-stack { display: inline-grid; }
+.nav-tab-label { grid-area: 1 / 1; text-align: center; white-space: nowrap; }
+.nav-tab-label--ghost { visibility: hidden; }
 .mobile-nav-panel a { display: block; padding: 16px 0; color: var(--color-text); }
 .site-nav a::after, .mobile-nav-panel a::after {
   content: ''; position: absolute; left: 24px; right: 24px; bottom: 6px; height: 1px; transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
@@ -161,6 +168,12 @@ main { flex: 1; }
   transition: transform var(--transition), box-shadow var(--transition), background-color var(--transition);
 }
 .mode-switch, .mode-switch:visited { color: var(--color-bg); }
+/* Same stacking trick as .nav-tab-stack: "Switch to Art" reserves the width of the
+   longer "Switch to Design" (and vice versa) so the button doesn't resize the pill
+   depending on which mode is active. */
+.mode-switch__label { display: inline-grid; }
+.mode-switch__label-text { grid-area: 1 / 1; text-align: center; white-space: nowrap; }
+.mode-switch__label-text--ghost { visibility: hidden; }
 .mode-switch:hover { transform: translateX(2px); box-shadow: 0 10px 24px rgba(var(--nav-accent-rgb),.18); filter: brightness(var(--hover-brighten)); }
 .mode-switch:active { transform: translateX(1px) scale(0.97); box-shadow: 0 4px 12px rgba(var(--nav-accent-rgb),.14); filter: brightness(var(--active-brighten)); }
 .mode-switch:focus-visible { outline: 2px solid rgb(var(--nav-accent-rgb)); outline-offset: 3px; }
@@ -254,6 +267,7 @@ body[data-theme="design"] .mode-switch__icon img { filter: none; }
 }
 .hero__image, .hero__overlay { position: absolute; inset: 0; }
 .hero__image { background-size: cover; background-position: center; filter: grayscale(1); transition: filter .5s ease; }
+video.hero__image { width: 100%; height: 100%; object-fit: cover; }
 .hero.hero--illustration:hover .hero__image, .hero.hero--design:hover .hero__image { filter: grayscale(0); }
 .hero__image--placeholder { display: grid; place-items: center; background: linear-gradient(135deg, #111111, #242424); }
 .hero__image-label { color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .24em; font-size: var(--text-label-md); line-height: var(--leading-label-md); }
@@ -271,8 +285,11 @@ body[data-theme="design"] .mode-switch__icon img { filter: none; }
   letter-spacing: normal; text-transform: none; white-space: normal;
   max-width: var(--container-width); margin: 0 auto;
 }
-@media (min-width: 1025px) {
-  .hero.hero--design .hero__content { width: 100%; max-width: 1000px; box-sizing: border-box; }
+@media (min-width: 769px) {
+  /* Match .site-header__inner's box (same max-width + 2rem padding) so the hero
+     text column lines up with the nav above it instead of shrink-wrapping the
+     widest line of the heading. */
+  .hero.hero--illustration .hero__content, .hero.hero--design .hero__content { width: 100%; max-width: var(--container-width); box-sizing: border-box; }
 }
 .hero__subtitle { margin-top: 1rem; font-size: var(--text-label-lg); line-height: var(--leading-label-lg); letter-spacing: .28em; text-transform: uppercase; color: #d6d6d6; }
 .hero__ctas { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; margin-top: 2rem; }
@@ -439,7 +456,10 @@ body[data-theme="design"] .gallery-item__category { color: rgba(0,0,0,.6); }
 .project-card a:active { color: #cfcfcf; }
 
 .branding-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3.5rem 2rem; margin-top: 1rem; }
-.branding-grid__item { display: flex; flex-direction: column; color: inherit; }
+.branding-grid__item { display: flex; flex-direction: column; color: inherit; opacity: 0; transition: opacity .8s ease, transform .8s ease; }
+.branding-grid__item--from-left { transform: translateX(-56px); }
+.branding-grid__item--from-right { transform: translateX(56px); }
+.branding-grid__item.is-visible { opacity: 1; transform: translateX(0); }
 .branding-grid__image { position: relative; width: 100%; overflow: hidden; border: 0; border-radius: 16px; background: var(--color-surface); }
 .branding-grid__image img, .branding-grid__image .image-placeholder {
   width: 100%; height: 100%; object-fit: cover; min-height: 0; transition: transform .5s ease;
@@ -614,7 +634,10 @@ body[data-theme="design"] .about-page__tool-logo--chatgpt { filter: brightness(0
 
 .about-page__timeline { list-style: none; margin: 2rem 0 0; padding: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .about-page__timeline-item { position: relative; padding-bottom: 3.5rem; }
-.about-page__timeline-item::after { content: ''; position: absolute; left: 50%; top: 2.2rem; bottom: 0; width: 1px; background: var(--color-border); transform: translateX(-50%); }
+/* Anchored to the bottom padding (the empty gap before the next item) instead of a
+   fixed top offset, so the line never drifts into the role/company text above it
+   when that text wraps to a second line or the label row's height changes. */
+.about-page__timeline-item::after { content: ''; position: absolute; left: 50%; bottom: 0; height: 3.5rem; width: 1px; background: var(--color-border); transform: translateX(-50%); }
 .about-page__timeline-item:last-child { padding-bottom: 0; }
 .about-page__timeline-item:last-child::after { display: none; }
 .about-page__timeline-years { margin: 0 0 1rem; display: inline-flex; align-items: center; gap: .5rem; color: var(--color-muted); text-transform: uppercase; letter-spacing: .12em; font-size: var(--text-label-md); line-height: var(--leading-label-md); }
@@ -632,6 +655,8 @@ body[data-theme="design"] .about-page__tool-logo--chatgpt { filter: brightness(0
   cursor: pointer; transition: opacity var(--transition);
 }
 .about-page__testimonial-quote:hover { opacity: .8; }
+.about-page__testimonial-quote:disabled { cursor: default; }
+.about-page__testimonial-quote:disabled:hover { opacity: 1; }
 .about-page__testimonial-quote:focus-visible { outline: 2px solid var(--color-contrast); outline-offset: 4px; border-radius: 4px; }
 .about-page__testimonial-quote.is-expanded { -webkit-line-clamp: unset; line-clamp: unset; overflow: visible; }
 .about-page__testimonial-toggle { display: block; margin: 0 0 1.5rem; font-size: var(--text-label-lg); line-height: var(--leading-label-lg); color: var(--color-muted); text-transform: uppercase; letter-spacing: .08em; }
@@ -1030,7 +1055,7 @@ body[data-theme="design"] .about-page__tool-logo--chatgpt { filter: brightness(0
   .mobile-nav-panel { display: flex; }
   .hero h1 { font-size: var(--text-headline-lg); line-height: var(--leading-headline-lg); }
   .hero.hero--illustration h1.hero__title--sentence, .hero.hero--design h1.hero__title--sentence { font-size: var(--text-headline-lg); line-height: var(--leading-headline-lg); }
-  .hero.hero--design .hero__content { width: 100%; box-sizing: border-box; }
+  .hero.hero--illustration .hero__content, .hero.hero--design .hero__content { width: 100%; padding: 20px; box-sizing: border-box; }
   .contact-page__title { font-size: var(--text-headline-lg); line-height: var(--leading-headline-lg); }
   .hero__ctas { flex-direction: column; width: 100%; }
   .hero__cta { width: 100%; }

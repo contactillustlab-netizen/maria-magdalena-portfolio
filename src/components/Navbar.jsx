@@ -28,39 +28,53 @@ function Navbar({ mode = 'art' }) {
   useEffect(() => {
     if (open) setHidden(false);
   }, [open]);
-  const sectionLinks = mode === 'art'
-    ? [
-        { to: '/art', label: 'Art' },
-        { to: '/art/sketches', label: 'Sketches' },
-        { to: '/art/concept', label: 'Concept' },
-        { to: '/art/covers', label: 'Covers' }
-      ]
-    : [
-        { to: '/design', label: 'Design' },
-        { to: '/design/branding', label: 'Branding' },
-        { to: '/design/ui-design', label: 'UI Design' },
-        { to: '/design/marketing-design', label: 'Marketing Design' }
-      ];
+  const sectionLinksByMode = {
+    art: [
+      { to: '/art', label: 'Art' },
+      { to: '/art/sketches', label: 'Sketches' },
+      { to: '/art/concept', label: 'Concept' },
+      { to: '/art/covers', label: 'Covers' }
+    ],
+    design: [
+      { to: '/design', label: 'Design' },
+      { to: '/design/branding', label: 'Branding' },
+      { to: '/design/ui-design', label: 'UI Design' },
+      { to: '/design/marketing-design', label: 'Marketing Design' }
+    ]
+  };
+  const otherMode = mode === 'art' ? 'design' : 'art';
   const links = [
-    ...sectionLinks,
+    ...sectionLinksByMode[mode],
     { to: '/about', label: 'About' },
     { to: '/contact', label: 'Contact' }
   ];
+  // Same-index labels from the other mode, stacked invisibly behind each tab so its
+  // rendered width is max(this label, the other mode's label) — the art and design
+  // pills land on the same total width without hardcoding either one.
+  const ghostLabels = [
+    ...sectionLinksByMode[otherMode].map((link) => link.label),
+    'About',
+    'Contact'
+  ];
   const switchTo = mode === 'art' ? '/design' : '/art';
   const switchLabel = mode === 'art' ? 'Switch to Design' : 'Switch to Art';
+  const otherSwitchLabel = mode === 'art' ? 'Switch to Art' : 'Switch to Design';
 
   return (
     <header className={`site-header${hidden && !open ? ' site-header--hidden' : ''}`}>
       <div className="site-header__inner">
         <div className="nav-pill">
-          <ModeSwitchButton to={switchTo} label={switchLabel} />
+          <ModeSwitchButton to={switchTo} label={switchLabel} ghostLabel={otherSwitchLabel} />
 
           <nav className="site-nav" aria-label="Primary navigation">
             <ul>
-              {links.map((link) => (
+              {links.map((link, index) => (
                 <li key={link.to}>
                   <NavLink to={link.to} end className={({ isActive }) => isActive ? 'active' : ''}>
-                    {link.label}
+                    <span className="nav-tab-stack">
+                      <span className="nav-tab-label">{link.label}</span>
+                      <span className="nav-tab-label nav-tab-label--ghost" aria-hidden="true">{ghostLabels[index]}</span>
+                    </span>
                   </NavLink>
                 </li>
               ))}

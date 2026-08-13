@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function HeroSection({ eyebrow, title, subtitle, image, variant = 'illustration', titleVariant, primaryCta, secondaryCta }) {
+function HeroSection({ eyebrow, title, subtitle, image, video, variant = 'illustration', titleVariant, primaryCta, secondaryCta }) {
   const [showImage, setShowImage] = useState(false);
 
   useEffect(() => {
@@ -19,12 +19,25 @@ function HeroSection({ eyebrow, title, subtitle, image, variant = 'illustration'
 
   return (
     <section className={`hero hero--${variant}`}>
-      <div
-        className={`hero__image ${showImage ? '' : 'hero__image--placeholder'}`}
-        style={showImage ? { backgroundImage: `url(${image})` } : undefined}
-      >
-        {!showImage ? <span className="hero__image-label">Coming soon...</span> : null}
-      </div>
+      {video ? (
+        <video
+          className="hero__image"
+          src={video}
+          poster={image}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+        />
+      ) : (
+        <div
+          className={`hero__image ${showImage ? '' : 'hero__image--placeholder'}`}
+          style={showImage ? { backgroundImage: `url(${image})` } : undefined}
+        >
+          {!showImage ? <span className="hero__image-label">Coming soon...</span> : null}
+        </div>
+      )}
       <div className="hero__overlay" />
       <div className="hero__content">
         {eyebrow ? <p className="hero__eyebrow">{eyebrow}</p> : null}
