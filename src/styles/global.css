@@ -583,7 +583,10 @@ body[data-theme="design"] .about-page__tool-logo--chatgpt { filter: brightness(0
 @keyframes about-tools-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
 .about-page__main {
-  height: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 4.5rem 0; display: flex; flex-direction: column; gap: 0;
+  /* Grid items default to a content-based automatic minimum size, which lets this
+     column grow past the row's fixed height and ignore overflow-y instead of
+     scrolling internally — min-height: 0 overrides that. */
+  height: 100%; min-height: 0; overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 4.5rem 0; display: flex; flex-direction: column; gap: 0;
   scrollbar-width: none;
 }
 .about-page__main::-webkit-scrollbar { display: none; }
