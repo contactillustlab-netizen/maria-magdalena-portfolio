@@ -36,13 +36,13 @@ function App() {
           <Route path="/art/concept" element={<ConceptPage />} />
           <Route path="/art/covers" element={<CoversPage />} />
           <Route path="/design" element={<GraphicDesignPage />} />
-          <Route path="/design/graphic-design/:slug" element={<ProjectCaseStudyPage projects={graphicDesignProjects} listPath="/design" sectionLabel="Graphic Design" />} />
+          <Route path="/design/graphic-design/:slug" element={<ProjectCaseStudyPage projects={graphicDesignProjects} listPath="/design" basePath="/design/graphic-design" sectionLabel="Graphic Design" />} />
           <Route path="/design/branding" element={<BrandingPage />} />
-          <Route path="/design/branding/:slug" element={<ProjectCaseStudyPage projects={brandingProjects} listPath="/design/branding" sectionLabel="Branding" />} />
+          <Route path="/design/branding/:slug" element={<ProjectCaseStudyPage projects={brandingProjects} listPath="/design/branding" basePath="/design/branding" sectionLabel="Branding" />} />
           <Route path="/design/ui-design" element={<UiDesignPage />} />
-          <Route path="/design/ui-design/:slug" element={<ProjectCaseStudyPage projects={uiDesignProjects} listPath="/design/ui-design" sectionLabel="UI Design" />} />
+          <Route path="/design/ui-design/:slug" element={<ProjectCaseStudyPage projects={uiDesignProjects} listPath="/design/ui-design" basePath="/design/ui-design" sectionLabel="UI Design" />} />
           <Route path="/design/marketing-design" element={<MarketingDesignPage />} />
-          <Route path="/design/marketing-design/:slug" element={<ProjectCaseStudyPage projects={marketingDesignProjects} listPath="/design/marketing-design" sectionLabel="Marketing Design" />} />
+          <Route path="/design/marketing-design/:slug" element={<ProjectCaseStudyPage projects={marketingDesignProjects} listPath="/design/marketing-design" basePath="/design/marketing-design" sectionLabel="Marketing Design" />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />

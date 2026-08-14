@@ -1,5 +1,5 @@
 import HeroSection from '../../components/HeroSection';
-import ProjectSlider from '../../components/ProjectSlider';
+import ScrollGallery from '../../components/ScrollGallery';
 import SkillsTimeline from '../../components/SkillsTimeline';
 import { graphicDesignProjects, graphicDesignTags } from '../../data/graphicDesignProjects';
 
@@ -49,7 +49,7 @@ function GraphicDesignPage() {
           ))}
         </ul>
 
-        <ProjectSlider items={graphicDesignProjects} basePath="/design/graphic-design" />
+        <ScrollGallery eyebrow="Portfolio" title="Selected projects" items={graphicDesignProjects} basePath="/design/graphic-design" />
 
         <SkillsTimeline items={skills} />
       </section>
