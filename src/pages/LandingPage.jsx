@@ -22,8 +22,8 @@ function LandingPage() {
       <div className="landing__background" />
 
       <div className="landing__actions">
-        <Link to="/design" className="landing__cta">Design</Link>
         <Link to="/art" className="landing__cta">Art</Link>
+        <Link to="/design" className="landing__cta">Design</Link>
       </div>
     </div>
   );
