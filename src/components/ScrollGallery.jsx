@@ -154,7 +154,7 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
           <div className="scroll-gallery__intro">
             <SectionHeader eyebrow={eyebrow} title={title} />
             <span className="scroll-gallery__hint">
-              View project
+              View projects
               <ArrowRight size={16} className="scroll-gallery__hint-icon" />
             </span>
           </div>
