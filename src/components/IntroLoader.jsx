@@ -24,33 +24,23 @@ function IntroLoader({ onFinished }) {
   return (
     <div className="intro-loader" role="presentation" aria-hidden="true">
       <div className="intro-loader__marks">
-        {/* Custom-cropped viewBox so this outline's own ink is centered the
-            same way as the solid mark below — the two source files have very
-            different native margins, so aligning on their raw viewBoxes would
-            make the crossfade jump. */}
+        {/* Same viewBox/coordinates as the solid mark below (this outline was
+            redrawn to match it), so the crossfade lines up with no shift. */}
         <svg
           className="intro-loader__mark intro-loader__mark--outline"
-          viewBox="0.2 2.04 41.56 29.97"
+          viewBox="0 0 284 284"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path pathLength="1" d="M38.2949 28.0488H34.1436L29.3203 19.3477L31.3203 15.9062L38.2949 28.0488Z" />
-          <path pathLength="1" d="M34.1455 5.50195C33.9734 5.5933 33.8056 5.68823 33.6455 5.79102L33.8115 5.50195H34.1455Z" />
-          <path pathLength="1" d="M32.6641 5.50195L19.9863 27.5615L14.6094 18.5596L16.7002 15.04L21.4844 23.3477L21.9189 24.1025L22.3516 23.3467L32.5674 5.50195H32.6641Z" />
-          <path pathLength="1" d="M3.99609 28.0518H3.66211C3.83413 27.9605 4.00107 27.8644 4.16113 27.7617L3.99609 28.0518Z" />
-          <path pathLength="1" d="M23.1963 14.9902L21.1035 18.5107L16.3213 10.2041L15.8867 9.44922L15.4541 10.2051L5.23828 28.0498H5.1416L17.8193 5.99121L23.1963 14.9902Z" />
-          <mask id="intro-loader-tip-mask" fill="white">
-            <path d="M14.4907 19.3416L9.21711 28.5494H8.30469L14.0242 18.5605L14.4907 19.3416Z" />
-          </mask>
-          <path
-            className="intro-loader__mark--outline-tip"
-            d="M14.4907 19.3416L15.3585 19.8386L15.6492 19.331L15.3492 18.8288L14.4907 19.3416ZM9.21711 28.5494V29.5494H9.79678L10.0849 29.0464L9.21711 28.5494ZM8.30469 28.5494L7.43688 28.0525L6.57977 29.5494H8.30469V28.5494ZM14.0242 18.5605L14.8827 18.0478L14.006 16.5799L13.1564 18.0636L14.0242 18.5605ZM14.4907 19.3416L13.623 18.8446L8.34936 28.0524L9.21711 28.5494L10.0849 29.0464L15.3585 19.8386L14.4907 19.3416ZM9.21711 28.5494V27.5494H8.30469V28.5494V29.5494H9.21711V28.5494ZM8.30469 28.5494L9.1725 29.0463L14.892 19.0574L14.0242 18.5605L13.1564 18.0636L7.43688 28.0525L8.30469 28.5494ZM14.0242 18.5605L13.1657 19.0733L13.6322 19.8544L14.4907 19.3416L15.3492 18.8288L14.8827 18.0478L14.0242 18.5605Z"
-            mask="url(#intro-loader-tip-mask)"
-          />
+          <path className="intro-loader__stroke" pathLength="1" style={{ animationDelay: '0ms' }} d="M280.659 225.624H243.904L207.743 160.397L225.569 129.733L280.659 225.624Z" />
+          <path className="intro-loader__tip" style={{ animationDelay: '500ms' }} d="M222.28 91.153C222.28 91.153 239.93 55.318 271.861 60.601V58H241.268L222.28 91.153Z" />
+          <path className="intro-loader__stroke" pathLength="1" style={{ animationDelay: '100ms' }} d="M240.461 58.5L144.69 225.135L102.676 154.808L121.227 123.591L157.997 187.45L158.432 188.205L158.865 187.449L232.688 58.5H240.461Z" />
+          <path className="intro-loader__tip" style={{ animationDelay: '550ms' }} d="M51.522 192.972C51.522 192.972 33.872 228.807 1.94099 223.524V226.125H32.534L51.522 192.972Z" />
+          <path className="intro-loader__stroke" pathLength="1" style={{ animationDelay: '200ms' }} d="M171.126 129.315L152.575 160.533L115.805 96.6748L115.371 95.9199L114.938 96.6758L41.1157 225.624H33.3423L129.113 58.9883L171.126 129.315Z" />
         </svg>
 
         <svg
           className="intro-loader__mark intro-loader__mark--fill"
-          viewBox="-26.02 27.03 335.50 229.41"
+          viewBox="0 0 283.465 283.465"
           xmlns="http://www.w3.org/2000/svg"
         >
           <polygon points="225.573,128.405 207.169,160.061 243.61,225.794 281.523,225.794" />

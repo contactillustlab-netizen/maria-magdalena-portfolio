@@ -278,18 +278,13 @@ body[data-theme="design"] .mode-switch__icon img { filter: none; }
 .intro-loader__mark--outline {
   opacity: 1; animation: intro-loader-outline-out 350ms ease forwards; animation-delay: 950ms;
 }
-.intro-loader__mark--outline path:not(.intro-loader__mark--outline-tip) {
+.intro-loader__stroke {
   fill: none; stroke: #ffffff; stroke-width: 1.1; stroke-linejoin: round;
   stroke-dasharray: 1; stroke-dashoffset: 1; animation: intro-loader-draw 600ms cubic-bezier(.4,0,.2,1) forwards;
 }
-.intro-loader__mark--outline path:nth-of-type(1) { animation-delay: 0ms; }
-.intro-loader__mark--outline path:nth-of-type(2) { animation-delay: 50ms; }
-.intro-loader__mark--outline path:nth-of-type(3) { animation-delay: 100ms; }
-.intro-loader__mark--outline path:nth-of-type(4) { animation-delay: 150ms; }
-.intro-loader__mark--outline path:nth-of-type(5) { animation-delay: 200ms; }
-.intro-loader__mark--outline-tip {
+.intro-loader__tip {
   fill: #ffffff; stroke: none; opacity: 0;
-  animation: intro-loader-tip-in 250ms ease forwards; animation-delay: 550ms;
+  animation: intro-loader-tip-in 250ms ease forwards;
 }
 @keyframes intro-loader-draw { to { stroke-dashoffset: 0; } }
 @keyframes intro-loader-tip-in { to { opacity: 1; } }
