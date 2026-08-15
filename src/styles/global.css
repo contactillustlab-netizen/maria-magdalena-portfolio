@@ -262,70 +262,48 @@ body[data-theme="design"] .mode-switch__icon img { filter: none; }
   .landing__panel h2 { font-size: var(--text-headline-lg); line-height: var(--leading-headline-lg); }
 }
 
-/* Intro loader: two diagonal halves of the mark converge, then the site
-   opens outward from that exact center point — see IntroLoader.jsx. */
-/* isolate: contains the loader/reveal z-index stack so it can't leak above
-   siblings like the WhatsApp widget once the intro is done. */
-.landing-shell { position: relative; height: 100%; isolation: isolate; }
-.landing-reveal {
-  position: relative; z-index: 501; height: 100%;
-  clip-path: circle(0% at 50% 50%);
-  transition: clip-path 350ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-.landing-reveal.is-revealed { clip-path: circle(150% at 50% 50%); }
-
+/* Intro loader: the outline mark draws itself in, crossfades into the solid
+   mark already used across the site, holds, then the whole overlay fades
+   out — see IntroLoader.jsx. Runs once per browsing session. */
 .intro-loader {
   position: fixed; inset: 0; z-index: 500; display: grid; place-items: center;
   background: #000000; pointer-events: none;
+  animation: intro-loader-fade-out 450ms ease forwards; animation-delay: 1550ms;
 }
-.intro-loader__mark { width: min(180px, 30vw); height: min(180px, 30vw); overflow: visible; }
-/* The group only ever drives motion (translate/scale) — opacity lives solely
-   on the children below. Animating opacity on both would multiply together
-   and hide the slide-in motion behind a wall of near-zero visibility. */
-.intro-loader__group { transform-box: fill-box; transform-origin: center; }
-.intro-loader__group > * { fill: #ffffff; opacity: 0; animation: intro-loader-piece 300ms ease-out forwards; }
-.intro-loader__group--a {
-  animation: intro-loader-converge-a 1200ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+@keyframes intro-loader-fade-out { to { opacity: 0; } }
+
+.intro-loader__marks { position: relative; width: min(150px, 26vw); height: min(150px, 26vw); }
+.intro-loader__mark { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+
+.intro-loader__mark--outline {
+  opacity: 1; animation: intro-loader-outline-out 350ms ease forwards; animation-delay: 950ms;
 }
-.intro-loader__group--a > *:nth-child(1) { animation-delay: 300ms; }
-.intro-loader__group--a > *:nth-child(2) { animation-delay: 360ms; }
-.intro-loader__group--a > *:nth-child(3) { animation-delay: 420ms; }
-.intro-loader__group--b {
-  animation: intro-loader-converge-b 1200ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+.intro-loader__mark--outline path:not(.intro-loader__mark--outline-tip) {
+  fill: none; stroke: #ffffff; stroke-width: 1.1; stroke-linejoin: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1; animation: intro-loader-draw 600ms cubic-bezier(.4,0,.2,1) forwards;
 }
-.intro-loader__group--b > *:nth-child(1) { animation-delay: 330ms; }
-.intro-loader__group--b > *:nth-child(2) { animation-delay: 390ms; }
-@keyframes intro-loader-piece { from { opacity: 0; } to { opacity: 1; } }
-@keyframes intro-loader-converge-a {
-  0%   { transform: translate(14px, -14px) scale(.97); }
-  71%  { transform: translate(0, 0) scale(1); }
-  88%  { transform: translate(0, 0) scale(.99); }
-  95%  { transform: translate(0, 0) scale(1.012); }
-  100% { transform: translate(0, 0) scale(1); }
+.intro-loader__mark--outline path:nth-of-type(1) { animation-delay: 0ms; }
+.intro-loader__mark--outline path:nth-of-type(2) { animation-delay: 50ms; }
+.intro-loader__mark--outline path:nth-of-type(3) { animation-delay: 100ms; }
+.intro-loader__mark--outline path:nth-of-type(4) { animation-delay: 150ms; }
+.intro-loader__mark--outline path:nth-of-type(5) { animation-delay: 200ms; }
+.intro-loader__mark--outline-tip {
+  fill: #ffffff; stroke: none; opacity: 0;
+  animation: intro-loader-tip-in 250ms ease forwards; animation-delay: 550ms;
 }
-@keyframes intro-loader-converge-b {
-  0%   { transform: translate(-14px, 14px) scale(.97); }
-  71%  { transform: translate(0, 0) scale(1); }
-  88%  { transform: translate(0, 0) scale(.99); }
-  95%  { transform: translate(0, 0) scale(1.012); }
-  100% { transform: translate(0, 0) scale(1); }
+@keyframes intro-loader-draw { to { stroke-dashoffset: 0; } }
+@keyframes intro-loader-tip-in { to { opacity: 1; } }
+@keyframes intro-loader-outline-out { to { opacity: 0; } }
+
+.intro-loader__mark--fill {
+  fill: #ffffff; opacity: 0; animation: intro-loader-fill-in 350ms ease forwards; animation-delay: 950ms;
 }
-.intro-loader__accent {
-  position: absolute; top: 50%; left: 50%; width: 1px; height: 42%;
-  background: #ffffff; opacity: 0; transform: translate(-50%, -50%) scaleY(.4);
-  animation: intro-loader-accent 150ms ease-out forwards; animation-delay: 1050ms;
-}
-@keyframes intro-loader-accent {
-  0%   { opacity: 0;  transform: translate(-50%, -50%) scaleY(.4); }
-  40%  { opacity: .9; transform: translate(-50%, -50%) scaleY(1); }
-  100% { opacity: 0;  transform: translate(-50%, -50%) scaleY(1); }
-}
+@keyframes intro-loader-fill-in { to { opacity: 1; } }
+
 @media (prefers-reduced-motion: reduce) {
-  .landing-reveal { clip-path: none; opacity: 0; transition: opacity 300ms ease; }
-  .landing-reveal.is-revealed { opacity: 1; }
-  .intro-loader__group,
-  .intro-loader__group > * { animation: none; opacity: 1; transform: none; }
-  .intro-loader__accent { animation: none; opacity: 0; }
+  .intro-loader { animation: intro-loader-fade-out 300ms ease forwards; animation-delay: 500ms; }
+  .intro-loader__mark--outline { display: none; }
+  .intro-loader__mark--fill { opacity: 1; animation: none; }
 }
 
 .hero {
