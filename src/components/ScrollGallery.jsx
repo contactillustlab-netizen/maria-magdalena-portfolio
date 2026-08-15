@@ -13,6 +13,7 @@ import SectionHeader from './SectionHeader';
 // Floating prev/next buttons work in both modes for keyboard/mouse-only users.
 function ScrollGallery({ eyebrow, title, items, basePath }) {
   const wrapperRef = useRef(null);
+  const viewportRef = useRef(null);
   const trackRef = useRef(null);
   const maxTranslateRef = useRef(0);
   const [translateX, setTranslateX] = useState(0);
@@ -95,6 +96,29 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
     return () => track.removeEventListener('scroll', onScroll);
   }, [pinned, items]);
 
+  useEffect(() => {
+    const root = pinned ? viewportRef.current : trackRef.current;
+    const track = trackRef.current;
+    if (!root || !track) return undefined;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return undefined;
+
+    const cards = track.querySelectorAll('.scroll-gallery__card');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { root, threshold: 0.2 }
+    );
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, [pinned, items]);
+
   const stepBy = (direction) => {
     const track = trackRef.current;
     const wrapper = wrapperRef.current;
@@ -121,7 +145,7 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
       ref={wrapperRef}
       style={pinned && wrapperHeight ? { height: `${wrapperHeight}px` } : undefined}
     >
-      <div className={`scroll-gallery__viewport${pinned ? ' scroll-gallery__viewport--pinned' : ''}`}>
+      <div className={`scroll-gallery__viewport${pinned ? ' scroll-gallery__viewport--pinned' : ''}`} ref={viewportRef}>
         <div
           className="scroll-gallery__track"
           ref={trackRef}
@@ -129,6 +153,10 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
         >
           <div className="scroll-gallery__intro">
             <SectionHeader eyebrow={eyebrow} title={title} />
+            <span className="scroll-gallery__hint">
+              View project
+              <ArrowRight size={16} className="scroll-gallery__hint-icon" />
+            </span>
           </div>
 
           {items.map((item) => (

@@ -545,8 +545,32 @@ body[data-theme="design"] .gallery-item__category { color: rgba(0,0,0,.6); }
    away with everything else instead of sitting fixed in a separate column,
    matching the reference (title and cards move together, at the same rate). */
 .scroll-gallery__intro { flex: 0 0 min(460px, 42vw); display: flex; flex-direction: column; justify-content: center; }
+/* First card lands exactly at the 50% mark: intro takes the other half, minus
+   the leading gutter and the gap to the first card. */
+.scroll-gallery__viewport--pinned .scroll-gallery__intro { flex-basis: calc(50vw - 4rem - 5rem); }
+.scroll-gallery__viewport--pinned .scroll-gallery__intro .section-header__eyebrow { font-size: var(--text-label-lg); }
+.scroll-gallery__viewport--pinned .scroll-gallery__intro .section-header h2 {
+  font-size: var(--text-display-lg); line-height: var(--leading-display-lg);
+}
+/* "View project" scroll hint: a static label plus an arrow that shuttles
+   left-right, signalling the horizontal scroll this section pins into. */
+.scroll-gallery__hint {
+  display: inline-flex; align-items: center; gap: .5rem; margin-top: 2rem;
+  text-transform: uppercase; letter-spacing: .08em; color: var(--color-muted);
+  font-size: var(--text-label-lg); line-height: var(--leading-label-lg);
+}
+.scroll-gallery__hint-icon { animation: scroll-gallery-hint-shift 1.6s ease-in-out infinite; }
+@keyframes scroll-gallery-hint-shift {
+  0%, 100% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-gallery__hint-icon { animation: none; }
+}
+/* Bottom-right is already taken by the WhatsApp toggle — keep this pair clear
+   of it by anchoring to the opposite corner. */
 .scroll-gallery__controls {
-  position: absolute; right: 2rem; bottom: 2rem; z-index: 2; display: flex; gap: .75rem;
+  position: absolute; left: 2rem; bottom: 2rem; z-index: 2; display: flex; gap: .75rem;
 }
 .scroll-gallery__control {
   width: var(--btn-height); height: var(--btn-height); border-radius: 50%; border: 1px solid var(--color-border);
@@ -559,14 +583,22 @@ body[data-theme="design"] .gallery-item__category { color: rgba(0,0,0,.6); }
 .scroll-gallery__control:focus-visible { outline: 2px solid var(--color-contrast); outline-offset: 3px; }
 .scroll-gallery__control:disabled { opacity: .35; cursor: not-allowed; }
 
-.scroll-gallery__track { display: flex; align-items: center; gap: 5rem; padding: 0 2rem; will-change: transform; }
+/* flex-start, not center: all card images share the same fixed aspect-ratio
+   height, so top-aligning keeps every image at the same Y regardless of how
+   many lines a card's title/description wraps to. Centering here was the bug
+   — a short caption pulled its whole card (and image) upward vs. a long one. */
+.scroll-gallery__track { display: flex; align-items: flex-start; gap: 5rem; padding: 0 4rem; will-change: transform; }
 .scroll-gallery__viewport:not(.scroll-gallery__viewport--pinned) .scroll-gallery__track {
   width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 1.25rem .5rem;
   scrollbar-width: none; -webkit-overflow-scrolling: touch;
 }
 .scroll-gallery__viewport:not(.scroll-gallery__viewport--pinned) .scroll-gallery__track::-webkit-scrollbar { display: none; }
 .scroll-gallery__viewport:not(.scroll-gallery__viewport--pinned) .scroll-gallery__intro { flex-basis: min(460px, 80vw); scroll-snap-align: center; }
-.scroll-gallery__card { flex: 0 0 min(680px, 44vw); display: flex; flex-direction: column; color: inherit; }
+.scroll-gallery__card {
+  flex: 0 0 min(680px, 44vw); display: flex; flex-direction: column; color: inherit;
+  opacity: 0; transform: translateY(56px); transition: opacity .7s ease, transform .7s ease;
+}
+.scroll-gallery__card.is-visible { opacity: 1; transform: translateY(0); }
 .scroll-gallery__viewport:not(.scroll-gallery__viewport--pinned) .scroll-gallery__card { flex-basis: min(680px, 78vw); scroll-snap-align: center; }
 .scroll-gallery__image { width: 100%; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: var(--color-surface); }
 .scroll-gallery__image img, .scroll-gallery__image .image-placeholder { width: 100%; height: 100%; object-fit: cover; min-height: 0; transition: transform .5s ease; }

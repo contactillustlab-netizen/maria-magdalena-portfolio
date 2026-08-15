@@ -49,7 +49,12 @@ function GraphicDesignPage() {
           ))}
         </ul>
 
-        <ScrollGallery eyebrow="Portfolio" title="Selected projects" items={graphicDesignProjects} basePath="/design/graphic-design" />
+        <ScrollGallery
+          eyebrow="Portfolio"
+          title={<>Selected work<br />&amp; explorations</>}
+          items={graphicDesignProjects}
+          basePath="/design/graphic-design"
+        />
 
         <SkillsTimeline items={skills} />
       </section>
