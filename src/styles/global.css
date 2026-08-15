@@ -279,35 +279,36 @@ body[data-theme="design"] .mode-switch__icon img { filter: none; }
   background: #000000; pointer-events: none;
 }
 .intro-loader__mark { width: min(180px, 30vw); height: min(180px, 30vw); overflow: visible; }
-.intro-loader__group { opacity: 0; transform-box: fill-box; transform-origin: center; }
-.intro-loader__group > * { fill: #ffffff; opacity: 0; animation: intro-loader-piece 260ms ease-out forwards; }
+/* The group only ever drives motion (translate/scale) — opacity lives solely
+   on the children below. Animating opacity on both would multiply together
+   and hide the slide-in motion behind a wall of near-zero visibility. */
+.intro-loader__group { transform-box: fill-box; transform-origin: center; }
+.intro-loader__group > * { fill: #ffffff; opacity: 0; animation: intro-loader-piece 300ms ease-out forwards; }
 .intro-loader__group--a {
   animation: intro-loader-converge-a 1200ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.intro-loader__group--a > *:nth-child(1) { animation-delay: 600ms; }
-.intro-loader__group--a > *:nth-child(2) { animation-delay: 660ms; }
-.intro-loader__group--a > *:nth-child(3) { animation-delay: 720ms; }
+.intro-loader__group--a > *:nth-child(1) { animation-delay: 300ms; }
+.intro-loader__group--a > *:nth-child(2) { animation-delay: 360ms; }
+.intro-loader__group--a > *:nth-child(3) { animation-delay: 420ms; }
 .intro-loader__group--b {
   animation: intro-loader-converge-b 1200ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
-.intro-loader__group--b > *:nth-child(1) { animation-delay: 640ms; }
-.intro-loader__group--b > *:nth-child(2) { animation-delay: 700ms; }
+.intro-loader__group--b > *:nth-child(1) { animation-delay: 330ms; }
+.intro-loader__group--b > *:nth-child(2) { animation-delay: 390ms; }
 @keyframes intro-loader-piece { from { opacity: 0; } to { opacity: 1; } }
 @keyframes intro-loader-converge-a {
-  0%   { opacity: 0;   transform: translate(14px, -14px) scale(.97); }
-  21%  { opacity: .08; transform: translate(14px, -14px) scale(.97); }
-  71%  { opacity: 1;   transform: translate(0, 0) scale(1); }
-  88%  { opacity: 1;   transform: translate(0, 0) scale(.99); }
-  95%  { opacity: 1;   transform: translate(0, 0) scale(1.012); }
-  100% { opacity: 1;   transform: translate(0, 0) scale(1); }
+  0%   { transform: translate(14px, -14px) scale(.97); }
+  71%  { transform: translate(0, 0) scale(1); }
+  88%  { transform: translate(0, 0) scale(.99); }
+  95%  { transform: translate(0, 0) scale(1.012); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 @keyframes intro-loader-converge-b {
-  0%   { opacity: 0;   transform: translate(-14px, 14px) scale(.97); }
-  21%  { opacity: .08; transform: translate(-14px, 14px) scale(.97); }
-  71%  { opacity: 1;   transform: translate(0, 0) scale(1); }
-  88%  { opacity: 1;   transform: translate(0, 0) scale(.99); }
-  95%  { opacity: 1;   transform: translate(0, 0) scale(1.012); }
-  100% { opacity: 1;   transform: translate(0, 0) scale(1); }
+  0%   { transform: translate(-14px, 14px) scale(.97); }
+  71%  { transform: translate(0, 0) scale(1); }
+  88%  { transform: translate(0, 0) scale(.99); }
+  95%  { transform: translate(0, 0) scale(1.012); }
+  100% { transform: translate(0, 0) scale(1); }
 }
 .intro-loader__accent {
   position: absolute; top: 50%; left: 50%; width: 1px; height: 42%;
