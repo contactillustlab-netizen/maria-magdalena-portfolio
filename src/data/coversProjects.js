@@ -1,9 +1,25 @@
 export const coversProjects = [
   {
+    id: 0,
+    title: 'Un moment în lumea animalelor',
+    category: 'Children\'s Book Covers',
+    image: '/pictures/animal-world-cover-vol1.webp',
+    images: [
+      '/pictures/animal-world-cover-vol1.webp',
+      '/pictures/animal-world-cover-vol2.webp',
+      '/pictures/animal-world-spread-vol1.webp',
+      '/pictures/animal-world-spread-vol2.webp',
+      '/pictures/animal-world-cow.webp',
+      '/pictures/animal-world-bear.webp'
+    ],
+    orientation: 'portrait',
+    description: 'Full cover art and interior character illustrations for a two-volume children\'s board book series, each volume built around a wraparound spread of woodland and safari animals.'
+  },
+  {
     id: 1,
     title: "Pan's Labyrinth",
     category: 'Fan Cover Art',
-    image: '/images/gallery/covers/pans-labyrinth.webp',
+    image: '/pictures/pans-labyrinth.webp',
     orientation: 'landscape',
     description: 'A tribute cover piece built around the Faun, rendered in bruised violets and firelight.'
   },
@@ -11,7 +27,7 @@ export const coversProjects = [
     id: 2,
     title: 'Storm Bear',
     category: 'Poster Illustration',
-    image: '/images/gallery/covers/storm-bear.webp',
+    image: '/pictures/storm-bear.webp',
     orientation: 'portrait',
     description: 'A towering storm-spirit bears down on a lone van racing the coastline — a personal poster piece.'
   },

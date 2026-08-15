@@ -1,4 +1,4 @@
-import MasonryGallery from '../../components/MasonryGallery';
+import ConceptGallery from '../../components/ConceptGallery';
 import SectionHeader from '../../components/SectionHeader';
 import { coversProjects } from '../../data/coversProjects';
 
@@ -10,7 +10,7 @@ function CoversPage() {
         title="Cover and poster illustration"
         description="Cinematic single-image compositions built for book covers, tributes and personal poster work."
       />
-      <MasonryGallery items={coversProjects} />
+      <ConceptGallery items={coversProjects} />
     </section>
   );
 }

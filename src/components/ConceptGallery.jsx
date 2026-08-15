@@ -38,7 +38,7 @@ function ConceptGallery({ items }) {
     <>
       <div className="concept-gallery">
         {items.map((item, index) => {
-          const details = (item.images || []).filter((src) => src !== item.image).slice(0, 4);
+          const details = (item.images || []).filter((src) => src !== item.image).slice(0, 6);
 
           return (
             <div key={item.id} className="concept-project">
@@ -62,21 +62,17 @@ function ConceptGallery({ items }) {
 
                 {details.length ? (
                   <div className="concept-project__details">
-                    {Array.from({ length: 4 }, (_, i) => details[i] || null).map((src, i) =>
-                      src ? (
-                        <button
-                          key={src}
-                          type="button"
-                          className="concept-project__detail gallery-item__button"
-                          onClick={() => setSelection({ index, image: src })}
-                          aria-label={`View detail ${i + 1} of ${item.title}`}
-                        >
-                          <SmartImage src={src} alt={`${item.title} detail ${i + 1}`} loading="lazy" />
-                        </button>
-                      ) : (
-                        <span key={`empty-${i}`} className="concept-project__detail concept-project__detail--empty" aria-hidden="true" />
-                      )
-                    )}
+                    {details.map((src, i) => (
+                      <button
+                        key={src}
+                        type="button"
+                        className="concept-project__detail gallery-item__button"
+                        onClick={() => setSelection({ index, image: src })}
+                        aria-label={`View detail ${i + 1} of ${item.title}`}
+                      >
+                        <SmartImage src={src} alt={`${item.title} detail ${i + 1}`} loading="lazy" />
+                      </button>
+                    ))}
                   </div>
                 ) : null}
               </div>
