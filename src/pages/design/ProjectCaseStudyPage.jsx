@@ -59,7 +59,7 @@ function ProjectCaseStudyPage({ projects, listPath, basePath, sectionLabel }) {
             {project.client ? (
               <li>
                 {project.clientUrl ? (
-                  <a href={project.clientUrl} target="_blank" rel="noopener noreferrer">
+                  <a href={project.clientUrl} target="_blank" rel="noopener noreferrer" className="case-study__meta-link">
                     {project.client}
                   </a>
                 ) : (
