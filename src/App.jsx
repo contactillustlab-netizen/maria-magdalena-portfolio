@@ -12,6 +12,8 @@ import UiDesignPage from './pages/design/UiDesignPage';
 import MarketingDesignPage from './pages/design/MarketingDesignPage';
 import { graphicDesignProjects } from './data/graphicDesignProjects';
 import { brandingProjects } from './data/brandingProjects';
+import { conceptProjects } from './data/conceptProjects';
+import { coversProjects } from './data/coversProjects';
 import { uiDesignProjects } from './data/uiDesignProjects';
 import { marketingDesignProjects } from './data/marketingDesignProjects';
 import AboutPage from './pages/AboutPage';
@@ -34,7 +36,9 @@ function App() {
           <Route path="/art" element={<IllustrationPage />} />
           <Route path="/art/sketches" element={<SketchesPage />} />
           <Route path="/art/concept" element={<ConceptPage />} />
+          <Route path="/art/concept/:slug" element={<ProjectCaseStudyPage projects={conceptProjects} listPath="/art/concept" basePath="/art/concept" sectionLabel="Concept" />} />
           <Route path="/art/covers" element={<CoversPage />} />
+          <Route path="/art/covers/:slug" element={<ProjectCaseStudyPage projects={coversProjects} listPath="/art/covers" basePath="/art/covers" sectionLabel="Covers" />} />
           <Route path="/design" element={<GraphicDesignPage />} />
           <Route path="/design/graphic-design/:slug" element={<ProjectCaseStudyPage projects={graphicDesignProjects} listPath="/design" basePath="/design/graphic-design" sectionLabel="Graphic Design" />} />
           <Route path="/design/branding" element={<BrandingPage />} />
