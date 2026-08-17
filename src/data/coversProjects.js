@@ -7,6 +7,7 @@ export const coversProjects = [
     year: 2019,
     role: 'Illustration Project',
     client: 'Duoright Studio, Cluj-Napoca',
+    clientUrl: 'https://duoright.com/',
     aspectRatio: '4 / 3',
     image: '/pictures/animal-world-cover-vol1.webp',
     images: [

@@ -56,7 +56,17 @@ function ProjectCaseStudyPage({ projects, listPath, basePath, sectionLabel }) {
           <ul className="case-study__meta">
             <li>{project.tag}</li>
             {project.role ? <li>{project.role}</li> : null}
-            {project.client ? <li>{project.client}</li> : null}
+            {project.client ? (
+              <li>
+                {project.clientUrl ? (
+                  <a href={project.clientUrl} target="_blank" rel="noopener noreferrer">
+                    {project.client}
+                  </a>
+                ) : (
+                  project.client
+                )}
+              </li>
+            ) : null}
             {project.year ? <li>{project.year}</li> : null}
           </ul>
 
