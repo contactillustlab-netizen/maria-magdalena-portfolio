@@ -141,13 +141,14 @@ main { flex: 1; }
 /* Desktop pill nav text contrasts against the PAGE background (the glass tint is only 5%,
    too subtle to flip the read), so it's #ffffff in art mode and #050505 in design mode. */
 .site-nav a { color: rgb(var(--nav-accent-rgb)); }
-/* Each tab renders its label stacked on top of the equivalent label from the other
-   mode (invisible, aria-hidden). Grid auto-sizing takes the wider of the two, so
-   e.g. "Covers" reserves the same width as "Marketing Design" — the art and design
-   pills come out the same total length without a hardcoded width anywhere. */
-.nav-tab-stack { display: inline-grid; }
-.nav-tab-label { grid-area: 1 / 1; text-align: center; white-space: nowrap; }
-.nav-tab-label--ghost { visibility: hidden; }
+/* The full link row renders stacked on top of the other mode's row (invisible,
+   aria-hidden). Grid auto-sizing takes the wider of the two rows, so the art and
+   design pills come out the same total length without a hardcoded width anywhere
+   — while each visible link still hugs only its own label, not its counterpart's. */
+.nav-list-stack { display: inline-grid; min-width: 0; }
+.nav-list-stack ul { grid-area: 1 / 1; }
+.nav-list-stack__ghost { visibility: hidden; }
+.nav-list-stack__ghost-link { display: inline-block; padding: 12px 24px; font-size: var(--text-body-lg); line-height: var(--leading-body-lg); letter-spacing: .01em; white-space: nowrap; }
 .mobile-nav-panel a { display: block; padding: 16px 0; color: var(--color-text); }
 .site-nav a::after, .mobile-nav-panel a::after {
   content: ''; position: absolute; left: 24px; right: 24px; bottom: 6px; height: 1px; transform: scaleX(0); transform-origin: left; transition: transform var(--transition);
