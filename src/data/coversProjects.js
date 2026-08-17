@@ -3,8 +3,10 @@ export const coversProjects = [
     id: 0,
     slug: 'a-moment-in-the-animal-world',
     title: 'A Moment in the Animal World - Vol I & II Covers',
-    tag: "Children's Book Covers",
+    tag: "Children's Book Illustration",
     year: 2019,
+    role: 'Illustration Project',
+    client: 'Duoright Studio, Cluj-Napoca',
     aspectRatio: '4 / 3',
     image: '/pictures/animal-world-cover-vol1.webp',
     images: [
@@ -14,12 +16,12 @@ export const coversProjects = [
       '/pictures/animal-world-cow.webp',
       '/pictures/animal-world-bear.webp'
     ],
-    description: 'Full cover art and interior character illustrations for a two-volume children\'s board book series, each volume built around a wraparound spread of woodland and safari animals.',
+    description: "A Moment in the Animal World is a two-volume children's book illustration project developed as part of my collaboration with Duoright Studio in Cluj-Napoca. The project focused on creating a warm, playful, and easy-to-understand visual world for young children, with illustrations designed to support one of the books' main educational goals: recognizing and identifying different animals through imagery. My role involved illustrating both the book covers and the interior pages, creating a consistent visual language across the two volumes while keeping each scene engaging, friendly, and accessible for a very young audience.",
     caseStudy: {
-      challenge: 'The main challenge was building a two-volume board book that felt like one continuous world — each cover needed to work as a wraparound spread on its own, while the individual animal characters inside had to stay warm, friendly and easy to read for very young readers.',
-      approach: 'I designed each volume around a single wraparound composition first, arranging the animals so the front cover, spine and back worked together as one scene. From there I broke out individual characters — the cow, the bear and others — into standalone illustrations, keeping the same soft color palette, rounded shapes and lighting across the whole series.',
-      outcome: 'The result is a two-volume set with covers that read clearly as one welcoming scene, and interior spreads and characters that feel like natural extensions of that same world, built for very young readers encountering woodland and safari animals for the first time.',
-      whatWeDid: 'Cover design, wraparound spread composition, character illustration and color development across a two-volume children\'s board book series.'
+      challenge: 'The main challenge was to create illustrations that were visually appealing while remaining simple and readable enough for small children. Each animal needed to be instantly recognizable, with clear silhouettes, expressive features, and enough personality to make the scenes memorable without introducing unnecessary visual complexity. At the same time, the artwork had to remain consistent across multiple pages and two separate volumes.',
+      approach: "I approached the project by focusing on clarity, friendly shapes, expressive characters, and colorful environments that could capture a child's attention while supporting the educational purpose of the books. The animals were designed to remain easy to identify, while small storytelling details and interactions were added to make each illustration feel lively and engaging. I also worked on maintaining visual consistency between the covers and interior illustrations, using recurring stylistic choices, compositions, and character treatments to give both volumes a cohesive identity.",
+      outcome: 'The final result is a collection of illustrations that combines visual storytelling with early-learning interaction, inviting children to observe each scene and recognize the animals featured within it. Working on both volumes also allowed me to build a broader and more consistent illustrated world rather than approaching each image as an isolated piece. The project became a valuable exercise in adapting my illustration style to a younger audience while balancing creativity, readability, and educational purpose.',
+      whatWeDid: "Children's Book Illustration, Cover Illustration, Interior Illustration, Character Illustration, Animal Design, Visual Storytelling, Composition, Color Exploration and Digital Illustration. I developed the illustrations for both volumes, from the individual animal characters and environments to the final cover and interior artwork, working within the creative direction established together with Duoright Studio."
     }
   },
   {
