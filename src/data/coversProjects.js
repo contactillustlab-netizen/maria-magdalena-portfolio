@@ -1,9 +1,10 @@
 export const coversProjects = [
   {
     id: 0,
-    slug: 'un-moment-in-lumea-animalelor',
-    title: 'Un moment în lumea animalelor',
+    slug: 'a-moment-in-the-animal-world',
+    title: 'A Moment in the Animal World - Vol I & II Covers',
     tag: "Children's Book Covers",
+    year: 2019,
     aspectRatio: '4 / 3',
     image: '/pictures/animal-world-cover-vol1.webp',
     images: [
