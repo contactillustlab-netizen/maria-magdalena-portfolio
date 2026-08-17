@@ -597,10 +597,14 @@ body[data-theme="design"] .gallery-item__category { color: rgba(0,0,0,.6); }
    height, so top-aligning keeps every image at the same Y regardless of how
    many lines a card's title/description wraps to. Centering here was the bug
    — a short caption pulled its whole card (and image) upward vs. a long one. */
-.scroll-gallery__track { display: flex; align-items: flex-start; gap: 5rem; padding: 0 4rem; will-change: transform; }
+.scroll-gallery__track { display: flex; align-items: flex-start; gap: 5rem; padding: 0 4rem; }
+.scroll-gallery__viewport--pinned .scroll-gallery__track { will-change: transform; }
 .scroll-gallery__viewport:not(.scroll-gallery__viewport--pinned) .scroll-gallery__track {
   width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 1.25rem .5rem;
   scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  /* Only claim the horizontal pan so a finger drag with any vertical intent
+     still scrolls the page instead of getting swallowed by this carousel. */
+  touch-action: pan-x;
 }
 .scroll-gallery__viewport:not(.scroll-gallery__viewport--pinned) .scroll-gallery__track::-webkit-scrollbar { display: none; }
 .scroll-gallery__viewport:not(.scroll-gallery__viewport--pinned) .scroll-gallery__intro { flex-basis: min(460px, 80vw); scroll-snap-align: center; }
@@ -1150,6 +1154,8 @@ body[data-theme="design"] .about-page__tool-logo--chatgpt { filter: brightness(0
   .case-study__layout { padding: 0 20px; }
   .scroll-gallery__track { padding: 0 20px 0.5rem; gap: 3rem; }
   .scroll-gallery__controls { right: 20px; bottom: 1rem; }
+  .scroll-gallery__caption { flex-direction: column; align-items: flex-start; }
+  .scroll-gallery__cta { margin-top: .75rem; }
   .case-study__title { font-size: var(--text-headline-lg); line-height: var(--leading-headline-lg); }
   .about-page__testimonial-quote { font-size: 16px; line-height: var(--leading-body-lg); }
 }
