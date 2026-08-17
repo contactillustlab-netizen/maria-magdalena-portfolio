@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { Send, X } from 'lucide-react';
 import WhatsAppIcon from './icons/WhatsAppIcon';
+import { useMountTransition } from '../lib/useMountTransition';
 
 const WHATSAPP_NUMBER = '40751170738';
 
 function WhatsAppWidget() {
   const [open, setOpen] = useState(false);
+  const { mounted, visible } = useMountTransition(open);
   const [message, setMessage] = useState('');
 
   const handleSubmit = (event) => {
@@ -20,8 +22,8 @@ function WhatsAppWidget() {
 
   return (
     <>
-      {open ? (
-        <div className="whatsapp-widget__panel" role="dialog" aria-label="WhatsApp chat">
+      {mounted ? (
+        <div className={`whatsapp-widget__panel${visible ? ' is-open' : ''}`} role="dialog" aria-label="WhatsApp chat">
           <div className="whatsapp-widget__header">
             <span className="whatsapp-widget__avatar">MV</span>
             <div className="whatsapp-widget__header-text">

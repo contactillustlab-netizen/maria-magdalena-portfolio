@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { X } from 'lucide-react';
 import { applyStoredConsent, updateConsent } from '../lib/analytics';
+import { useMountTransition } from '../lib/useMountTransition';
 
 const STORAGE_KEY = 'site-notice-choice';
 
 function SiteNotice() {
   const [visible, setVisible] = useState(false);
+  const { mounted, visible: shown } = useMountTransition(visible);
 
   useEffect(() => {
     const stored = localStorage.getItem(STORAGE_KEY);
@@ -24,10 +26,10 @@ function SiteNotice() {
     setVisible(false);
   };
 
-  if (!visible) return null;
+  if (!mounted) return null;
 
   return (
-    <div className="site-notice" role="dialog" aria-label="Site preferences">
+    <div className={`site-notice${shown ? ' is-open' : ''}`} role="dialog" aria-label="Site preferences">
       <div className="site-notice__header">
         <h2 className="site-notice__title">Cookie settings</h2>
         <button type="button" className="site-notice__close" aria-label="Close" onClick={() => setVisible(false)}>

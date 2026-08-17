@@ -3,9 +3,11 @@ import { createPortal } from 'react-dom';
 import { Menu, X } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import ModeSwitchButton from './ModeSwitchButton';
+import { useMountTransition } from '../lib/useMountTransition';
 
 function Navbar({ mode = 'art' }) {
   const [open, setOpen] = useState(false);
+  const { mounted: panelMounted, visible: panelVisible } = useMountTransition(open);
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
 
@@ -87,8 +89,8 @@ function Navbar({ mode = 'art' }) {
         </button>
       </div>
 
-      {open ? createPortal(
-        <div className="mobile-nav-panel">
+      {panelMounted ? createPortal(
+        <div className={`mobile-nav-panel${panelVisible ? ' is-open' : ''}`}>
           <ul>
             {links.map((link) => (
               <li key={link.to}>

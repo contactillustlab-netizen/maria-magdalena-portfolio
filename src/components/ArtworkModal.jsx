@@ -1,10 +1,20 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react';
 import { createPortal } from 'react-dom';
 import SmartImage from './SmartImage';
+import { useMountTransition } from '../lib/useMountTransition';
 
 function ArtworkModal({ items, index, startImage, onClose, onNavigate }) {
-  const item = index !== null && index !== undefined ? items[index] : null;
+  const isOpen = index !== null && index !== undefined;
+  const { mounted, visible } = useMountTransition(isOpen);
+
+  // Keep showing the last artwork while the close transition plays, instead
+  // of the content vanishing the instant the parent clears `index`.
+  const lastIndexRef = useRef(index);
+  if (isOpen) lastIndexRef.current = index;
+  const activeIndex = isOpen ? index : lastIndexRef.current;
+
+  const item = activeIndex !== null && activeIndex !== undefined ? items[activeIndex] : null;
   const projectImages = item?.images?.length > 1 ? item.images : null;
   const [subIndex, setSubIndex] = useState(0);
 
@@ -25,21 +35,21 @@ function ArtworkModal({ items, index, startImage, onClose, onNavigate }) {
     if (projectImages) {
       setSubIndex((current) => (current - 1 + projectImages.length) % projectImages.length);
     } else {
-      onNavigate((index - 1 + items.length) % items.length);
+      onNavigate((activeIndex - 1 + items.length) % items.length);
     }
-  }, [canNavigate, projectImages, index, items.length, onNavigate]);
+  }, [canNavigate, projectImages, activeIndex, items.length, onNavigate]);
 
   const goNext = useCallback(() => {
     if (!canNavigate) return;
     if (projectImages) {
       setSubIndex((current) => (current + 1) % projectImages.length);
     } else {
-      onNavigate((index + 1) % items.length);
+      onNavigate((activeIndex + 1) % items.length);
     }
-  }, [canNavigate, projectImages, index, items.length, onNavigate]);
+  }, [canNavigate, projectImages, activeIndex, items.length, onNavigate]);
 
   useEffect(() => {
-    if (!item) return;
+    if (!isOpen) return;
     const handleKey = (event) => {
       if (event.key === 'Escape') onClose();
       if (event.key === 'ArrowLeft') goPrev();
@@ -47,9 +57,9 @@ function ArtworkModal({ items, index, startImage, onClose, onNavigate }) {
     };
     window.addEventListener('keydown', handleKey);
     return () => window.removeEventListener('keydown', handleKey);
-  }, [item, onClose, goPrev, goNext]);
+  }, [isOpen, onClose, goPrev, goNext]);
 
-  if (!item) return null;
+  if (!mounted || !item) return null;
 
   const handleExpand = (event) => {
     const stage = event.currentTarget.closest('.modal__content').querySelector('.modal__stage');
@@ -62,11 +72,11 @@ function ArtworkModal({ items, index, startImage, onClose, onNavigate }) {
   };
 
   const currentSrc = projectImages ? projectImages[subIndex] : item.image;
-  const prevItem = !projectImages && hasSiblingProjects ? items[(index - 1 + items.length) % items.length] : null;
-  const nextItem = !projectImages && hasSiblingProjects ? items[(index + 1) % items.length] : null;
+  const prevItem = !projectImages && hasSiblingProjects ? items[(activeIndex - 1 + items.length) % items.length] : null;
+  const nextItem = !projectImages && hasSiblingProjects ? items[(activeIndex + 1) % items.length] : null;
 
   return createPortal(
-    <div className="modal" role="dialog" aria-modal="true" aria-label={item.title}>
+    <div className={`modal${visible ? ' is-open' : ''}`} role="dialog" aria-modal="true" aria-label={item.title}>
       <div className="modal__backdrop" onClick={onClose} />
       <div className="modal__content">
         <button className="modal__icon-btn modal__expand" onClick={handleExpand} type="button" aria-label="Toggle fullscreen">
