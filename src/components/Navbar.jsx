@@ -48,14 +48,13 @@ function Navbar({ mode = 'art' }) {
     { to: '/about', label: 'About' },
     { to: '/contact', label: 'Contact' }
   ];
-  // The other mode's full link row, stacked invisibly behind the visible one so the
-  // shared grid cell sizes to the wider of the two rows — the art and design pills
-  // land on the same total width without hardcoding either one. Each visible link
-  // still hugs only its own label instead of reserving its counterpart's width.
-  const otherLinks = [
-    ...sectionLinksByMode[otherMode],
-    { label: 'About' },
-    { label: 'Contact' }
+  // Same-index labels from the other mode, stacked invisibly behind each tab so its
+  // rendered width is max(this label, the other mode's label) — the art and design
+  // pills land on the same total width without hardcoding either one.
+  const ghostLabels = [
+    ...sectionLinksByMode[otherMode].map((link) => link.label),
+    'About',
+    'Contact'
   ];
   const switchTo = mode === 'art' ? '/design' : '/art';
   const switchLabel = mode === 'art' ? 'Switch to Design' : 'Switch to Art';
@@ -68,20 +67,18 @@ function Navbar({ mode = 'art' }) {
           <ModeSwitchButton to={switchTo} label={switchLabel} ghostLabel={otherSwitchLabel} />
 
           <nav className="site-nav" aria-label="Primary navigation">
-            <span className="nav-list-stack">
-              <ul>
-                {links.map((link) => (
-                  <li key={link.to}>
-                    <NavLink to={link.to} end className={({ isActive }) => isActive ? 'active' : ''}>{link.label}</NavLink>
-                  </li>
-                ))}
-              </ul>
-              <ul className="nav-list-stack__ghost" aria-hidden="true">
-                {otherLinks.map((link) => (
-                  <li key={link.label}><span className="nav-list-stack__ghost-link">{link.label}</span></li>
-                ))}
-              </ul>
-            </span>
+            <ul>
+              {links.map((link, index) => (
+                <li key={link.to}>
+                  <NavLink to={link.to} end className={({ isActive }) => isActive ? 'active' : ''}>
+                    <span className="nav-tab-stack">
+                      <span className="nav-tab-label">{link.label}</span>
+                      <span className="nav-tab-label nav-tab-label--ghost" aria-hidden="true">{ghostLabels[index]}</span>
+                    </span>
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
           </nav>
         </div>
 
