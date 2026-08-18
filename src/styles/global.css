@@ -756,27 +756,96 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
    carries no weight without the process behind it.
    ========================================================================== */
 .brand-process { margin: 64px 0 5rem; }
-.brand-process__columns { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; margin: 0 0 4rem; }
-.brand-process__col {
-  display: block; padding: 16px; border: 1px solid var(--color-border); border-radius: var(--radius-md);
-  opacity: 0; transform: translateY(18px);
-  transition: opacity .8s ease, transform .8s ease;
+
+/* Card stack: 5 cards resting like a loose physical deck. Collapsed, each
+   card sits at a small tuned rotation/offset (--stack-x/y/rot per nth-child)
+   around a shared center anchor. Expanded, the same cards translate out to
+   --fan-x and reset rotation — one transform swap animates the whole
+   stack-to-row move, no layout/position-mode switch mid-transition. */
+.card-stack {
+  --stack-w: clamp(210px, 70vw, 260px); --stack-gap: 16px; --stack-h: 260px;
+  --stack-duration: 560ms; --stack-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative; outline: none; border-radius: var(--radius-md);
 }
-.brand-process__col.is-visible { opacity: 1; transform: translateY(0); }
-.brand-process__col-head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin: 0 0 .75rem; }
-.brand-process__col-numeral { margin: 0; font-size: var(--text-title-md); line-height: var(--leading-title-md); font-weight: 700; color: var(--color-muted); opacity: .7; letter-spacing: .02em; }
-.brand-process__col-icon { display: block; width: 28px; height: 28px; flex-shrink: 0; }
-.brand-process__col-title { margin: 0 0 .6rem; font-size: var(--text-title-md); line-height: var(--leading-title-md); font-family: var(--font-family-primary); font-weight: 700; }
-.brand-process__col-text { margin: 0; color: var(--color-muted); font-size: var(--text-body-lg); line-height: var(--leading-body-lg); }
-.brand-process__col-explain { margin-top: .75rem; }
-.brand-process__col-detail {
-  margin: .85rem 0 0; padding-top: .85rem; border-top: 1px solid var(--color-border);
-  font-size: var(--text-body-lg); line-height: var(--leading-body-lg); color: var(--color-muted);
+.card-stack:focus-visible { outline: 2px solid var(--color-contrast); outline-offset: 8px; }
+.card-stack__track {
+  position: relative; height: var(--stack-h); overflow-x: auto; overflow-y: hidden;
+  scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x proximity;
+  --fan-total-w: calc(5 * var(--stack-w) + 4 * var(--stack-gap));
+}
+.card-stack__track::-webkit-scrollbar { display: none; }
+/* The whole fan centers itself when it fits (desktop) and flushes to the
+   left edge, scrollable, when it doesn't (narrow desktop windows, touch) —
+   `left` (a %-of-container value) carries that shared shift so no card ever
+   lands at a negative, unreachable scroll offset. Each card's own slot
+   within the fan, and its collapsed jitter, ride on top via transform. */
+.card-stack__card {
+  position: absolute; top: 0; left: max(0px, calc((100% - var(--fan-total-w)) / 2));
+  width: var(--stack-w); height: var(--stack-h); scroll-snap-align: start;
+  transform: translate(var(--stack-x, 0), var(--stack-y, 0)) rotate(var(--stack-rot, 0deg));
+  transition: transform var(--stack-duration) var(--stack-ease);
+  will-change: transform;
+}
+.card-stack__card:nth-child(1) { --stack-index: 0; --stack-x: -18px; --stack-y: 10px; --stack-rot: -4deg; }
+.card-stack__card:nth-child(2) { --stack-index: 1; --stack-x: -9px; --stack-y: 4px; --stack-rot: -2deg; }
+.card-stack__card:nth-child(3) { --stack-index: 2; --stack-x: 0px; --stack-y: 0px; --stack-rot: 1deg; }
+.card-stack__card:nth-child(4) { --stack-index: 3; --stack-x: 9px; --stack-y: -4px; --stack-rot: 2.5deg; }
+.card-stack__card:nth-child(5) { --stack-index: 4; --stack-x: 14px; --stack-y: -8px; --stack-rot: 3.5deg; }
+.card-stack__card:nth-child(1) { z-index: 1; }
+.card-stack__card:nth-child(2) { z-index: 2; }
+.card-stack__card:nth-child(3) { z-index: 3; }
+.card-stack__card:nth-child(4) { z-index: 4; }
+.card-stack__card:nth-child(5) { z-index: 5; }
+.card-stack__card { --fan-x: calc(var(--stack-index) * (var(--stack-w) + var(--stack-gap))); }
+.card-stack.is-expanded .card-stack__card { transform: translateX(var(--fan-x)) rotate(0deg); }
+@media (hover: hover) and (pointer: fine) {
+  .card-stack:hover .card-stack__card,
+  .card-stack:focus-within .card-stack__card { transform: translateX(var(--fan-x)) rotate(0deg); }
+}
+.card-stack__card-surface {
+  position: relative; height: 100%; display: flex; flex-direction: column; justify-content: space-between;
+  padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--card-border, var(--color-border));
+  background: var(--card-bg); color: var(--card-fg); box-shadow: 0 10px 24px rgba(0,0,0,.14);
+  transition: transform 320ms ease, box-shadow 320ms ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  .card-stack.is-expanded .card-stack__card-surface:hover,
+  .card-stack.is-expanded .card-stack__card-surface:focus-visible {
+    transform: translateY(-6px); box-shadow: 0 16px 32px rgba(0,0,0,.18);
+  }
+}
+.card-stack__card-top { display: flex; align-items: center; justify-content: space-between; gap: .75rem; }
+.card-stack__number { margin: 0; font-size: var(--text-title-md); line-height: var(--leading-title-md); font-weight: 700; opacity: .7; letter-spacing: .02em; }
+.card-stack__icon { display: block; width: 24px; height: 24px; flex-shrink: 0; color: currentColor; }
+/* Two of the five icons reuse the Visual Ecosystem illustrations, which
+   stroke in the fixed --color-contrast token for their normal (light-page)
+   context — override to currentColor so they stay legible on the stack's
+   dark-toned cards too. */
+.card-stack__icon .step-illustration path,
+.card-stack__icon .step-illustration line,
+.card-stack__icon .step-illustration rect,
+.card-stack__icon .step-illustration circle { stroke: currentColor; }
+.card-stack__icon .step-illustration--brand .step-illustration__core { fill: currentColor; }
+.card-stack__icon .step-illustration--product .step-illustration__frame { stroke: color-mix(in srgb, currentColor 50%, transparent); }
+.card-stack__title { margin: 1rem 0 .6rem; font-size: var(--text-title-md); line-height: var(--leading-title-md); font-family: var(--font-family-primary); font-weight: 700; }
+.card-stack__divider { height: 1px; background: currentColor; opacity: .15; margin: 0 0 .6rem; }
+.card-stack__description { margin: 0; font-size: var(--text-body-lg); line-height: var(--leading-body-lg); opacity: .85; }
+@media (prefers-reduced-motion: reduce) {
+  .card-stack__card, .card-stack__card-surface { transition: none; }
+}
+@media (min-width: 768px) {
+  .card-stack { --stack-w: 200px; --stack-gap: 20px; --stack-h: 260px; }
+}
+@media (min-width: 1024px) {
+  .card-stack { --stack-w: 216px; --stack-gap: 24px; --stack-h: 280px; }
+}
+@media (min-width: 1440px) {
+  .card-stack { --stack-w: 232px; --stack-gap: 24px; --stack-h: 290px; }
 }
 
 /* Per-phase icons: same restrained thin-line language as the step
    illustrations above — "creative" and "deliver" literally reuse those. */
-.brand-process__icon { width: 100%; height: 100%; overflow: visible; color: var(--color-contrast); }
+.brand-process__icon { width: 100%; height: 100%; overflow: visible; color: currentColor; }
 .brand-process__icon path, .brand-process__icon line, .brand-process__icon circle { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
 .brand-process__icon--understanding .brand-process__icon-ring {
   transform-box: fill-box; transform-origin: center; animation: brandProcessRingPulse 2.6s ease-in-out infinite;
@@ -822,13 +891,6 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
 
 @media (prefers-reduced-motion: reduce) {
   .brand-process__ghost-pill { animation: none; opacity: .85; transform: none; }
-}
-
-@media (max-width: 1024px) {
-  .brand-process__columns { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.5rem; }
-}
-@media (max-width: 640px) {
-  .brand-process__columns { grid-template-columns: 1fr; }
 }
 
 .about-page { padding-top: 0; padding-bottom: 0; }

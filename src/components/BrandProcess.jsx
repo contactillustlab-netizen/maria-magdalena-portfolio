@@ -1,44 +1,40 @@
 import { useEffect } from 'react';
+import CardStack from './CardStack';
 
 const phases = [
   {
     id: 'understanding',
     numeral: '01',
     title: 'Understanding',
-    text: 'Before anything gets designed, we get clear on who this is for and why it matters.',
-    detail: 'Background details, vision & values, target personas, stakeholder insights.',
+    description: 'Before anything gets designed, we get clear on who this is for and why it matters — background, vision & values, target personas, stakeholder insights.',
     icon: 'understanding'
   },
   {
     id: 'research',
     numeral: '02',
     title: 'Research & discovery',
-    text: 'Then we look outward — at the market, the competitors, what has already been tried.',
-    detail: 'Customer research, competitive analysis, expert audits & insights, market positioning.',
+    description: 'Then we look outward — customer research, competitive analysis, expert audits & insights, market positioning.',
     icon: 'research'
   },
   {
     id: 'strategy',
     numeral: '03',
     title: 'Strategy',
-    text: 'The findings become a position: what to say, and why it is different.',
-    detail: 'Story & personality, market opportunity, positioning & messaging, creative brief.',
+    description: 'The findings become a position — story & personality, market opportunity, positioning & messaging, creative brief.',
     icon: 'strategy'
   },
   {
     id: 'creative',
     numeral: '04',
     title: 'Creative',
-    text: 'The name, the mark, the system — the strategy becomes something visible.',
-    detail: 'Naming, logo development, graphic standards, messaging framework.',
+    description: 'The name, the mark, the system — naming, logo development, graphic standards, messaging framework.',
     icon: 'creative'
   },
   {
     id: 'deliver',
     numeral: '05',
     title: 'Deliver & integrate',
-    text: 'Everything gets packaged so it works everywhere the brand shows up.',
-    detail: 'Brand book & style guide, print integration, online & mobile, further brand extension.',
+    description: 'Everything gets packaged so it works everywhere — brand book & style guide, print integration, online & mobile, further brand extension.',
     icon: 'deliver'
   }
 ];
@@ -110,28 +106,21 @@ function BrandProcess() {
       { threshold: 0.2 }
     );
     document
-      .querySelectorAll('.brand-process__col, .brand-process__payoff')
+      .querySelectorAll('.brand-process__payoff')
       .forEach((node) => observer.observe(node));
     return () => observer.disconnect();
   }, []);
 
+  const cards = phases.map((phase) => ({
+    number: phase.numeral,
+    title: phase.title,
+    description: phase.description,
+    icon: phaseIcons[phase.icon]
+  }));
+
   return (
     <div className="brand-process">
-      <div className="brand-process__columns">
-        {phases.map((phase) => (
-          <div key={phase.id} className="brand-process__col">
-            <div className="brand-process__col-head">
-              <p className="brand-process__col-numeral">{phase.numeral}</p>
-              <span className="brand-process__col-icon" aria-hidden="true">{phaseIcons[phase.icon]}</span>
-            </div>
-            <h3 className="brand-process__col-title">{phase.title}</h3>
-            <div className="brand-process__col-explain">
-              <p className="brand-process__col-text">{phase.text}</p>
-              <p className="brand-process__col-detail">{phase.detail}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <CardStack cards={cards} label="Brand process steps" />
 
       <div className="brand-process__payoff">
         <h3 className="brand-process__payoff-heading">A mark that only "looks nice" doesn't hold its weight.</h3>
