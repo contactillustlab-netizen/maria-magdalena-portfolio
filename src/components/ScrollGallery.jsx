@@ -15,6 +15,10 @@ import SectionHeader from './SectionHeader';
 // outer gap) instead of the full viewport height — a fixed 64px top/bottom
 // breathing room regardless of how much taller the screen is than the cards.
 const PINNED_OUTER_GAP = 64;
+// Gap kept between the tallest card's bottom edge and the prev/next controls,
+// measured from the same track height used for the outer gap above, so it
+// can't drift out of sync if a card's content grows taller.
+const CONTROLS_GAP = 24;
 
 function ScrollGallery({ eyebrow, title, items, basePath }) {
   const wrapperRef = useRef(null);
@@ -26,6 +30,7 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
   const [pinned, setPinned] = useState(false);
   const [wrapperHeight, setWrapperHeight] = useState(null);
   const [viewportHeight, setViewportHeight] = useState(null);
+  const [controlsTop, setControlsTop] = useState(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
 
@@ -47,6 +52,7 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
       setTranslateX(0);
       setWrapperHeight(null);
       setViewportHeight(null);
+      setControlsTop(null);
       return undefined;
     }
     const wrapper = wrapperRef.current;
@@ -63,6 +69,7 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
       viewportHeightRef.current = fitted;
       setViewportHeight(fitted);
       setWrapperHeight(fitted + maxTranslateRef.current);
+      setControlsTop(PINNED_OUTER_GAP + track.offsetHeight + CONTROLS_GAP);
     };
 
     const onScroll = () => {
@@ -200,7 +207,10 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
           ))}
         </div>
 
-        <div className="scroll-gallery__controls">
+        <div
+          className="scroll-gallery__controls"
+          style={pinned && controlsTop ? { top: `${controlsTop}px`, bottom: 'auto' } : undefined}
+        >
           <button
             type="button"
             className="scroll-gallery__control"
