@@ -564,10 +564,43 @@ body[data-theme="design"] .gallery-item__category { color: rgba(0,0,0,.6); }
 .scroll-gallery__intro { flex: 0 0 min(460px, 42vw); display: flex; flex-direction: column; justify-content: center; }
 /* First card lands exactly at the 50% mark: intro takes the other half, minus
    the leading gutter and the gap to the first card. */
-.scroll-gallery__viewport--pinned .scroll-gallery__intro { flex-basis: calc(50vw - 4rem - 5rem); }
+.scroll-gallery__viewport--pinned .scroll-gallery__intro {
+  flex-basis: calc(50vw - 4rem - 5rem);
+  /* Stretch to match the tallest card (the track's own height) instead of
+     hugging just its own text, so the ambient background below has a full
+     canvas instead of the text's short natural box. */
+  position: relative; align-self: stretch;
+}
 .scroll-gallery__viewport--pinned .scroll-gallery__intro .section-header__eyebrow { font-size: var(--text-label-lg); }
 .scroll-gallery__viewport--pinned .scroll-gallery__intro .section-header h2 {
   font-size: var(--text-display-lg); line-height: var(--leading-display-lg);
+}
+
+/* Ambient "exploration map" behind the intro copy — same visual language as
+   the contact page's signal field (thin paths, glowing traveling dots), but
+   fanning outward from a hub to several nodes instead of converging on one
+   target. Desktop/pinned only: the mobile intro slide is too short for it. */
+.scroll-gallery__intro-bg { display: none; }
+.scroll-gallery__viewport--pinned .scroll-gallery__intro-bg {
+  display: block; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+}
+.scroll-gallery__intro-bg-svg { width: 100%; height: 100%; display: block; }
+.scroll-gallery__intro-path { fill: none; stroke: rgba(var(--color-contrast-rgb), .14); stroke-width: 1; }
+.scroll-gallery__intro-path--branch { stroke: rgba(var(--color-contrast-rgb), .1); }
+.scroll-gallery__intro-hub { fill: var(--color-contrast); opacity: .5; }
+.scroll-gallery__intro-node {
+  fill: var(--color-contrast); opacity: .35; transform-box: fill-box; transform-origin: center;
+  animation: scrollGalleryNodePulse 3.6s ease-in-out infinite;
+}
+.scroll-gallery__intro-node--sm { opacity: .28; }
+@keyframes scrollGalleryNodePulse {
+  0%, 100% { opacity: .3; transform: scale(1); }
+  50% { opacity: .85; transform: scale(1.4); }
+}
+.scroll-gallery__intro-signal { fill: var(--color-contrast); filter: drop-shadow(0 0 4px rgba(var(--color-contrast-rgb), .8)); }
+@media (prefers-reduced-motion: reduce) {
+  .scroll-gallery__intro-node { animation: none; opacity: .32; }
+  .scroll-gallery__intro-signal { display: none; }
 }
 /* "View project" scroll hint: a static label plus an arrow that shuttles
    left-right, signalling the horizontal scroll this section pins into. */
