@@ -25,11 +25,12 @@ function BrandingPage() {
   return (
     <>
       <HeroSection
-        eyebrow="Design"
-        title="Branding"
-        subtitle="Identity systems and editorial direction"
+        eyebrow="Branding"
+        title="From a blank page to a mark that means something."
+        subtitle="Every identity moves through the same five moments before it's ready to carry a name — the mark itself gets there step by step, from a loose idea to something confident enough to stand alone."
         image="/pictures/branding-hero.webp"
         variant="design"
+        titleVariant="sentence"
       />
 
       <section className="section section--branding">

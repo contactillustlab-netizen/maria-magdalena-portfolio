@@ -32,6 +32,7 @@ function GraphicDesignPage() {
         title="Design that makes brands look better, work better and sell better."
         subtitle="I help businesses build clear visual identities, intuitive digital experiences and marketing materials that feel consistent across every touchpoint."
         image="/pictures/design-hero.webp"
+        video="/videos/design-hero.webm"
         variant="design"
         titleVariant="sentence"
         scrollLabel="Scroll to see"

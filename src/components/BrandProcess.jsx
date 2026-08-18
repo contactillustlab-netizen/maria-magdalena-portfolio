@@ -117,16 +117,6 @@ function BrandProcess() {
 
   return (
     <div className="brand-process">
-      <span className="brand-process__eyebrow">
-        <span className="brand-process__eyebrow-dot" />
-        Branding
-      </span>
-      <h2 className="brand-process__heading">From a blank page to a mark that means something.</h2>
-      <p className="brand-process__desc">
-        Every identity moves through the same five moments before it's ready to carry a name — the mark itself
-        gets there step by step, from a loose idea to something confident enough to stand alone.
-      </p>
-
       <div className="brand-process__columns">
         {phases.map((phase, index) => (
           <div
