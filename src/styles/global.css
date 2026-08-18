@@ -591,7 +591,7 @@ body[data-theme="design"] .gallery-item__category { color: rgba(0,0,0,.6); }
 /* Bottom-right is already taken by the WhatsApp toggle — keep this pair clear
    of it by anchoring to the opposite corner. */
 .scroll-gallery__controls {
-  position: absolute; left: 2rem; bottom: 2rem; z-index: 2; display: flex; gap: .75rem;
+  position: absolute; left: var(--scroll-gallery-gutter, 2rem); bottom: 2rem; z-index: 2; display: flex; gap: .75rem;
 }
 .scroll-gallery__control {
   width: var(--btn-height); height: var(--btn-height); border-radius: 50%; border: 1px solid var(--color-border);
