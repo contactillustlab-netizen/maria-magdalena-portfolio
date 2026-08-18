@@ -191,8 +191,8 @@ function BrandProcess() {
             <line x1="-70" y1="0" x2="70" y2="0" stroke="var(--color-contrast)" strokeWidth="2" strokeLinecap="round" />
             <line x1="0" y1="0" x2="0" y2="-14" stroke="var(--color-muted)" strokeWidth="1.3" />
             <g className="brand-process__pill brand-process__pill--ghost brand-process__ghost-pill">
-              <rect x="-58" y="-104" width="146" height="34" rx="17" />
-              <text x="15" y="-82" textAnchor="middle">Looks nice</text>
+              <rect x="-73" y="-50" width="146" height="34" rx="17" />
+              <text x="0" y="-28" textAnchor="middle">Looks nice</text>
             </g>
           </g>
         </svg>
