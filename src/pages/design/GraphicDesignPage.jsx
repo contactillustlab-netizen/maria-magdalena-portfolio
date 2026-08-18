@@ -2,6 +2,7 @@ import HeroSection from '../../components/HeroSection';
 import ScrollGallery from '../../components/ScrollGallery';
 import SkillsTimeline from '../../components/SkillsTimeline';
 import VisualEcosystem from '../../components/VisualEcosystem';
+import BrandProcess from '../../components/BrandProcess';
 import { graphicDesignProjects, graphicDesignTags } from '../../data/graphicDesignProjects';
 
 const skills = [
@@ -57,6 +58,8 @@ function GraphicDesignPage() {
           items={graphicDesignProjects}
           basePath="/design/graphic-design"
         />
+
+        <BrandProcess />
 
         <SkillsTimeline items={skills} />
 
