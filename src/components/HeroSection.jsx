@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function HeroSection({ eyebrow, title, subtitle, image, video, variant = 'illustration', titleVariant, primaryCta, secondaryCta }) {
+function HeroSection({ eyebrow, title, subtitle, image, video, variant = 'illustration', titleVariant, primaryCta, secondaryCta, scrollLabel }) {
   const [showImage, setShowImage] = useState(false);
 
   useEffect(() => {
@@ -63,6 +63,7 @@ function HeroSection({ eyebrow, title, subtitle, image, video, variant = 'illust
         ) : null}
       </div>
       <div className="hero__scroll" aria-hidden="true">
+        {scrollLabel ? <span className="hero__scroll-label">{scrollLabel}</span> : null}
         <span className="hero__scroll-icon">
           <span className="hero__scroll-dot" />
         </span>

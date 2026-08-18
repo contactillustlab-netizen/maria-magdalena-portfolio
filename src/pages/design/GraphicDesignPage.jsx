@@ -28,12 +28,12 @@ function GraphicDesignPage() {
   return (
     <>
       <HeroSection
-        eyebrow="Design"
         title="Design that makes brands look better, work better and sell better."
-        subtitle="Brand Identity · UI/UX Design · Marketing Design"
+        subtitle="I help businesses build clear visual identities, intuitive digital experiences and marketing materials that feel consistent across every touchpoint."
         image="/pictures/design-hero.webp"
         variant="design"
         titleVariant="sentence"
+        scrollLabel="Scroll to see"
       />
 
       <section className="section section--graphic-design">
