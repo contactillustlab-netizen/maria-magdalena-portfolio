@@ -152,54 +152,6 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
           style={pinned ? { transform: `translateX(${translateX}px)` } : undefined}
         >
           <div className="scroll-gallery__intro">
-            {/* Ambient "exploration map": a hub of curved branches reaching out to
-                project nodes, echoing the contact page's signal field but fanning
-                outward (many explorations) instead of converging on one target. */}
-            <div className="scroll-gallery__intro-bg" aria-hidden="true">
-              <svg
-                className="scroll-gallery__intro-bg-svg"
-                viewBox="0 0 500 500"
-                preserveAspectRatio="xMidYMid slice"
-                focusable="false"
-              >
-                <path id="explore-path-a" className="scroll-gallery__intro-path" d="M70,80 C 200,40 320,30 420,60" />
-                <path id="explore-path-b" className="scroll-gallery__intro-path" d="M70,80 C 220,90 380,130 460,190" />
-                <path id="explore-path-c" className="scroll-gallery__intro-path" d="M70,80 C 180,150 300,240 380,320" />
-                <path id="explore-path-d" className="scroll-gallery__intro-path" d="M70,80 C 140,220 240,350 300,430" />
-                <path id="explore-path-e" className="scroll-gallery__intro-path" d="M70,80 C 90,220 120,370 150,460" />
-                <path className="scroll-gallery__intro-path scroll-gallery__intro-path--branch" d="M460,190 C 480,230 495,265 490,300" />
-                <path className="scroll-gallery__intro-path scroll-gallery__intro-path--branch" d="M300,430 C 270,455 245,470 230,480" />
-
-                <circle className="scroll-gallery__intro-hub" cx="70" cy="80" r="5" />
-                <circle className="scroll-gallery__intro-node" cx="420" cy="60" r="4" style={{ animationDelay: '0s' }} />
-                <circle className="scroll-gallery__intro-node" cx="460" cy="190" r="4" style={{ animationDelay: '.5s' }} />
-                <circle className="scroll-gallery__intro-node" cx="380" cy="320" r="4" style={{ animationDelay: '1s' }} />
-                <circle className="scroll-gallery__intro-node" cx="300" cy="430" r="4" style={{ animationDelay: '1.5s' }} />
-                <circle className="scroll-gallery__intro-node" cx="150" cy="460" r="4" style={{ animationDelay: '2s' }} />
-                <circle className="scroll-gallery__intro-node scroll-gallery__intro-node--sm" cx="490" cy="300" r="3" style={{ animationDelay: '2.5s' }} />
-                <circle className="scroll-gallery__intro-node scroll-gallery__intro-node--sm" cx="230" cy="480" r="3" style={{ animationDelay: '3s' }} />
-
-                <circle className="scroll-gallery__intro-signal" r="3">
-                  <animateMotion dur="5.6s" begin="0s" repeatCount="indefinite" rotate="auto">
-                    <mpath href="#explore-path-a" xlinkHref="#explore-path-a" />
-                  </animateMotion>
-                  <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.85;1" dur="5.6s" begin="0s" repeatCount="indefinite" />
-                </circle>
-                <circle className="scroll-gallery__intro-signal" r="3">
-                  <animateMotion dur="5.6s" begin="1.9s" repeatCount="indefinite" rotate="auto">
-                    <mpath href="#explore-path-c" xlinkHref="#explore-path-c" />
-                  </animateMotion>
-                  <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.85;1" dur="5.6s" begin="1.9s" repeatCount="indefinite" />
-                </circle>
-                <circle className="scroll-gallery__intro-signal" r="3">
-                  <animateMotion dur="5.6s" begin="3.8s" repeatCount="indefinite" rotate="auto">
-                    <mpath href="#explore-path-e" xlinkHref="#explore-path-e" />
-                  </animateMotion>
-                  <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.85;1" dur="5.6s" begin="3.8s" repeatCount="indefinite" />
-                </circle>
-              </svg>
-            </div>
-
             <SectionHeader eyebrow={eyebrow} title={title} />
             <span className="scroll-gallery__hint">
               View projects
