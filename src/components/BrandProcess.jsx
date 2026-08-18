@@ -118,13 +118,8 @@ function BrandProcess() {
   return (
     <div className="brand-process">
       <div className="brand-process__columns">
-        {phases.map((phase, index) => (
-          <div
-            key={phase.id}
-            className="brand-process__col"
-            tabIndex={0}
-            style={{ '--tag-hue': Math.round((index / phases.length) * 360) }}
-          >
+        {phases.map((phase) => (
+          <div key={phase.id} className="brand-process__col">
             <div className="brand-process__col-head">
               <p className="brand-process__col-numeral">{phase.numeral}</p>
               <span className="brand-process__col-icon" aria-hidden="true">{phaseIcons[phase.icon]}</span>
