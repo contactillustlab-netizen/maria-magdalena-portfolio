@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 
 const DEFAULT_TONES = [
   { bg: '#FFFFFF', fg: '#111111', border: 'rgba(0,0,0,.12)' },
@@ -14,8 +14,51 @@ const DEFAULT_TONES = [
 function CardStack({ cards, tones = DEFAULT_TONES, label = 'Process steps' }) {
   const [expanded, setExpanded] = useState(false);
   const containerRef = useRef(null);
+  const trackRef = useRef(null);
   const scrollingRef = useRef(false);
   const scrollTimeoutRef = useRef(null);
+
+  // Card height is fixed (not auto), since the fan/stack transforms rely on
+  // a stable box to translate around — so the tallest card's natural
+  // content height has to be measured and applied to all of them, or
+  // shorter cards clip their own text and longer ones overflow the deck.
+  // Only ever measure while collapsed: on touch, collapsed is always the
+  // narrowest width the card renders at, so it wraps the most and needs
+  // the most height — that safely covers the expanded (wider, shorter-
+  // wrapped) state too. Measuring mid-transition would catch whatever
+  // width the animation happens to be interpolating through and could
+  // undersize the final layout, so a resize while expanded is skipped
+  // rather than risking that.
+  useLayoutEffect(() => {
+    function measure() {
+      const container = containerRef.current;
+      const track = trackRef.current;
+      if (!container || !track) return;
+      const surfaces = track.querySelectorAll('.card-stack__card-surface');
+      if (!surfaces.length) return;
+      const tallest = Math.max(...Array.from(surfaces, (el) => el.scrollHeight));
+      if (tallest > 0) container.style.setProperty('--stack-h', `${tallest}px`);
+    }
+    if (!expanded) measure();
+    // Collapsing narrows the cards back down over --stack-duration (560ms);
+    // measuring only at the instant the transition starts would catch
+    // whatever width it's still animating through, not the final narrow
+    // one, so re-measure again once it's had time to settle.
+    const settleTimeout = expanded ? null : setTimeout(measure, 650);
+    let resizeTimeout;
+    function handleResize() {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        if (!expanded) measure();
+      }, 120);
+    }
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      clearTimeout(resizeTimeout);
+      clearTimeout(settleTimeout);
+    };
+  }, [cards, expanded]);
 
   useEffect(() => {
     if (!expanded) return;
@@ -74,7 +117,7 @@ function CardStack({ cards, tones = DEFAULT_TONES, label = 'Process steps' }) {
       onClick={handleContainerClick}
       onKeyDown={handleKeyDown}
     >
-      <div className="card-stack__track" onScroll={handleTrackScroll}>
+      <div className="card-stack__track" ref={trackRef} onScroll={handleTrackScroll}>
         {cards.map((card, index) => {
           const tone = tones[index % tones.length];
           return (
