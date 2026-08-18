@@ -11,14 +11,21 @@ import SectionHeader from './SectionHeader';
 // Below the pin breakpoint, or with reduced motion, it degrades to a plain
 // swipeable row so touch scroll and accessibility keep working natively.
 // Floating prev/next buttons work in both modes for keyboard/mouse-only users.
+// The pinned viewport only needs to be as tall as its content (plus a capped
+// outer gap) instead of the full viewport height — a fixed 64px top/bottom
+// breathing room regardless of how much taller the screen is than the cards.
+const PINNED_OUTER_GAP = 64;
+
 function ScrollGallery({ eyebrow, title, items, basePath }) {
   const wrapperRef = useRef(null);
   const viewportRef = useRef(null);
   const trackRef = useRef(null);
   const maxTranslateRef = useRef(0);
+  const viewportHeightRef = useRef(0);
   const [translateX, setTranslateX] = useState(0);
   const [pinned, setPinned] = useState(false);
   const [wrapperHeight, setWrapperHeight] = useState(null);
+  const [viewportHeight, setViewportHeight] = useState(null);
   const [atStart, setAtStart] = useState(true);
   const [atEnd, setAtEnd] = useState(false);
 
@@ -39,6 +46,7 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
     if (!pinned) {
       setTranslateX(0);
       setWrapperHeight(null);
+      setViewportHeight(null);
       return undefined;
     }
     const wrapper = wrapperRef.current;
@@ -49,14 +57,19 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
 
     const measure = () => {
       maxTranslateRef.current = Math.max(track.scrollWidth - window.innerWidth, 0);
-      setWrapperHeight(window.innerHeight + maxTranslateRef.current);
+      const navHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 0;
+      const available = window.innerHeight - navHeight;
+      const fitted = Math.min(available, track.offsetHeight + PINNED_OUTER_GAP * 2);
+      viewportHeightRef.current = fitted;
+      setViewportHeight(fitted);
+      setWrapperHeight(fitted + maxTranslateRef.current);
     };
 
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        const scrollDistance = wrapper.offsetHeight - window.innerHeight;
+        const scrollDistance = wrapper.offsetHeight - viewportHeightRef.current;
         if (scrollDistance > 0) {
           const rect = wrapper.getBoundingClientRect();
           const progress = Math.min(Math.max(-rect.top / scrollDistance, 0), 1);
@@ -130,7 +143,7 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
 
     if (pinned && wrapper) {
       if (maxTranslateRef.current <= 0) return;
-      const scrollDistance = wrapper.offsetHeight - window.innerHeight;
+      const scrollDistance = wrapper.offsetHeight - viewportHeightRef.current;
       if (scrollDistance <= 0) return;
       const deltaScroll = (cardStep / maxTranslateRef.current) * scrollDistance * direction;
       window.scrollBy({ top: deltaScroll, behavior: 'smooth' });
@@ -145,7 +158,11 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
       ref={wrapperRef}
       style={pinned && wrapperHeight ? { height: `${wrapperHeight}px` } : undefined}
     >
-      <div className={`scroll-gallery__viewport${pinned ? ' scroll-gallery__viewport--pinned' : ''}`} ref={viewportRef}>
+      <div
+        className={`scroll-gallery__viewport${pinned ? ' scroll-gallery__viewport--pinned' : ''}`}
+        ref={viewportRef}
+        style={pinned && viewportHeight ? { height: `${viewportHeight}px` } : undefined}
+      >
         <div
           className="scroll-gallery__track"
           ref={trackRef}
@@ -163,13 +180,18 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
             <Link key={item.id} to={`${basePath}/${item.slug}`} className="scroll-gallery__card">
               <div className="scroll-gallery__image">
                 <SmartImage src={item.image} alt={item.title} loading="lazy" />
+                <span className="scroll-gallery__image-overlay">
+                  <span className="scroll-gallery__cta scroll-gallery__cta--overlay">
+                    Explore project <ArrowRight size={16} />
+                  </span>
+                </span>
               </div>
               <div className="scroll-gallery__caption">
                 <div>
                   <h3 className="scroll-gallery__title">{item.title}</h3>
                   <p className="scroll-gallery__description">{item.description}</p>
                 </div>
-                <span className="scroll-gallery__cta">
+                <span className="scroll-gallery__cta scroll-gallery__cta--inline">
                   Explore project <ArrowRight size={16} />
                 </span>
               </div>
