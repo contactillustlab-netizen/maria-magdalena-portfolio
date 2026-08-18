@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { useEffect } from 'react';
 
 const phases = [
   {
@@ -7,35 +6,40 @@ const phases = [
     numeral: '01',
     title: 'Understanding',
     text: 'Before anything gets designed, we get clear on who this is for and why it matters.',
-    detail: 'Background details, vision & values, target personas, stakeholder insights.'
+    detail: 'Background details, vision & values, target personas, stakeholder insights.',
+    icon: 'understanding'
   },
   {
     id: 'research',
     numeral: '02',
     title: 'Research & discovery',
     text: 'Then we look outward — at the market, the competitors, what has already been tried.',
-    detail: 'Customer research, competitive analysis, expert audits & insights, market positioning.'
+    detail: 'Customer research, competitive analysis, expert audits & insights, market positioning.',
+    icon: 'research'
   },
   {
     id: 'strategy',
     numeral: '03',
     title: 'Strategy',
     text: 'The findings become a position: what to say, and why it is different.',
-    detail: 'Story & personality, market opportunity, positioning & messaging, creative brief.'
+    detail: 'Story & personality, market opportunity, positioning & messaging, creative brief.',
+    icon: 'strategy'
   },
   {
     id: 'creative',
     numeral: '04',
     title: 'Creative',
     text: 'The name, the mark, the system — the strategy becomes something visible.',
-    detail: 'Naming, logo development, graphic standards, messaging framework.'
+    detail: 'Naming, logo development, graphic standards, messaging framework.',
+    icon: 'creative'
   },
   {
     id: 'deliver',
     numeral: '05',
     title: 'Deliver & integrate',
     text: 'Everything gets packaged so it works everywhere the brand shows up.',
-    detail: 'Brand book & style guide, print integration, online & mobile, further brand extension.'
+    detail: 'Brand book & style guide, print integration, online & mobile, further brand extension.',
+    icon: 'deliver'
   }
 ];
 
@@ -48,9 +52,51 @@ const strategyPills = [
   { label: 'Stakeholder insights' }
 ];
 
-function BrandProcess() {
-  const [expandedId, setExpandedId] = useState(null);
+// One small animated line-art icon per phase, in the same restrained visual
+// language as the contact page's signal field and the Visual Ecosystem
+// steps — "Creative" and "Deliver" reuse those exact icons since they're
+// literally the same moments in the process.
+const phaseIcons = {
+  understanding: (
+    <svg viewBox="0 0 32 32" className="brand-process__icon brand-process__icon--understanding" focusable="false">
+      <circle cx="16" cy="16" r="11" className="brand-process__icon-ring" />
+      <circle cx="16" cy="16" r="6" />
+      <circle cx="16" cy="16" r="1.6" fill="currentColor" stroke="none" />
+    </svg>
+  ),
+  research: (
+    <svg viewBox="0 0 32 32" className="brand-process__icon brand-process__icon--research" focusable="false">
+      <circle cx="13" cy="13" r="8" />
+      <line x1="18.7" y1="18.7" x2="27" y2="27" />
+    </svg>
+  ),
+  strategy: (
+    <svg viewBox="0 0 32 32" className="brand-process__icon brand-process__icon--strategy" focusable="false">
+      <circle cx="16" cy="16" r="11" />
+      <path className="brand-process__icon-needle" d="M16,8 L19,16 L16,24 L13,16 Z" fill="currentColor" stroke="none" />
+    </svg>
+  ),
+  creative: (
+    <svg viewBox="0 0 64 64" className="step-illustration step-illustration--brand" focusable="false">
+      <g className="step-illustration__rays">
+        <path d="M32 6V26" /><path d="M32 38V58" /><path d="M10 32H26" /><path d="M38 32H54" />
+        <path d="M16 16L27 27" /><path d="M37 37L48 48" /><path d="M48 16L37 27" /><path d="M27 37L16 48" />
+      </g>
+      <circle cx="32" cy="32" r="7" className="step-illustration__core" />
+    </svg>
+  ),
+  deliver: (
+    <svg viewBox="0 0 64 64" className="step-illustration step-illustration--product" focusable="false">
+      <rect x="11" y="7" width="42" height="50" rx="5" className="step-illustration__frame" />
+      <line x1="18" y1="19" x2="46" y2="19" className="step-illustration__row step-illustration__row--1" />
+      <line x1="18" y1="29" x2="38" y2="29" className="step-illustration__row step-illustration__row--2" />
+      <line x1="18" y1="39" x2="42" y2="39" className="step-illustration__row step-illustration__row--3" />
+      <rect x="18" y="47" width="18" height="6" rx="3" className="step-illustration__row step-illustration__row--4" />
+    </svg>
+  )
+};
 
+function BrandProcess() {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -64,7 +110,7 @@ function BrandProcess() {
       { threshold: 0.2 }
     );
     document
-      .querySelectorAll('.brand-process__evolution, .brand-process__col, .brand-process__payoff')
+      .querySelectorAll('.brand-process__col, .brand-process__payoff')
       .forEach((node) => observer.observe(node));
     return () => observer.disconnect();
   }, []);
@@ -78,99 +124,28 @@ function BrandProcess() {
       <h2 className="brand-process__heading">From a blank page to a mark that means something.</h2>
       <p className="brand-process__desc">
         Every identity moves through the same five moments before it's ready to carry a name — the mark itself
-        gets there step by step, from a loose idea to something confident enough to stand alone. Click a step
-        to see what happens inside it.
+        gets there step by step, from a loose idea to something confident enough to stand alone.
       </p>
 
-      <div className="brand-process__evolution" aria-hidden="true">
-        <svg
-          className="brand-process__evolution-svg"
-          viewBox="0 0 1200 220"
-          preserveAspectRatio="xMidYMid meet"
-          focusable="false"
-        >
-          <path className="brand-process__thread" strokeDasharray="260" d="M120,70 L360,70">
-            <animate attributeName="stroke-dashoffset" dur="6s" repeatCount="indefinite" keyTimes="0;0.11;1" values="260;0;0" />
-          </path>
-          <path className="brand-process__thread" strokeDasharray="260" d="M360,70 L600,70">
-            <animate attributeName="stroke-dashoffset" dur="6s" repeatCount="indefinite" keyTimes="0;0.22;0.33;1" values="260;260;0;0" />
-          </path>
-          <path className="brand-process__thread" strokeDasharray="260" d="M600,70 L840,70">
-            <animate attributeName="stroke-dashoffset" dur="6s" repeatCount="indefinite" keyTimes="0;0.44;0.55;1" values="260;260;0;0" />
-          </path>
-          <path className="brand-process__thread" strokeDasharray="260" d="M840,70 L1080,70">
-            <animate attributeName="stroke-dashoffset" dur="6s" repeatCount="indefinite" keyTimes="0;0.66;0.77;1" values="260;260;0;0" />
-          </path>
-
-          {/* Stage 1 — Understanding: barely-there, scratchy, uncertain */}
-          <g className="brand-process__mark brand-process__mark--1" transform="translate(72,12) scale(1.25)" strokeWidth="1.1" opacity=".4">
-            <path d="M32 21L32 27" /><path d="M32 37L32 43" /><path d="M21 32L27 32" /><path d="M37 32L43 32" />
-            <path d="M24 24L27.5 27.5" /><path d="M36.5 36.5L40 40" /><path d="M40 24L36.5 27.5" /><path d="M27.5 36.5L24 40" />
-            <path d="M27 19L29 23" /><path d="M35 19L33 23" /><path d="M19 27L23 29" /><path d="M19 35L23 33" />
-            <path d="M45 27L41 29" /><path d="M45 35L41 33" /><path d="M27 45L29 41" /><path d="M35 45L33 41" />
-            <path d="M25,32 C25,27.5 28,24.5 32,25 C36,24.5 39,28 38.7,32.5 C39,37 35.5,39.5 32,39 C28,39.5 25,36.5 25,32 Z" />
-          </g>
-
-          {/* Stage 2 — Research & Discovery: fewer strokes, still loose */}
-          <g className="brand-process__mark brand-process__mark--2" transform="translate(312,12) scale(1.25)" strokeWidth="1.2" opacity=".55">
-            <path d="M32 18L32 26" /><path d="M32 38L32 46" /><path d="M22 32L26 32" /><path d="M38 32L42 32" />
-            <path d="M24 24L27 27" /><path d="M37 37L40 40" /><path d="M40 24L37 27" /><path d="M27 37L24 40" />
-            <path d="M26 16L29 21" /><path d="M38 16L35 21" /><path d="M16 26L21 29" /><path d="M16 38L21 35" />
-            <path d="M26.5,32 C26.5,28.5 29,26 32,26.3 C35.5,26 38,29 37.8,32.3 C38,36 35,38.5 32,38 C28.5,38.3 26,35.5 26.5,32 Z" />
-          </g>
-
-          {/* Stage 3 — Strategy: converging toward the eight main directions */}
-          <g className="brand-process__mark brand-process__mark--3" transform="translate(552,12) scale(1.25)" strokeWidth="1.3" opacity=".7">
-            <path d="M32 14L32 26" /><path d="M32 38L32 50" /><path d="M18 32L26 32" /><path d="M38 32L46 32" />
-            <path d="M21 21L27 27" /><path d="M37 37L43 43" /><path d="M43 21L37 27" /><path d="M27 37L21 43" />
-            <path d="M24 12L27 19" /><path d="M40 12L37 19" />
-            <circle className="brand-process__mark-core" cx="32" cy="32" r="6.4" fill="var(--color-contrast)" stroke="none" />
-          </g>
-
-          {/* Stage 4 — Creative: nearly resolved, one stray mark still settling */}
-          <g className="brand-process__mark brand-process__mark--4" transform="translate(792,12) scale(1.25)" strokeWidth="1.4" opacity=".88">
-            <path d="M32 10L32 26" /><path d="M32 38L32 54" /><path d="M14 32L26 32" /><path d="M38 32L50 32" />
-            <path d="M18 18L27 27" /><path d="M37 37L46 46" /><path d="M46 18L37 27" /><path d="M27 37L18 46" />
-            <path d="M30 9L30 24" opacity=".35" />
-            <circle className="brand-process__mark-core" cx="32" cy="32" r="6.8" fill="var(--color-contrast)" stroke="none" />
-          </g>
-
-          {/* Stage 5 — Deliver & Integrate: the resolved mark, calm and alive */}
-          <g className="brand-process__mark brand-process__mark--5" transform="translate(1032,12) scale(1.25)" strokeWidth="1.5">
-            <g className="brand-process__mark-rays">
-              <path d="M32 6L32 26" /><path d="M32 38L32 58" /><path d="M10 32L26 32" /><path d="M38 32L54 32" />
-              <path d="M16 16L27 27" /><path d="M37 37L48 48" /><path d="M48 16L37 27" /><path d="M27 37L16 48" />
-            </g>
-            <circle className="brand-process__mark-core" cx="32" cy="32" r="7" />
-          </g>
-        </svg>
-      </div>
-
       <div className="brand-process__columns">
-        {phases.map((phase) => {
-          const expanded = expandedId === phase.id;
-          return (
-            <button
-              key={phase.id}
-              type="button"
-              className="brand-process__col"
-              onClick={() => setExpandedId(expanded ? null : phase.id)}
-              aria-expanded={expanded}
-            >
+        {phases.map((phase, index) => (
+          <div
+            key={phase.id}
+            className="brand-process__col"
+            tabIndex={0}
+            style={{ '--tag-hue': Math.round((index / phases.length) * 360) }}
+          >
+            <div className="brand-process__col-head">
               <p className="brand-process__col-numeral">{phase.numeral}</p>
-              <div className="brand-process__col-title">
-                <h3>{phase.title}</h3>
-                <ChevronDown
-                  className="brand-process__col-chevron"
-                  size={14}
-                  style={{ transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)' }}
-                />
-              </div>
+              <span className="brand-process__col-icon" aria-hidden="true">{phaseIcons[phase.icon]}</span>
+            </div>
+            <h3 className="brand-process__col-title">{phase.title}</h3>
+            <div className="brand-process__col-explain">
               <p className="brand-process__col-text">{phase.text}</p>
-              {expanded ? <p className="brand-process__col-detail">{phase.detail}</p> : null}
-            </button>
-          );
-        })}
+              <p className="brand-process__col-detail">{phase.detail}</p>
+            </div>
+          </div>
+        ))}
       </div>
 
       <div className="brand-process__payoff">

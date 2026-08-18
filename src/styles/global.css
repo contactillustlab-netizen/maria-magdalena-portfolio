@@ -741,51 +741,67 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
 }
 
 /* ==========================================================================
-   Brand process: the mark itself resolves from a loose sketch into the
-   Visual Ecosystem's clean sunburst icon across five moments, instead of a
-   boxes-and-arrows flowchart — then a balance visual argues that a mark
-   which only "looks nice" carries no weight without the process behind it.
+   Brand process: five cards, each with its own small animated icon next to
+   its number — "Creative" and "Deliver" reuse the exact Visual Ecosystem
+   icons since they're literally the same moments in the process. A balance
+   visual closes the section, arguing that a mark which only "looks nice"
+   carries no weight without the process behind it.
    ========================================================================== */
 .brand-process { margin: 0 0 5rem; }
 .brand-process__eyebrow { display: inline-flex; align-items: center; gap: .55rem; margin: 0 0 1rem; color: var(--color-muted); font-size: var(--text-label-md); line-height: var(--leading-label-md); letter-spacing: .28em; text-transform: uppercase; }
 .brand-process__eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-contrast); flex-shrink: 0; }
-.brand-process__heading { margin: 0 0 1rem; font-size: var(--text-headline-md); line-height: var(--leading-headline-md); font-family: var(--font-family-primary); max-width: 620px; }
-.brand-process__desc { margin: 0 0 3.5rem; max-width: 620px; color: var(--color-muted); font-size: var(--text-body-lg); line-height: 1.7; }
-
-.brand-process__evolution { position: relative; margin: 0 0 1.5rem; opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
-.brand-process__evolution.is-visible { opacity: 1; transform: translateY(0); }
-.brand-process__evolution-svg { width: 100%; height: auto; display: block; }
-.brand-process__thread { fill: none; stroke: var(--color-border); stroke-width: 1; stroke-linecap: round; }
-
-.brand-process__mark path, .brand-process__mark line { fill: none; stroke: var(--color-contrast); stroke-linecap: round; }
-.brand-process__mark--1 { animation: brandProcessFlicker 3.6s ease-in-out infinite; }
-.brand-process__mark--2 { animation: brandProcessFlicker 4.4s ease-in-out infinite; animation-delay: .4s; }
-.brand-process__mark--3 { animation: brandProcessFlicker 5.2s ease-in-out infinite; animation-delay: .2s; }
-.brand-process__mark--4 { animation: brandProcessFlicker 6s ease-in-out infinite; animation-delay: .6s; }
-@keyframes brandProcessFlicker { 0%, 100% { opacity: .78; } 50% { opacity: 1; } }
-.brand-process__mark--5 .brand-process__mark-core { fill: var(--color-contrast); stroke: none; transform-box: fill-box; transform-origin: center; animation: brandProcessCorePulse 3.2s ease-in-out infinite; }
-.brand-process__mark--5 .brand-process__mark-rays { animation: brandProcessRaysPulse 3.2s ease-in-out infinite; }
-@keyframes brandProcessCorePulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.16); } }
-@keyframes brandProcessRaysPulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+.brand-process__heading { margin: 0 0 1rem; font-size: 48px; line-height: 56px; font-family: var(--font-family-primary); }
+.brand-process__desc { margin: 0 0 3.5rem; color: var(--color-muted); font-size: var(--text-body-lg); line-height: 1.7; }
+@media (max-width: 768px) {
+  .brand-process__heading { font-size: var(--text-headline-lg); line-height: var(--leading-headline-lg); }
+}
 
 .brand-process__columns { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; margin: 0 0 4rem; }
 .brand-process__col {
-  display: block; width: 100%; padding: 0 .25rem; border: 0; background: none; text-align: left; cursor: pointer;
-  font-family: inherit; color: inherit;
-  opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease;
+  display: block; padding: 16px; border: 1px solid var(--color-border); border-radius: var(--radius-md);
+  opacity: 0; transform: translateY(18px);
+  transition: opacity .8s ease, transform .8s ease, border-color var(--transition), box-shadow var(--transition);
 }
 .brand-process__col.is-visible { opacity: 1; transform: translateY(0); }
-.brand-process__col-numeral { margin: 0 0 .5rem; font-size: var(--text-title-sm); line-height: var(--leading-title-sm); font-weight: 700; color: var(--color-muted); opacity: .7; letter-spacing: .02em; }
-.brand-process__col-title { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; margin: 0 0 .6rem; }
-.brand-process__col-title h3 { margin: 0; font-size: var(--text-title-md); line-height: var(--leading-title-md); font-family: var(--font-family-primary); font-weight: 700; }
-.brand-process__col-chevron { flex-shrink: 0; color: var(--color-muted); transition: transform var(--transition); }
+.brand-process__col:hover, .brand-process__col:focus-visible {
+  border-color: hsl(var(--tag-hue, 0) 70% 55% / .55);
+  box-shadow: 0 12px 28px hsl(var(--tag-hue, 0) 70% 55% / .35);
+  outline: none;
+}
+.brand-process__col-head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin: 0 0 .75rem; }
+.brand-process__col-numeral { margin: 0; font-size: var(--text-title-sm); line-height: var(--leading-title-sm); font-weight: 700; color: var(--color-muted); opacity: .7; letter-spacing: .02em; }
+.brand-process__col-icon { display: block; width: 28px; height: 28px; flex-shrink: 0; }
+.brand-process__col-title { margin: 0 0 .6rem; font-size: var(--text-title-md); line-height: var(--leading-title-md); font-family: var(--font-family-primary); font-weight: 700; }
 .brand-process__col-text { margin: 0; color: var(--color-muted); font-size: var(--text-body-md); line-height: var(--leading-body-md); }
+.brand-process__col-explain { max-height: 0; opacity: 0; overflow: hidden; margin-top: 0; transition: max-height 320ms ease, opacity 220ms ease, margin-top 320ms ease; }
+.brand-process__col:hover .brand-process__col-explain, .brand-process__col:focus-visible .brand-process__col-explain {
+  max-height: 400px; opacity: 1; margin-top: .75rem;
+}
 .brand-process__col-detail {
   margin: .85rem 0 0; padding-top: .85rem; border-top: 1px solid var(--color-border);
   font-size: var(--text-label-lg); line-height: var(--leading-label-lg); color: var(--color-muted);
-  animation: brandProcessDetailIn 260ms ease;
 }
-@keyframes brandProcessDetailIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+@media (max-width: 1024px) {
+  .brand-process__col-explain { max-height: none; opacity: 1; overflow: visible; margin-top: .75rem; }
+}
+
+/* Per-phase icons: same restrained thin-line language as the step
+   illustrations above — "creative" and "deliver" literally reuse those. */
+.brand-process__icon { width: 100%; height: 100%; overflow: visible; color: var(--color-contrast); }
+.brand-process__icon path, .brand-process__icon line, .brand-process__icon circle { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; }
+.brand-process__icon--understanding .brand-process__icon-ring {
+  transform-box: fill-box; transform-origin: center; animation: brandProcessRingPulse 2.6s ease-in-out infinite;
+}
+@keyframes brandProcessRingPulse { 0%, 100% { opacity: .4; transform: scale(1); } 50% { opacity: .9; transform: scale(1.08); } }
+.brand-process__icon--research { transform-box: fill-box; transform-origin: center; animation: brandProcessBreathe 3.4s ease-in-out infinite; }
+@keyframes brandProcessBreathe { 0%, 100% { opacity: .75; transform: scale(1); } 50% { opacity: 1; transform: scale(1.06); } }
+.brand-process__icon-needle { transform-box: fill-box; transform-origin: center; animation: brandProcessNeedle 3.2s ease-in-out infinite; }
+@keyframes brandProcessNeedle { 0%, 100% { transform: rotate(-18deg); } 50% { transform: rotate(18deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .brand-process__icon--understanding .brand-process__icon-ring, .brand-process__icon--research, .brand-process__icon-needle {
+    animation: none; opacity: .85; transform: none;
+  }
+}
 
 .brand-process__payoff {
   text-align: center; opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease;
@@ -813,8 +829,6 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
 .brand-process__balance-caption { font-size: var(--text-label-lg); letter-spacing: .12em; text-transform: uppercase; fill: var(--color-muted); }
 
 @media (prefers-reduced-motion: reduce) {
-  .brand-process__mark--1, .brand-process__mark--2, .brand-process__mark--3, .brand-process__mark--4,
-  .brand-process__mark--5 .brand-process__mark-core, .brand-process__mark--5 .brand-process__mark-rays,
   .brand-process__ghost-pill { animation: none; opacity: .85; transform: none; }
 }
 
