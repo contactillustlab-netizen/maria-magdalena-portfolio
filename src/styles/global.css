@@ -637,7 +637,7 @@ body[data-theme="design"] .scroll-gallery__image-overlay { background: linear-gr
 body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
 .scroll-gallery__caption { margin-top: 1.5rem; display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; }
 .scroll-gallery__title { margin: 0 0 .5rem; font-size: var(--text-title-lg); line-height: var(--leading-title-lg); font-family: var(--font-family-primary); }
-.scroll-gallery__description { margin: 0; max-width: 40ch; color: var(--color-muted); }
+.scroll-gallery__description { margin: 0; color: var(--color-muted); }
 .scroll-gallery__cta {
   display: inline-flex; align-items: center; gap: .5rem; flex-shrink: 0; margin-top: .35rem; white-space: nowrap;
   text-transform: uppercase; letter-spacing: .08em; font-size: var(--text-label-lg); line-height: var(--leading-label-lg);
