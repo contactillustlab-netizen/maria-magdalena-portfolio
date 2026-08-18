@@ -553,6 +553,10 @@ body[data-theme="design"] .gallery-item__category { color: rgba(0,0,0,.6); }
 .scroll-gallery {
   position: relative;
   width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw);
+  /* Same left edge as the centered .section container above it (nav, tags,
+     hero), instead of a flat gutter that drifts from that edge once the
+     viewport is wider than --container-width + its own side padding. */
+  --scroll-gallery-gutter: max(2rem, calc((100vw - var(--container-width)) / 2 + 2rem));
 }
 .scroll-gallery__viewport { position: relative; display: flex; align-items: center; }
 .scroll-gallery__viewport--pinned {
@@ -564,7 +568,7 @@ body[data-theme="design"] .gallery-item__category { color: rgba(0,0,0,.6); }
 .scroll-gallery__intro { flex: 0 0 min(460px, 42vw); display: flex; flex-direction: column; justify-content: center; }
 /* First card lands exactly at the 50% mark: intro takes the other half, minus
    the leading gutter and the gap to the first card. */
-.scroll-gallery__viewport--pinned .scroll-gallery__intro { flex-basis: calc(50vw - 4rem - 5rem); }
+.scroll-gallery__viewport--pinned .scroll-gallery__intro { flex-basis: calc(50vw - var(--scroll-gallery-gutter) - 5rem); }
 .scroll-gallery__viewport--pinned .scroll-gallery__intro .section-header__eyebrow { font-size: var(--text-label-lg); }
 .scroll-gallery__viewport--pinned .scroll-gallery__intro .section-header h2 {
   font-size: var(--text-display-lg); line-height: var(--leading-display-lg);
@@ -604,7 +608,7 @@ body[data-theme="design"] .gallery-item__category { color: rgba(0,0,0,.6); }
    height, so top-aligning keeps every image at the same Y regardless of how
    many lines a card's title/description wraps to. Centering here was the bug
    — a short caption pulled its whole card (and image) upward vs. a long one. */
-.scroll-gallery__track { display: flex; align-items: flex-start; gap: 5rem; padding: 0 4rem; }
+.scroll-gallery__track { display: flex; align-items: flex-start; gap: 5rem; padding: 0 var(--scroll-gallery-gutter); }
 .scroll-gallery__viewport--pinned .scroll-gallery__track { will-change: transform; }
 .scroll-gallery__viewport:not(.scroll-gallery__viewport--pinned) .scroll-gallery__track {
   width: 100%; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 1.25rem .5rem;
@@ -620,6 +624,10 @@ body[data-theme="design"] .gallery-item__category { color: rgba(0,0,0,.6); }
   opacity: 0; transform: translateY(56px); transition: opacity .7s ease, transform .7s ease;
 }
 .scroll-gallery__card.is-visible { opacity: 1; transform: translateY(0); }
+/* Capped so the first card lands fully inside the right gutter instead of
+   running past it — the intro sits at the same 50vw mark regardless of
+   card width, so anything wider than the remaining half gets clipped. */
+.scroll-gallery__viewport--pinned .scroll-gallery__card { flex-basis: min(680px, 44vw, calc(50vw - var(--scroll-gallery-gutter))); }
 .scroll-gallery__viewport:not(.scroll-gallery__viewport--pinned) .scroll-gallery__card { flex-basis: min(680px, 78vw); scroll-snap-align: center; }
 .scroll-gallery__image { position: relative; width: 100%; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: var(--color-surface); }
 .scroll-gallery__image img, .scroll-gallery__image .image-placeholder { width: 100%; height: 100%; object-fit: cover; min-height: 0; transition: transform .5s ease; }
