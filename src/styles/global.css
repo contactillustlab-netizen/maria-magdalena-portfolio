@@ -740,6 +740,91 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
   .step-illustration--marketing .step-illustration__signal { display: none; }
 }
 
+/* ==========================================================================
+   Brand process: the mark itself resolves from a loose sketch into the
+   Visual Ecosystem's clean sunburst icon across five moments, instead of a
+   boxes-and-arrows flowchart — then a balance visual argues that a mark
+   which only "looks nice" carries no weight without the process behind it.
+   ========================================================================== */
+.brand-process { margin: 0 0 5rem; }
+.brand-process__eyebrow { display: inline-flex; align-items: center; gap: .55rem; margin: 0 0 1rem; color: var(--color-muted); font-size: var(--text-label-md); line-height: var(--leading-label-md); letter-spacing: .28em; text-transform: uppercase; }
+.brand-process__eyebrow-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--color-contrast); flex-shrink: 0; }
+.brand-process__heading { margin: 0 0 1rem; font-size: var(--text-headline-md); line-height: var(--leading-headline-md); font-family: var(--font-family-primary); max-width: 620px; }
+.brand-process__desc { margin: 0 0 3.5rem; max-width: 620px; color: var(--color-muted); font-size: var(--text-body-lg); line-height: 1.7; }
+
+.brand-process__evolution { position: relative; margin: 0 0 1.5rem; opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease; }
+.brand-process__evolution.is-visible { opacity: 1; transform: translateY(0); }
+.brand-process__evolution-svg { width: 100%; height: auto; display: block; }
+.brand-process__thread { fill: none; stroke: var(--color-border); stroke-width: 1; stroke-linecap: round; }
+
+.brand-process__mark path, .brand-process__mark line { fill: none; stroke: var(--color-contrast); stroke-linecap: round; }
+.brand-process__mark--1 { animation: brandProcessFlicker 3.6s ease-in-out infinite; }
+.brand-process__mark--2 { animation: brandProcessFlicker 4.4s ease-in-out infinite; animation-delay: .4s; }
+.brand-process__mark--3 { animation: brandProcessFlicker 5.2s ease-in-out infinite; animation-delay: .2s; }
+.brand-process__mark--4 { animation: brandProcessFlicker 6s ease-in-out infinite; animation-delay: .6s; }
+@keyframes brandProcessFlicker { 0%, 100% { opacity: .78; } 50% { opacity: 1; } }
+.brand-process__mark--5 .brand-process__mark-core { fill: var(--color-contrast); stroke: none; transform-box: fill-box; transform-origin: center; animation: brandProcessCorePulse 3.2s ease-in-out infinite; }
+.brand-process__mark--5 .brand-process__mark-rays { animation: brandProcessRaysPulse 3.2s ease-in-out infinite; }
+@keyframes brandProcessCorePulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.16); } }
+@keyframes brandProcessRaysPulse { 0%, 100% { opacity: .55; } 50% { opacity: 1; } }
+
+.brand-process__columns { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; margin: 0 0 4rem; }
+.brand-process__col {
+  display: block; width: 100%; padding: 0 .25rem; border: 0; background: none; text-align: left; cursor: pointer;
+  font-family: inherit; color: inherit;
+  opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease;
+}
+.brand-process__col.is-visible { opacity: 1; transform: translateY(0); }
+.brand-process__col-numeral { margin: 0 0 .5rem; font-size: var(--text-title-sm); line-height: var(--leading-title-sm); font-weight: 700; color: var(--color-muted); opacity: .7; letter-spacing: .02em; }
+.brand-process__col-title { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; margin: 0 0 .6rem; }
+.brand-process__col-title h3 { margin: 0; font-size: var(--text-title-md); line-height: var(--leading-title-md); font-family: var(--font-family-primary); font-weight: 700; }
+.brand-process__col-chevron { flex-shrink: 0; color: var(--color-muted); transition: transform var(--transition); }
+.brand-process__col-text { margin: 0; color: var(--color-muted); font-size: var(--text-body-md); line-height: var(--leading-body-md); }
+.brand-process__col-detail {
+  margin: .85rem 0 0; padding-top: .85rem; border-top: 1px solid var(--color-border);
+  font-size: var(--text-label-lg); line-height: var(--leading-label-lg); color: var(--color-muted);
+  animation: brandProcessDetailIn 260ms ease;
+}
+@keyframes brandProcessDetailIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+.brand-process__payoff {
+  text-align: center; opacity: 0; transform: translateY(18px); transition: opacity .8s ease, transform .8s ease;
+}
+.brand-process__payoff.is-visible { opacity: 1; transform: translateY(0); }
+.brand-process__payoff-heading { margin: 0 auto .75rem; font-size: var(--text-headline-sm); line-height: var(--leading-headline-sm); font-family: var(--font-family-primary); max-width: 640px; }
+.brand-process__payoff-text { margin: 0 auto 2.5rem; max-width: 520px; color: var(--color-muted); font-size: var(--text-body-md); line-height: 1.7; }
+.brand-process__balance-svg { width: 100%; height: auto; display: block; max-width: 900px; margin: 0 auto; }
+.brand-process__pill rect { fill: var(--color-bg); stroke: var(--color-border); stroke-width: 1.3; }
+.brand-process__pill text { fill: var(--color-muted); font-size: 12.5px; letter-spacing: .03em; text-transform: uppercase; }
+.brand-process__pill--accent rect { stroke: var(--color-contrast); stroke-width: 1.6; }
+.brand-process__pill--accent text { fill: var(--color-contrast); font-weight: 700; }
+.brand-process__pill--ghost rect { fill: none; stroke-dasharray: 4 4; stroke: var(--color-muted); }
+.brand-process__pill--ghost text { fill: var(--color-muted); }
+.brand-process__payoff.is-visible .brand-process__pill-stack .brand-process__pill { opacity: 0; animation: brandProcessPillIn 500ms ease forwards; }
+.brand-process__payoff.is-visible .brand-process__pill-stack .brand-process__pill:nth-child(1) { animation-delay: .05s; }
+.brand-process__payoff.is-visible .brand-process__pill-stack .brand-process__pill:nth-child(2) { animation-delay: .2s; }
+.brand-process__payoff.is-visible .brand-process__pill-stack .brand-process__pill:nth-child(3) { animation-delay: .35s; }
+.brand-process__payoff.is-visible .brand-process__pill-stack .brand-process__pill:nth-child(4) { animation-delay: .5s; }
+.brand-process__payoff.is-visible .brand-process__pill-stack .brand-process__pill:nth-child(5) { animation-delay: .65s; }
+.brand-process__payoff.is-visible .brand-process__pill-stack .brand-process__pill:nth-child(6) { animation-delay: .8s; }
+@keyframes brandProcessPillIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.brand-process__ghost-pill { transform-box: fill-box; transform-origin: center; animation: brandProcessGhostFloat 3.6s ease-in-out infinite; }
+@keyframes brandProcessGhostFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+.brand-process__balance-caption { font-size: var(--text-label-lg); letter-spacing: .12em; text-transform: uppercase; fill: var(--color-muted); }
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-process__mark--1, .brand-process__mark--2, .brand-process__mark--3, .brand-process__mark--4,
+  .brand-process__mark--5 .brand-process__mark-core, .brand-process__mark--5 .brand-process__mark-rays,
+  .brand-process__ghost-pill { animation: none; opacity: .85; transform: none; }
+}
+
+@media (max-width: 1024px) {
+  .brand-process__columns { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.5rem; }
+}
+@media (max-width: 640px) {
+  .brand-process__columns { grid-template-columns: 1fr; }
+}
+
 .about-page { padding-top: 0; padding-bottom: 0; }
 .about-page__layout {
   display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); gap: 3rem; height: calc(100vh - var(--nav-height));

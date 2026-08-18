@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HeroSection from '../../components/HeroSection';
 import SmartImage from '../../components/SmartImage';
+import BrandProcess from '../../components/BrandProcess';
 import { brandingProjects } from '../../data/brandingProjects';
 
 function BrandingPage() {
@@ -32,6 +33,8 @@ function BrandingPage() {
       />
 
       <section className="section section--branding">
+        <BrandProcess />
+
         <div className="branding-grid">
           {brandingProjects.map((project, index) => (
             <Link
