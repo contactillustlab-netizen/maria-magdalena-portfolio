@@ -346,6 +346,11 @@ video.hero__image { width: 100%; height: 100%; object-fit: cover; }
 .section--gallery { padding-top: 16px; }
 .section--gallery > .graphic-design__tags { margin-top: 16px; }
 .section--graphic-design { padding-top: 32px; }
+/* Even 64px rhythm between every preset on the /design page — scoped here
+   since .graphic-design__tags and .scroll-gallery are shared with other
+   pages that keep their own spacing. */
+.section--graphic-design > .graphic-design__tags { margin-bottom: 0; }
+.section--graphic-design > .scroll-gallery { margin-top: 64px; }
 .section-header { margin-bottom: 2rem; }
 .section-header__eyebrow { text-transform: uppercase; letter-spacing: .28em; color: var(--color-muted); font-size: var(--text-label-md); line-height: var(--leading-label-md); margin-bottom: 1rem; }
 .section-header h2 { margin: 0 0 .5rem; font-size: var(--text-headline-md); line-height: var(--leading-headline-md); font-family: var(--font-family-primary); }
@@ -669,7 +674,7 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
   .scroll-gallery__card:hover .scroll-gallery__image-overlay, .scroll-gallery__card:focus-visible .scroll-gallery__image-overlay { opacity: 1; }
 }
 
-.skills-timeline { list-style: none; padding: 0; margin: 5rem 0 0; display: flex; flex-direction: column; gap: 3.5rem; }
+.skills-timeline { list-style: none; padding: 0; margin: 64px 0 0; display: flex; flex-direction: column; gap: 3.5rem; }
 .skills-timeline__item {
   position: relative; display: grid; grid-template-columns: 220px 1fr; gap: 2.5rem; padding-left: 2rem;
 }
@@ -685,7 +690,7 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
 .skills-timeline__content h3 { margin: 0 0 1rem; font-size: var(--text-headline-sm); line-height: var(--leading-headline-sm); font-family: var(--font-family-primary); }
 .skills-timeline__content p { margin: 0 0 1.5rem; max-width: 560px; color: var(--color-muted); line-height: 1.8; }
 
-.visual-ecosystem { margin-top: 6rem; text-align: center; }
+.visual-ecosystem { margin-top: 64px; text-align: center; }
 .visual-ecosystem__title { margin: 0 auto 3rem; white-space: nowrap; font-size: 48px; line-height: 56px; font-family: var(--font-family-primary); }
 .visual-ecosystem__steps { list-style: none; display: flex; justify-content: center; gap: 1.5rem; padding: 0; margin: 0 0 2.5rem; }
 .visual-ecosystem__step { display: flex; gap: 1.5rem; flex: 1; }
@@ -755,7 +760,7 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
    visual closes the section, arguing that a mark which only "looks nice"
    carries no weight without the process behind it.
    ========================================================================== */
-.brand-process { margin: 64px 0 5rem; }
+.brand-process { margin: 64px 0 0; }
 
 /* Card stack: 5 cards resting like a loose physical deck. Collapsed, each
    card sits at a small tuned rotation/offset (--stack-x/y/rot per nth-child)
@@ -769,18 +774,20 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
 }
 .card-stack:focus-visible { outline: 2px solid var(--color-contrast); outline-offset: 8px; }
 .card-stack__track {
-  position: relative; height: var(--stack-h); overflow-x: auto; overflow-y: hidden;
+  position: relative; height: var(--stack-h); padding: 20px 0; box-sizing: content-box;
+  overflow-x: auto; overflow-y: hidden;
   scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x proximity;
-  --fan-total-w: calc(5 * var(--stack-w) + 4 * var(--stack-gap));
 }
 .card-stack__track::-webkit-scrollbar { display: none; }
-/* The whole fan centers itself when it fits (desktop) and flushes to the
-   left edge, scrollable, when it doesn't (narrow desktop windows, touch) —
-   `left` (a %-of-container value) carries that shared shift so no card ever
-   lands at a negative, unreachable scroll offset. Each card's own slot
-   within the fan, and its collapsed jitter, ride on top via transform. */
+/* Collapsed cards sit centered (left:50%) so the deck reads as one object in
+   the middle of the section. On hover-capable devices the fan opens
+   symmetrically from that same center point. Touch has no hover to open
+   it with, and the fan needs to overflow into a swipeable row rather than
+   fit the viewport, so it re-anchors to the track's own left edge instead —
+   center-anchored offsets can't be scrolled to on the left, since a
+   scroll container never reaches a negative scroll position. */
 .card-stack__card {
-  position: absolute; top: 0; left: max(0px, calc((100% - var(--fan-total-w)) / 2));
+  position: absolute; top: 0; left: 50%; margin-left: calc(var(--stack-w) / -2);
   width: var(--stack-w); height: var(--stack-h); scroll-snap-align: start;
   transform: translate(var(--stack-x, 0), var(--stack-y, 0)) rotate(var(--stack-rot, 0deg));
   transition: transform var(--stack-duration) var(--stack-ease);
@@ -796,11 +803,15 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
 .card-stack__card:nth-child(3) { z-index: 3; }
 .card-stack__card:nth-child(4) { z-index: 4; }
 .card-stack__card:nth-child(5) { z-index: 5; }
-.card-stack__card { --fan-x: calc(var(--stack-index) * (var(--stack-w) + var(--stack-gap))); }
+.card-stack__card { --fan-x: calc((var(--stack-index) - 2) * (var(--stack-w) + var(--stack-gap))); }
 .card-stack.is-expanded .card-stack__card { transform: translateX(var(--fan-x)) rotate(0deg); }
 @media (hover: hover) and (pointer: fine) {
   .card-stack:hover .card-stack__card,
   .card-stack:focus-within .card-stack__card { transform: translateX(var(--fan-x)) rotate(0deg); }
+}
+@media (hover: none), (pointer: coarse) {
+  .card-stack__card { left: 0; margin-left: 0; }
+  .card-stack__card { --fan-x: calc(var(--stack-index) * (var(--stack-w) + var(--stack-gap))); }
 }
 .card-stack__card-surface {
   position: relative; height: 100%; display: flex; flex-direction: column; justify-content: space-between;
