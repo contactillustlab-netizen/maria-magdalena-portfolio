@@ -190,6 +190,7 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
                 <div>
                   <h3 className="scroll-gallery__title">{item.title}</h3>
                   <p className="scroll-gallery__description">{item.description}</p>
+                  {item.tag ? <span className="scroll-gallery__tag">{item.tag}</span> : null}
                 </div>
                 <span className="scroll-gallery__cta scroll-gallery__cta--inline">
                   Explore project <ArrowRight size={16} />

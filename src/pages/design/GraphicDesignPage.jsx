@@ -1,6 +1,7 @@
 import HeroSection from '../../components/HeroSection';
 import ScrollGallery from '../../components/ScrollGallery';
 import SkillsTimeline from '../../components/SkillsTimeline';
+import VisualEcosystem from '../../components/VisualEcosystem';
 import { graphicDesignProjects, graphicDesignTags } from '../../data/graphicDesignProjects';
 
 const skills = [
@@ -57,6 +58,8 @@ function GraphicDesignPage() {
         />
 
         <SkillsTimeline items={skills} />
+
+        <VisualEcosystem />
       </section>
     </>
   );
