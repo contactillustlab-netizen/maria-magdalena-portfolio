@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import CardStack from './CardStack';
 
 // A light-to-dark neutral ramp across the 5 cards — easy to swap for real
 // brand colors later.
@@ -120,27 +121,29 @@ function BrandProcess() {
     return () => observer.disconnect();
   }, []);
 
+  const cards = phases.map((phase, index) => {
+    const tone = TONES[index % TONES.length];
+    return {
+      id: phase.id,
+      content: (
+        <div
+          className="brand-process__col"
+          style={{ '--card-bg': tone.bg, '--card-fg': tone.fg, '--card-border': tone.border }}
+        >
+          <div className="brand-process__col-head">
+            <p className="brand-process__col-numeral">{phase.numeral}</p>
+            <span className="brand-process__col-icon" aria-hidden="true">{phaseIcons[phase.icon]}</span>
+          </div>
+          <h3 className="brand-process__col-title">{phase.title}</h3>
+          <p className="brand-process__col-text">{phase.description}</p>
+        </div>
+      )
+    };
+  });
+
   return (
     <div className="brand-process">
-      <div className="brand-process__columns">
-        {phases.map((phase, index) => {
-          const tone = TONES[index % TONES.length];
-          return (
-            <div
-              key={phase.id}
-              className="brand-process__col"
-              style={{ '--card-bg': tone.bg, '--card-fg': tone.fg, '--card-border': tone.border }}
-            >
-              <div className="brand-process__col-head">
-                <p className="brand-process__col-numeral">{phase.numeral}</p>
-                <span className="brand-process__col-icon" aria-hidden="true">{phaseIcons[phase.icon]}</span>
-              </div>
-              <h3 className="brand-process__col-title">{phase.title}</h3>
-              <p className="brand-process__col-text">{phase.description}</p>
-            </div>
-          );
-        })}
-      </div>
+      <CardStack cards={cards} className="brand-process__columns" />
 
       <div className="brand-process__payoff">
         <h3 className="brand-process__payoff-heading">A mark that only "looks nice" doesn't hold its weight.</h3>

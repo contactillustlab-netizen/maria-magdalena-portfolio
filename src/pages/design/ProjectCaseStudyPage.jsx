@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import Breadcrumbs from '../../components/Breadcrumbs';
 import MasonryGallery from '../../components/MasonryGallery';
+import { getYoutubeEmbedUrl } from '../../lib/youtube';
 
 const CASE_STUDY_TABS = [
   { key: 'challenge', label: 'The Challenge' },
@@ -35,8 +36,11 @@ function ProjectCaseStudyPage({ projects, listPath, basePath, sectionLabel }) {
   const previousProject = projects[(index - 1 + projects.length) % projects.length];
   const nextProject = projects[(index + 1) % projects.length];
 
+  const videoEmbedUrl = getYoutubeEmbedUrl(project.video);
+
   const galleryItems = [
     { id: 0, title: project.title, category: project.tag, image: project.image },
+    ...(videoEmbedUrl ? [{ id: 'video', title: `${project.title} — Video`, category: project.tag, video: videoEmbedUrl }] : []),
     ...(project.images
       ? project.images.map((src, i) => ({ id: i + 1, title: `${project.title} — Visual ${i + 1}`, category: project.tag, image: src }))
       : Array.from({ length: project.galleryCount ?? 0 }, (_, i) => ({ id: i + 1, title: `${project.title} — Visual ${i + 1}`, category: project.tag, image: null })))

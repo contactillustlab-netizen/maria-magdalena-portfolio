@@ -2,6 +2,22 @@ import { ArrowUpRight } from 'lucide-react';
 import SmartImage from './SmartImage';
 
 function GalleryItem({ item, onSelect }) {
+  if (item.video) {
+    return (
+      <article className="gallery-item">
+        <div className="gallery-item__video">
+          <iframe
+            src={item.video}
+            title={item.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            loading="lazy"
+          />
+        </div>
+      </article>
+    );
+  }
+
   return (
     <article className="gallery-item">
       <button className="gallery-item__button" onClick={() => onSelect(item)} type="button" aria-label={`View ${item.title}`}>

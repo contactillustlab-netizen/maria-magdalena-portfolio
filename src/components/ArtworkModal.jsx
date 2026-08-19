@@ -30,23 +30,34 @@ function ArtworkModal({ items, index, startImage, onClose, onNavigate }) {
   const hasSiblingProjects = item && items.length > 1;
   const canNavigate = projectImages ? projectImages.length > 1 : hasSiblingProjects;
 
+  // Video entries aren't viewable inside this image modal — step past them
+  // when cycling through sibling items instead of landing on a blank stage.
+  const stepIndex = useCallback((from, direction) => {
+    let next = from;
+    for (let i = 0; i < items.length; i += 1) {
+      next = (next + direction + items.length) % items.length;
+      if (!items[next]?.video) return next;
+    }
+    return from;
+  }, [items]);
+
   const goPrev = useCallback(() => {
     if (!canNavigate) return;
     if (projectImages) {
       setSubIndex((current) => (current - 1 + projectImages.length) % projectImages.length);
     } else {
-      onNavigate((activeIndex - 1 + items.length) % items.length);
+      onNavigate(stepIndex(activeIndex, -1));
     }
-  }, [canNavigate, projectImages, activeIndex, items.length, onNavigate]);
+  }, [canNavigate, projectImages, activeIndex, stepIndex, onNavigate]);
 
   const goNext = useCallback(() => {
     if (!canNavigate) return;
     if (projectImages) {
       setSubIndex((current) => (current + 1) % projectImages.length);
     } else {
-      onNavigate((activeIndex + 1) % items.length);
+      onNavigate(stepIndex(activeIndex, 1));
     }
-  }, [canNavigate, projectImages, activeIndex, items.length, onNavigate]);
+  }, [canNavigate, projectImages, activeIndex, stepIndex, onNavigate]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -72,8 +83,8 @@ function ArtworkModal({ items, index, startImage, onClose, onNavigate }) {
   };
 
   const currentSrc = projectImages ? projectImages[subIndex] : item.image;
-  const prevItem = !projectImages && hasSiblingProjects ? items[(activeIndex - 1 + items.length) % items.length] : null;
-  const nextItem = !projectImages && hasSiblingProjects ? items[(activeIndex + 1) % items.length] : null;
+  const prevItem = !projectImages && hasSiblingProjects ? items[stepIndex(activeIndex, -1)] : null;
+  const nextItem = !projectImages && hasSiblingProjects ? items[stepIndex(activeIndex, 1)] : null;
 
   return createPortal(
     <div className={`modal${visible ? ' is-open' : ''}`} role="dialog" aria-modal="true" aria-label={item.title}>

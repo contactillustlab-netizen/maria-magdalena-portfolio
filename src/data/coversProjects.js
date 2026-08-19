@@ -53,6 +53,11 @@ export const coversProjects = [
     tag: 'Fan Cover Art',
     aspectRatio: '4 / 3',
     image: '/pictures/pans-labyrinth.webp',
+    video: 'https://youtu.be/xL5gTECh7-g?si=x41ZUpscVjB_Rzpw',
+    images: [
+      '/pictures/pans-labyrinth-2.webp',
+      '/pictures/pans-labyrinth-3.webp'
+    ],
     description: 'A tribute cover piece built around the Faun, rendered in bruised violets and firelight.',
     caseStudy: {
       challenge: "The challenge with a tribute piece is staying recognizable without simply reproducing an existing image — the goal was a cover-style composition that captured the mood of the film's Faun rather than illustrating a specific scene.",
