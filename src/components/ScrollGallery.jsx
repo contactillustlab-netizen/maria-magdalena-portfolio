@@ -158,6 +158,13 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
       ref={wrapperRef}
       style={pinned && wrapperHeight ? { height: `${wrapperHeight}px` } : undefined}
     >
+      {/* Mobile only (see CSS): the title sits above the track as a normal
+          block instead of being the track's first swipeable slide, so the
+          peek layout below can start right on the first project card. */}
+      <div className="scroll-gallery__intro--mobile">
+        <SectionHeader eyebrow={eyebrow} title={title} />
+      </div>
+
       <div
         className={`scroll-gallery__viewport${pinned ? ' scroll-gallery__viewport--pinned' : ''}`}
         ref={viewportRef}

@@ -563,6 +563,7 @@ body[data-theme="design"] .gallery-item__category { color: rgba(0,0,0,.6); }
      viewport is wider than --container-width + its own side padding. */
   --scroll-gallery-gutter: max(2rem, calc((100vw - var(--container-width)) / 2 + 2rem));
 }
+.scroll-gallery__intro--mobile { display: none; }
 .scroll-gallery__viewport { position: relative; display: flex; align-items: center; }
 .scroll-gallery__viewport--pinned {
   position: sticky; top: var(--nav-height); height: calc(100vh - var(--nav-height)); overflow: hidden;
@@ -1373,8 +1374,19 @@ body[data-theme="design"] .about-page__tool-logo--chatgpt { filter: brightness(0
   .site-footer { padding: 2.5rem 1rem 1.5rem; }
   .branding-grid { grid-template-columns: 1fr; gap: 3rem; }
   .case-study__layout { padding: 0 20px; }
-  .scroll-gallery__track { padding: 0 20px 0.5rem; gap: 3rem; }
-  .scroll-gallery__controls { right: 20px; bottom: 1rem; }
+  /* Title moves above the track as a plain block (see .scroll-gallery__intro
+     rules below) and cards snap to the left edge instead of centering, so
+     the first project sits flush in the gutter with the next one peeking
+     in from the right — a visual cue that there's more to swipe to. */
+  .scroll-gallery__intro { display: none; }
+  .scroll-gallery__intro--mobile { display: block; margin: 0 20px 32px; }
+  .scroll-gallery__track { padding: 0 20px 0.5rem; gap: 16px; }
+  /* The whole point of the peek is the next card showing before it's been
+     scrolled into view — the scroll-reveal fade (triggered at 20% visible)
+     would otherwise leave that sliver blank until it's swiped past that
+     threshold, so cards render at full opacity immediately on mobile. */
+  .scroll-gallery__card { scroll-snap-align: start; opacity: 1; transform: none; transition: none; }
+  .scroll-gallery__controls { display: none; }
   .scroll-gallery__caption { flex-direction: column; align-items: flex-start; }
   .scroll-gallery__cta { margin-top: .75rem; }
   .case-study__title { font-size: var(--text-headline-lg); line-height: var(--leading-headline-lg); }
