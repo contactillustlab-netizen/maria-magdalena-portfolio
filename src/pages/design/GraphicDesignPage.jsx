@@ -1,6 +1,5 @@
 import HeroSection from '../../components/HeroSection';
 import ScrollGallery from '../../components/ScrollGallery';
-import SkillsTimeline from '../../components/SkillsTimeline';
 import VisualEcosystem from '../../components/VisualEcosystem';
 import BrandProcess from '../../components/BrandProcess';
 import StatsRow from '../../components/StatsRow';
@@ -10,27 +9,6 @@ const stats = [
   { number: '10+', label: 'Years in design field' },
   { number: '50+', label: 'Projects completed' },
   { number: '30+', label: 'Happy clients' }
-];
-
-const skills = [
-  {
-    label: 'Branding',
-    title: 'Brand identity systems',
-    text: 'I build visual identities — logo systems, typography, color and voice — that stay consistent and confident across every touchpoint.',
-    cta: '/design/branding'
-  },
-  {
-    label: 'Marketing Design',
-    title: 'Campaigns that convert',
-    text: 'I design promotional materials, social campaigns and pitch decks that feel cinematic while staying tightly on-brand.',
-    cta: '/design/marketing-design'
-  },
-  {
-    label: 'UI Design',
-    title: 'Interfaces with clarity',
-    text: 'I design digital products and interfaces focused on usability, hierarchy and quiet, confident restraint.',
-    cta: '/design/ui-design'
-  }
 ];
 
 function GraphicDesignPage() {
@@ -69,8 +47,6 @@ function GraphicDesignPage() {
         />
 
         <BrandProcess />
-
-        <SkillsTimeline items={skills} />
 
         <VisualEcosystem />
       </section>

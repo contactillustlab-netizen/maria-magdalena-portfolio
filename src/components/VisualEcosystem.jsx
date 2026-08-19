@@ -1,9 +1,22 @@
 import { ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const defaultSteps = [
-  { number: '01', label: 'Brand', text: 'Build the identity', icon: 'brand' },
-  { number: '02', label: 'Product', text: 'Turn it into an experience', icon: 'product' },
-  { number: '03', label: 'Marketing', text: 'Bring it to the audience', icon: 'marketing' }
+  {
+    number: '01', label: 'Brand', icon: 'brand',
+    text: 'I turn brand vision, research and strategy into a distinctive visual identity built to stay consistent and recognizable across every touchpoint.',
+    cta: 'Explore Branding', href: '/design/branding'
+  },
+  {
+    number: '02', label: 'Product', icon: 'product',
+    text: 'I translate the brand into clear, intuitive digital experiences where usability, hierarchy and visual consistency work together.',
+    cta: 'Explore UI Design', href: '/design/ui-design'
+  },
+  {
+    number: '03', label: 'Marketing', icon: 'marketing',
+    text: 'I extend the brand into campaigns and communication that stay consistent, engaging and recognizable across every channel.',
+    cta: 'Explore Marketing Design', href: '/design/marketing-design'
+  }
 ];
 
 // Small looping line-art illustrations in the same visual language as the
@@ -61,13 +74,16 @@ function VisualEcosystem({
       <ol className="visual-ecosystem__steps">
         {steps.map((step, index) => (
           <li key={step.number} className="visual-ecosystem__step">
-            <div className="visual-ecosystem__step-body">
+            <Link to={step.href} className="visual-ecosystem__step-body">
               <span className="visual-ecosystem__icon" aria-hidden="true">
                 {stepIllustrations[step.icon]}
               </span>
               <span className="visual-ecosystem__label">{step.number} {step.label}</span>
               <p className="visual-ecosystem__text">{step.text}</p>
-            </div>
+              <span className="visual-ecosystem__cta">
+                {step.cta} <ArrowRight size={16} />
+              </span>
+            </Link>
             {index < steps.length - 1 && (
               <ArrowRight className="visual-ecosystem__arrow" size={22} aria-hidden="true" />
             )}
