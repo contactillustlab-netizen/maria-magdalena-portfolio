@@ -98,6 +98,10 @@ function AboutPage() {
         <aside className="about-page__sidebar">
           <div className="about-page__portrait">
             <SmartImage src="/pictures/portrait.webp" alt="Vizireanu Maria-Magdalena portrait" orientation="portrait" />
+            <div className="about-page__portrait-caption">
+              <p className="about-page__portrait-name">Vizireanu Maria-Magdalena</p>
+              <p className="about-page__portrait-role">Illustrator &amp; Graphic Designer</p>
+            </div>
           </div>
           <div className="about-page__tools" aria-hidden="true">
             <div className="about-page__tools-track">
@@ -117,7 +121,7 @@ function AboutPage() {
 
         <div className="about-page__main">
           <section className="about-page__block">
-            <SectionHeader eyebrow="About" title="Vizireanu Maria-Magdalena" description="Illustrator & Graphic Designer" />
+            <SectionHeader eyebrow="About" title="ACHIEVEMENTS" description="An overview of my credentials and skillset." />
             <p className="about-page__text">I am an illustrator, graphic designer, and concept artist focused on transforming ideas into distinctive visual experiences. My work combines storytelling, visual identity, digital design, and artistic exploration.</p>
             <h3>Services</h3>
             <div className="about-page__tags">

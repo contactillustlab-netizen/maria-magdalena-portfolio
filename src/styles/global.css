@@ -881,8 +881,22 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
   width: 100vw; margin-left: calc(50% - 50vw); margin-right: calc(50% - 50vw); padding: 0 32px;
 }
 .about-page__sidebar { height: 100%; display: flex; flex-direction: column; gap: 1.5rem; padding-top: 32px; padding-bottom: 32px; }
-.about-page__portrait { flex: 1; min-height: 0; width: 100%; overflow: hidden; border-radius: 16px; }
+.about-page__portrait { position: relative; flex: 1; min-height: 0; width: 100%; overflow: hidden; border-radius: 16px; }
 .about-page__portrait img, .about-page__portrait .image-placeholder { min-height: 0; width: 100%; height: 100%; object-fit: cover; }
+.about-page__portrait::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,.7) 100%);
+}
+.about-page__portrait-caption { position: absolute; left: 16px; bottom: 16px; z-index: 1; }
+.about-page__portrait-name {
+  margin: 0; color: #fff; font-family: var(--font-family-primary); font-weight: 700;
+  font-size: var(--text-title-lg); line-height: var(--leading-title-lg);
+}
+.about-page__portrait-role {
+  margin: .25rem 0 0; color: rgba(255,255,255,.85);
+  font-size: var(--text-label-md); line-height: var(--leading-label-md);
+  text-transform: uppercase; letter-spacing: .06em;
+}
 .about-page__tools { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
 .about-page__tools-track { display: flex; width: max-content; gap: 2rem; animation: about-tools-scroll 20s linear infinite; }
 .about-page__tools:hover .about-page__tools-track { animation-play-state: paused; }
