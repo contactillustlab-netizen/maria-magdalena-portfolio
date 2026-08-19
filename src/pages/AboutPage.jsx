@@ -24,6 +24,8 @@ const services = ['Illustration', 'Concept Art', 'Character Design', 'Brand Iden
 const experience = [
   { id: 1, start: '2021', end: 'Present', role: 'Illustrator & UI Designer', company: 'IVFuture SRL, Galati RO /  IT & SaaS Company' },
   { id: 2, start: '2017', end: 'Present', role: 'Illustrator & Graphic Designer', company: 'Freelancing' },
+  { id: 4, start: '09/2017', end: '07/2019', role: "Master's Degree in Comics & Animation", company: 'University of Art and Design Cluj-Napoca, RO' },
+  { id: 5, start: '09/2014', end: '07/2017', role: "Bachelor's Degree in Fine Arts, Painting section", company: '"Dunarea de Jos" University of Galati, RO' },
   { id: 3, start: '2016', end: '2017', role: 'Illustrator & T-Shirt Designer', company: 'Tshirt-Factory.ro RO' }
 ];
 
