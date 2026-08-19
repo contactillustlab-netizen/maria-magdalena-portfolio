@@ -3,7 +3,14 @@ import ScrollGallery from '../../components/ScrollGallery';
 import SkillsTimeline from '../../components/SkillsTimeline';
 import VisualEcosystem from '../../components/VisualEcosystem';
 import BrandProcess from '../../components/BrandProcess';
+import StatsRow from '../../components/StatsRow';
 import { graphicDesignProjects, graphicDesignTags } from '../../data/graphicDesignProjects';
+
+const stats = [
+  { number: '10+', label: 'Years in design field' },
+  { number: '50+', label: 'Projects completed' },
+  { number: '30+', label: 'Happy clients' }
+];
 
 const skills = [
   {
@@ -51,6 +58,8 @@ function GraphicDesignPage() {
             </li>
           ))}
         </ul>
+
+        <StatsRow items={stats} />
 
         <ScrollGallery
           eyebrow="Portfolio"
