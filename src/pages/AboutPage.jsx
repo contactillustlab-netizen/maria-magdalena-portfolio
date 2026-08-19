@@ -21,6 +21,8 @@ const tools = [
 
 const services = ['Illustration', 'Concept Art', 'Character Design', 'Brand Identity', 'UI Design', 'Marketing Materials', 'Pitch Deck Design'];
 
+const languages = ['Romanian - Native', 'English - Fluent', 'Spanish - Fluent'];
+
 const experience = [
   { id: 1, start: '2021', end: 'Present', role: 'Illustrator & UI Designer', company: 'IVFuture SRL, Galati RO /  IT & SaaS Company' },
   { id: 2, start: '2017', end: 'Present', role: 'Illustrator & Graphic Designer', company: 'Freelancing' },
@@ -171,6 +173,21 @@ function AboutPage() {
                 Download CV
                 <span className="cta-pill__icon"><FileText size={18} /></span>
               </a>
+            </div>
+          </section>
+
+          <section className="about-page__block">
+            <p className="section-header__eyebrow">Languages</p>
+            <div className="about-page__tags">
+              {languages.map((language, index) => (
+                <span
+                  key={language}
+                  className="about-page__tag"
+                  style={{ '--tag-hue': Math.round((index / languages.length) * 360) }}
+                >
+                  {language}
+                </span>
+              ))}
             </div>
           </section>
 
