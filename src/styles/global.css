@@ -762,108 +762,40 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
    ========================================================================== */
 .brand-process { margin: 64px 0 0; }
 
-/* Card stack: 5 cards resting like a loose physical deck. Collapsed, each
-   card sits at a small tuned rotation/offset (--stack-x/y/rot per nth-child)
-   around a shared center anchor. On hover-capable devices the same cards
-   translate out to --fan-x and reset rotation, sized to exactly divide the
-   track's own width so the fan can never spill past its edges, open or
-   closed. Touch has no hover to open it with, so tapping instead grows
-   each card to full width and stacks them vertically (--fan-y) — readable
-   on a narrow screen without needing a horizontal swipe. */
-.card-stack {
-  --stack-w: clamp(210px, 70vw, 260px); --stack-gap: 24px; --stack-h: 260px;
-  --stack-duration: 560ms; --stack-ease: cubic-bezier(0.22, 1, 0.36, 1);
-  position: relative; outline: none; border-radius: var(--radius-md);
+/* Five plain cards in a responsive grid — grid rows stretch every card to
+   the tallest one automatically, no JS measuring required. Each gets a
+   light-to-dark neutral tone (--card-bg/fg/border, set inline per card). */
+.brand-process__columns { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1.5rem; margin: 0 0 4rem; }
+.brand-process__col {
+  display: block; padding: 24px; border-radius: var(--radius-md);
+  border: 1px solid var(--card-border, var(--color-border));
+  background: var(--card-bg); color: var(--card-fg);
+  opacity: 0; transform: translateY(18px);
+  transition: opacity .8s ease, transform .8s ease;
 }
-.card-stack:focus-visible { outline: 2px solid var(--color-contrast); outline-offset: 8px; }
-.card-stack__track {
-  position: relative; height: var(--stack-h); padding: 24px 0; box-sizing: content-box;
-  overflow-x: auto; overflow-y: hidden;
-  scrollbar-width: none; -ms-overflow-style: none; scroll-snap-type: x proximity;
-}
-.card-stack__track::-webkit-scrollbar { display: none; }
-.card-stack__card {
-  position: absolute; top: 0; left: calc(50% - var(--stack-w) / 2);
-  width: var(--stack-w); height: var(--stack-h); scroll-snap-align: start;
-  transform: translate(var(--stack-x, 0), var(--stack-y, 0)) rotate(var(--stack-rot, 0deg));
-  transition: transform var(--stack-duration) var(--stack-ease), left var(--stack-duration) var(--stack-ease),
-    width var(--stack-duration) var(--stack-ease);
-  will-change: transform;
-}
-.card-stack__card:nth-child(1) { --stack-index: 0; --stack-x: -24px; --stack-y: 8px; --stack-rot: -4deg; }
-.card-stack__card:nth-child(2) { --stack-index: 1; --stack-x: -8px; --stack-y: 8px; --stack-rot: -2deg; }
-.card-stack__card:nth-child(3) { --stack-index: 2; --stack-x: 0px; --stack-y: 0px; --stack-rot: 1deg; }
-.card-stack__card:nth-child(4) { --stack-index: 3; --stack-x: 8px; --stack-y: -8px; --stack-rot: 2.5deg; }
-.card-stack__card:nth-child(5) { --stack-index: 4; --stack-x: 16px; --stack-y: -8px; --stack-rot: 3.5deg; }
-.card-stack__card:nth-child(1) { z-index: 1; }
-.card-stack__card:nth-child(2) { z-index: 2; }
-.card-stack__card:nth-child(3) { z-index: 3; }
-.card-stack__card:nth-child(4) { z-index: 4; }
-.card-stack__card:nth-child(5) { z-index: 5; }
-@media (hover: hover) and (pointer: fine) {
-  /* Divides the track's own width exactly — 5 cards + 4 gaps always sum to
-     100%, so the fan fills edge to edge and never overflows either side.
-     The spread itself moves through `left` rather than `transform:
-     translateX()` — percentages inside a translate() resolve against the
-     transformed element's OWN box, not the container, so reusing --stack-w
-     (which contains a nested 100%) there silently resolved against each
-     217px card instead of the ~1200px track and collapsed the whole fan. */
-  .card-stack__track { --stack-w: calc((100% - 4 * var(--stack-gap)) / 5); }
-  .card-stack:hover .card-stack__card,
-  .card-stack:focus-within .card-stack__card {
-    left: calc(50% + (var(--stack-index) - 2) * (var(--stack-w) + var(--stack-gap)) - var(--stack-w) / 2);
-    transform: rotate(0deg);
-  }
-}
-@media (hover: none), (pointer: coarse) {
-  .card-stack__card { --fan-y: calc(var(--stack-index) * (var(--stack-h) + var(--stack-gap))); }
-  .card-stack.is-expanded .card-stack__card {
-    left: 0; width: 100%;
-    transform: translateY(var(--fan-y)) rotate(0deg);
-  }
-  .card-stack.is-expanded .card-stack__track {
-    height: calc(5 * var(--stack-h) + 4 * var(--stack-gap));
-  }
-}
-.card-stack__card-surface {
-  position: relative; height: 100%; display: flex; flex-direction: column; justify-content: space-between;
-  padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--card-border, var(--color-border));
-  background: var(--card-bg); color: var(--card-fg); box-shadow: 0 8px 24px rgba(0,0,0,.14);
-  transition: transform 320ms ease, box-shadow 320ms ease;
-}
-@media (hover: hover) and (pointer: fine) {
-  .card-stack.is-expanded .card-stack__card-surface:hover,
-  .card-stack.is-expanded .card-stack__card-surface:focus-visible {
-    transform: translateY(-8px); box-shadow: 0 16px 32px rgba(0,0,0,.18);
-  }
-}
-.card-stack__card-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.card-stack__number { margin: 0; font-size: var(--text-title-md); line-height: var(--leading-title-md); font-weight: 700; opacity: .7; letter-spacing: .02em; }
-.card-stack__icon { display: block; width: 24px; height: 24px; flex-shrink: 0; color: currentColor; }
+.brand-process__col.is-visible { opacity: 1; transform: translateY(0); }
+.brand-process__col-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0 0 16px; }
+.brand-process__col-numeral { margin: 0; font-size: var(--text-title-md); line-height: var(--leading-title-md); font-weight: 700; opacity: .7; letter-spacing: .02em; }
+.brand-process__col-icon { display: block; width: 24px; height: 24px; flex-shrink: 0; color: currentColor; }
 /* Two of the five icons reuse the Visual Ecosystem illustrations, which
    stroke in the fixed --color-contrast token for their normal (light-page)
-   context — override to currentColor so they stay legible on the stack's
-   dark-toned cards too. */
-.card-stack__icon .step-illustration path,
-.card-stack__icon .step-illustration line,
-.card-stack__icon .step-illustration rect,
-.card-stack__icon .step-illustration circle { stroke: currentColor; }
-.card-stack__icon .step-illustration--brand .step-illustration__core { fill: currentColor; }
-.card-stack__icon .step-illustration--product .step-illustration__frame { stroke: color-mix(in srgb, currentColor 50%, transparent); }
-.card-stack__title { margin: 16px 0 8px; font-size: var(--text-title-md); line-height: var(--leading-title-md); font-family: var(--font-family-primary); font-weight: 700; }
-.card-stack__divider { height: 1px; background: currentColor; opacity: .15; margin: 0 0 8px; }
-.card-stack__description { margin: 0; font-size: var(--text-body-lg); line-height: var(--leading-body-lg); opacity: .85; }
-@media (prefers-reduced-motion: reduce) {
-  .card-stack__card, .card-stack__card-surface { transition: none; }
+   context — override to currentColor so they stay legible on the dark
+   cards too. */
+.brand-process__col-icon .step-illustration path,
+.brand-process__col-icon .step-illustration line,
+.brand-process__col-icon .step-illustration rect,
+.brand-process__col-icon .step-illustration circle { stroke: currentColor; }
+.brand-process__col-icon .step-illustration--brand .step-illustration__core { fill: currentColor; }
+.brand-process__col-icon .step-illustration--product .step-illustration__frame { stroke: color-mix(in srgb, currentColor 50%, transparent); }
+.brand-process__col-title { margin: 0 0 8px; font-size: var(--text-title-md); line-height: var(--leading-title-md); font-family: var(--font-family-primary); font-weight: 700; }
+.brand-process__col-text { margin: 0; font-size: var(--text-body-lg); line-height: var(--leading-body-lg); opacity: .85; }
+@media (max-width: 1024px) {
+  .brand-process__columns { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem 1.5rem; }
 }
-@media (min-width: 768px) {
-  .card-stack { --stack-gap: 24px; --stack-h: 264px; }
-}
-@media (min-width: 1024px) {
-  .card-stack { --stack-gap: 32px; --stack-h: 280px; }
-}
-@media (min-width: 1440px) {
-  .card-stack { --stack-gap: 32px; --stack-h: 296px; }
+@media (max-width: 640px) {
+  .brand-process__columns { grid-template-columns: 1fr; }
+  /* Static on mobile — no scroll-reveal, just plain stacked cards. */
+  .brand-process__col { opacity: 1; transform: none; transition: none; }
 }
 
 /* Per-phase icons: same restrained thin-line language as the step
