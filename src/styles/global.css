@@ -37,6 +37,8 @@
   --color-muted: #9a9a9a;
   --color-border: rgba(255,255,255,0.16);
   --color-contrast: #ffffff;
+  --status-online: #3ddc84;
+  --status-online-rgb: 61, 220, 132;
   --color-bg-rgb: 5, 5, 5;
   --color-contrast-rgb: 255, 255, 255;
   --nav-accent-rgb: 255, 255, 255;
@@ -79,6 +81,8 @@ body[data-theme="design"] {
   --color-muted: #6b6b6b;
   --color-border: rgba(0,0,0,0.14);
   --color-contrast: #000000;
+  --status-online: #12a150;
+  --status-online-rgb: 18, 161, 80;
   --color-bg-rgb: 255, 255, 255;
   --color-contrast-rgb: 0, 0, 0;
   --nav-accent-rgb: 5, 5, 5;
@@ -747,9 +751,11 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
   background: var(--color-surface);
   transition: border-color var(--transition), transform var(--transition);
 }
-/* Never taller or wider than the box it sits in, and never distorted or
-   cropped — the image just scales down to fit and keeps its own ratio. */
-.visual-ecosystem__art { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
+/* Drawn at a fixed 285px square — the vectors declare a 154px viewBox, so
+   without this they would render at half the size the bitmaps used to. Still
+   never taller or wider than the box it sits in, and never distorted or
+   cropped: it scales down to fit and keeps its own ratio. */
+.visual-ecosystem__art { max-width: 100%; max-height: 100%; width: 285px; height: 285px; object-fit: contain; }
 .visual-ecosystem__step-link:hover .visual-ecosystem__step-body,
 .visual-ecosystem__step-link:focus-visible .visual-ecosystem__step-body,
 .visual-ecosystem__step-link:hover .visual-ecosystem__scene,
@@ -757,6 +763,27 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
   border-color: var(--color-contrast); transform: translateY(-4px);
 }
 .visual-ecosystem__step-link:focus-visible { outline: none; }
+/* Scroll reveal, same 56px left/right slide as the branding grid. It runs as
+   an animation rather than a transition so the card keeps its fast hover lift
+   once it has landed. */
+.visual-ecosystem__reveal { opacity: 0; }
+.visual-ecosystem__reveal--from-left { transform: translateX(-56px); }
+.visual-ecosystem__reveal--from-right { transform: translateX(56px); }
+.visual-ecosystem__reveal.is-visible { opacity: 1; transform: none; }
+.visual-ecosystem__reveal--from-left.is-visible { animation: ecosystemRevealLeft .8s ease; }
+.visual-ecosystem__reveal--from-right.is-visible { animation: ecosystemRevealRight .8s ease; }
+@keyframes ecosystemRevealLeft {
+  from { opacity: 0; transform: translateX(-56px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes ecosystemRevealRight {
+  from { opacity: 0; transform: translateX(56px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .visual-ecosystem__reveal { opacity: 1; transform: none; }
+  .visual-ecosystem__reveal.is-visible { animation: none; }
+}
 .visual-ecosystem__step-link--reversed .visual-ecosystem__scene { order: -1; }
 .visual-ecosystem__number {
   display: block; margin: 0 0 .75rem; color: var(--color-muted);
@@ -1281,11 +1308,30 @@ body[data-theme="design"] .about-page__tool-logo--chatgpt { filter: brightness(0
 .site-footer__links a:active { color: #cfcfcf; }
 .site-footer__links a.active { color: var(--color-contrast); }
 .site-footer__links a:focus-visible { outline: 2px solid var(--color-contrast); outline-offset: 4px; border-radius: 2px; }
-.site-footer__contact { display: flex; flex-direction: column; gap: .5rem; color: var(--color-muted); }
+.site-footer__contact { display: flex; flex-direction: column; gap: 1rem; color: var(--color-muted); }
+.site-footer__contact p { margin: 0; }
 .site-footer__contact a { position: relative; color: var(--color-text); width: fit-content; transition: color var(--transition); }
 .site-footer__contact a:hover { color: var(--color-contrast); }
 .site-footer__contact a:active { color: #cfcfcf; }
 .site-footer__contact a:focus-visible { outline: 2px solid var(--color-contrast); outline-offset: 4px; border-radius: 2px; }
+.site-footer__status { display: flex; align-items: center; gap: .5rem; }
+.site-footer__status-dot {
+  position: relative; flex: none; width: 9px; height: 9px; border-radius: 50%;
+  background: var(--status-online); box-shadow: 0 0 0 1px rgba(var(--status-online-rgb),.35);
+}
+.site-footer__status-dot::after {
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  background: rgba(var(--status-online-rgb),.55);
+  animation: footer-status-pulse 2s ease-out infinite;
+}
+@keyframes footer-status-pulse {
+  0% { transform: scale(1); opacity: .7; }
+  70% { transform: scale(2.6); opacity: 0; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .site-footer__status-dot::after { animation: none; }
+}
 .site-footer__socials { display: flex; gap: .5rem; flex-wrap: wrap; }
 .site-footer__socials a { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; height: var(--btn-height); padding: 0 1rem; border: 1px solid var(--color-border); border-radius: 999px; transition: transform var(--transition), border-color var(--transition), background-color var(--transition); }
 .site-footer__socials a:hover { transform: translateY(-3px); border-color: rgba(var(--color-contrast-rgb),.4); background: rgba(var(--color-contrast-rgb),.06); }

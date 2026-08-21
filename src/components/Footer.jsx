@@ -36,9 +36,6 @@ function Footer() {
   return (
     <footer className="site-footer">
       <div className="site-footer__top">
-        <div>
-          <h2>Let’s Work<br />Together</h2>
-        </div>
         <div className="site-footer__nav-groups">
           <nav className="site-footer__nav-group" aria-label="Art navigation">
             <span className="site-footer__nav-title">Art</span>
@@ -66,8 +63,13 @@ function Footer() {
           </nav>
         </div>
         <div className="site-footer__contact">
+          <h2>Let’s Work<br />Together</h2>
           <a href="mailto:contact.illustlab@gmail.com">contact.illustlab@gmail.com</a>
-          <p>Romania, Galați</p>
+          <p className="site-footer__status">
+            <span className="site-footer__status-dot" aria-hidden="true" />
+            Available to work - Galați România
+          </p>
+          <p>Remote - Worldwide</p>
         </div>
       </div>
       <div className="site-footer__bottom">
