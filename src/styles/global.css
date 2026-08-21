@@ -726,23 +726,55 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
 }
 
 .visual-ecosystem { margin-top: 112px; text-align: center; }
-.visual-ecosystem__title { margin: 0 auto 3rem; white-space: nowrap; font-size: 48px; line-height: 56px; font-family: var(--font-family-primary); }
-.visual-ecosystem__steps { list-style: none; display: flex; justify-content: center; gap: 1.5rem; padding: 0; margin: 0 0 2.5rem; }
-.visual-ecosystem__step { display: flex; gap: 1.5rem; flex: 1; }
+.visual-ecosystem__title { margin: 0 auto 1rem; white-space: nowrap; font-size: 48px; line-height: 56px; font-family: var(--font-family-primary); }
+.visual-ecosystem__steps { list-style: none; display: flex; flex-direction: column; gap: var(--space-3); padding: 0; margin: 0; }
+.visual-ecosystem__step { display: flex; flex-direction: column; gap: var(--space-3); }
+/* Each category is a pair: the card carries the argument, the scene gives it a
+   world. Equal columns so neither half reads as decoration for the other, and
+   one link over both so they behave as a single object. */
+.visual-ecosystem__step-link {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--space-3);
+  align-items: stretch; color: inherit; text-decoration: none;
+}
 .visual-ecosystem__step-body {
-  flex: 1; display: flex; flex-direction: column; align-items: center;
-  padding: 2rem 1.5rem; border: 1px solid var(--color-border); border-radius: 16px;
-  color: inherit; text-decoration: none;
-  transition: border-color var(--transition), box-shadow var(--transition), transform var(--transition);
+  display: flex; flex-direction: column; align-items: flex-start; text-align: left;
+  min-height: 320px; padding: var(--space-5); border: 1px solid var(--color-border); border-radius: var(--radius-md);
+  transition: border-color var(--transition), transform var(--transition);
 }
-.visual-ecosystem__step-body:hover, .visual-ecosystem__step-body:focus-visible {
-  border-color: var(--color-contrast); transform: translateY(-4px); outline: none;
+.visual-ecosystem__scene {
+  display: flex; align-items: stretch; justify-content: center; min-height: 320px;
+  padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md);
+  background: var(--color-surface);
+  transition: border-color var(--transition), transform var(--transition);
 }
-.visual-ecosystem__icon { display: block; width: 56px; height: 56px; margin: 0 0 1rem; }
-.visual-ecosystem__label { display: block; margin: 0 0 .5rem; font-family: var(--font-family-primary); font-size: var(--text-title-lg); line-height: var(--leading-title-lg); text-transform: uppercase; letter-spacing: .06em; }
+/* The illustrations are flat monochrome line art, so they're painted with the
+   project's own contrast token and the file is used as the mask. That keeps
+   them on the palette and inverting with the theme, without pulling ~170KB of
+   path data into the JS bundle the way inline SVG would. */
+.visual-ecosystem__art {
+  flex: 1; min-width: 0; min-height: 0;
+  background-color: var(--color-contrast);
+  -webkit-mask-image: var(--art); mask-image: var(--art);
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+  -webkit-mask-position: center; mask-position: center;
+  -webkit-mask-size: contain; mask-size: contain;
+}
+.visual-ecosystem__step-link:hover .visual-ecosystem__step-body,
+.visual-ecosystem__step-link:focus-visible .visual-ecosystem__step-body,
+.visual-ecosystem__step-link:hover .visual-ecosystem__scene,
+.visual-ecosystem__step-link:focus-visible .visual-ecosystem__scene {
+  border-color: var(--color-contrast); transform: translateY(-4px);
+}
+.visual-ecosystem__step-link:focus-visible { outline: none; }
+.visual-ecosystem__step-link--reversed .visual-ecosystem__scene { order: -1; }
+.visual-ecosystem__number {
+  display: block; margin: 0 0 .75rem; color: var(--color-muted);
+  font-size: var(--text-label-lg); line-height: var(--leading-label-lg); text-transform: uppercase; letter-spacing: .28em;
+}
+.visual-ecosystem__label { display: block; margin: 0 0 1rem; font-family: var(--font-family-primary); font-size: var(--text-title-lg); line-height: var(--leading-title-lg); text-transform: uppercase; letter-spacing: .06em; }
 .visual-ecosystem__text { margin: 0; color: var(--color-muted); line-height: 1.6; }
 .visual-ecosystem__cta {
-  display: inline-flex; align-items: center; gap: .4rem; margin-top: 1rem;
+  display: inline-flex; align-items: center; gap: .4rem; margin-top: auto; padding-top: var(--space-3);
   font-size: var(--text-label-lg); line-height: var(--leading-label-lg);
   text-transform: uppercase; letter-spacing: .06em; font-weight: 600;
 }
@@ -754,13 +786,17 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
     opacity: 0; transform: translateY(6px);
     transition: opacity var(--transition), transform var(--transition);
   }
-  .visual-ecosystem__step-body:hover .visual-ecosystem__cta,
-  .visual-ecosystem__step-body:focus-visible .visual-ecosystem__cta {
+  .visual-ecosystem__step-link:hover .visual-ecosystem__cta,
+  .visual-ecosystem__step-link:focus-visible .visual-ecosystem__cta {
     opacity: 1; transform: translateY(0);
   }
 }
-.visual-ecosystem__arrow { flex-shrink: 0; align-self: center; color: var(--color-muted); }
-.visual-ecosystem__note { max-width: 640px; margin: 0 auto; color: var(--color-muted); line-height: 1.8; }
+/* The rail still reads 01 -> 02 -> 03, so the connector turns to point down
+   between the stacked rows. */
+.visual-ecosystem__arrow { flex-shrink: 0; align-self: center; color: var(--color-muted); transform: rotate(90deg); }
+.visual-ecosystem__note { max-width: 640px; margin: 0 auto 3rem; color: var(--color-muted); line-height: 1.8; }
+
+
 
 /* Step illustrations: thin monochrome line-art, same restrained language as
    the contact page's signal field, each animating in a way that echoes what
@@ -1431,9 +1467,12 @@ body[data-theme="design"] .about-page__tool-logo--chatgpt { filter: brightness(0
   .site-footer__top, .site-footer__bottom { flex-direction: column; align-items: flex-start; }
   .site-footer__nav-groups { gap: 2rem; flex-wrap: wrap; }
   .visual-ecosystem__title { font-size: var(--text-headline-lg); line-height: var(--leading-headline-lg); }
-  .visual-ecosystem__steps { flex-direction: column; align-items: stretch; gap: 2rem; }
-  .visual-ecosystem__step { flex-direction: column; align-items: stretch; gap: .75rem; }
-  .visual-ecosystem__arrow { transform: rotate(90deg); align-self: center; }
+  /* Card first, then its scene — the argument before the picture of it. */
+  .visual-ecosystem__step-link { grid-template-columns: minmax(0, 1fr); gap: var(--space-2); }
+  .visual-ecosystem__step-link--reversed .visual-ecosystem__scene { order: 0; }
+  .visual-ecosystem__step-body { min-height: 0; padding: var(--space-4); }
+  .visual-ecosystem__scene { min-height: 0; aspect-ratio: 4 / 3; padding: var(--space-3); }
+  .visual-ecosystem__cta { margin-top: var(--space-3); padding-top: 0; }
   .concept-project__grid { grid-template-columns: 1fr; }
   .concept-project__grid:not(.concept-project__grid--solo) .concept-project__cover-cell { position: static; }
   .concept-project__grid:not(.concept-project__grid--solo) .concept-project__cover.gallery-item__button { position: static; height: auto; }
