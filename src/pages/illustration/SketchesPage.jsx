@@ -1,17 +1,22 @@
+import HeroSection from '../../components/HeroSection';
 import MasonryGallery from '../../components/MasonryGallery';
-import SectionHeader from '../../components/SectionHeader';
 import { sketchesProjects } from '../../data/sketchesProjects';
 
 function SketchesPage() {
   return (
-    <section className="section section--gallery">
-      <SectionHeader
+    <>
+      <HeroSection
         eyebrow="Studies"
-        title="Value studies and gesture work"
-        description="Early-stage sketches exploring pose, silhouette and light before a piece moves to color."
+        title="Sketches"
+        subtitle="Early-stage sketches exploring pose, silhouette and light before a piece moves to color"
+        image="/pictures/kallista-alchimistul-umbrelor.webp"
+        variant="illustration"
       />
-      <MasonryGallery items={sketchesProjects} />
-    </section>
+
+      <section className="section section--gallery">
+        <MasonryGallery items={sketchesProjects} />
+      </section>
+    </>
   );
 }
 

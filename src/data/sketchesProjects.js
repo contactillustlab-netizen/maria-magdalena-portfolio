@@ -9,7 +9,7 @@ export const sketchesProjects = [
   },
   {
     id: 4,
-    title: 'Kallista, Alchimistul Umbrelor',
+    title: 'Kallista, the Shadow Alchemist',
     category: 'Character Sketch',
     image: '/pictures/kallista-alchimistul-umbrelor.webp',
     orientation: 'landscape',

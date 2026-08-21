@@ -67,7 +67,7 @@ function Footer() {
         </div>
         <div className="site-footer__contact">
           <a href="mailto:contact.illustlab@gmail.com">contact.illustlab@gmail.com</a>
-          <p>România, Galați</p>
+          <p>Romania, Galați</p>
         </div>
       </div>
       <div className="site-footer__bottom">

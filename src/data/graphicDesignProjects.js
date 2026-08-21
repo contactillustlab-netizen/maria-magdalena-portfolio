@@ -53,7 +53,7 @@ export const graphicDesignProjects = [
     tag: 'Branding',
     year: 2025,
     role: 'Lead Brand Designer',
-    client: 'Miredent Cabinet Stomatologic',
+    client: 'Miredent Dental Clinic',
     aspectRatio: '4 / 3',
     image: '/pictures/miredent-cover.webp',
     images: [
