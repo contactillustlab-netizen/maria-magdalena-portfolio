@@ -33,14 +33,14 @@ function BrandingPage() {
       />
 
       <section className="section section--branding">
-        <div className="branding-grid">
+        <div className="branding-grid branding-grid--uniform">
           {brandingProjects.map((project, index) => (
             <Link
               key={project.id}
               to={`/design/branding/${project.slug}`}
               className={`branding-grid__item ${index % 2 === 0 ? 'branding-grid__item--from-left' : 'branding-grid__item--from-right'}`}
             >
-              <div className="branding-grid__image" style={{ aspectRatio: project.aspectRatio }}>
+              <div className="branding-grid__image">
                 <SmartImage src={project.image} alt={project.title} loading="lazy" />
                 <span className="branding-grid__year">{project.year}</span>
               </div>

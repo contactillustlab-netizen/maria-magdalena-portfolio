@@ -1,3 +1,5 @@
+import { uiDesignProjects } from './uiDesignProjects';
+
 export const graphicDesignTags = [
   'Branding',
   'UI Design',
@@ -10,7 +12,17 @@ export const graphicDesignTags = [
   'Web Design'
 ];
 
+// Same project as on the UI Design page, reused rather than copied so the
+// images and case-study copy stay in one place — only the carousel's own id
+// and section tag differ.
+const youngMoney = uiDesignProjects.find((project) => project.slug === 'youngmoney-app');
+
 export const graphicDesignProjects = [
+  {
+    ...youngMoney,
+    id: 14,
+    tag: 'UI Design'
+  },
   {
     id: 11,
     slug: 'marsaga',

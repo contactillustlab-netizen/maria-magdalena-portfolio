@@ -36,11 +36,21 @@ function ProjectCaseStudyPage({ projects, listPath, basePath, sectionLabel }) {
   const previousProject = projects[(index - 1 + projects.length) % projects.length];
   const nextProject = projects[(index + 1) % projects.length];
 
-  const videoEmbedUrl = getYoutubeEmbedUrl(project.video);
+  // `video` is one source or a list of them. A YouTube link becomes an embed
+  // URL; anything else (a path to a file in /public) is handed to GalleryItem
+  // as-is and played inline.
+  const videoSources = (Array.isArray(project.video) ? project.video : [project.video])
+    .map((src) => getYoutubeEmbedUrl(src) ?? src)
+    .filter(Boolean);
 
   const galleryItems = [
     { id: 0, title: project.title, category: project.tag, image: project.image },
-    ...(videoEmbedUrl ? [{ id: 'video', title: `${project.title} — Video`, category: project.tag, video: videoEmbedUrl }] : []),
+    ...videoSources.map((src, i) => ({
+      id: `video-${i}`,
+      title: `${project.title} — Video${videoSources.length > 1 ? ` ${i + 1}` : ''}`,
+      category: project.tag,
+      video: src
+    })),
     ...(project.images
       ? project.images.map((src, i) => ({ id: i + 1, title: `${project.title} — Visual ${i + 1}`, category: project.tag, image: src }))
       : Array.from({ length: project.galleryCount ?? 0 }, (_, i) => ({ id: i + 1, title: `${project.title} — Visual ${i + 1}`, category: project.tag, image: null })))
@@ -90,7 +100,15 @@ function ProjectCaseStudyPage({ projects, listPath, basePath, sectionLabel }) {
                   </button>
                 ))}
               </div>
-              <p className="case-study__tab-content">{caseStudy[activeTab]}</p>
+              {(Array.isArray(caseStudy[activeTab]) ? caseStudy[activeTab] : [caseStudy[activeTab]]).map((block, blockIndex) =>
+                Array.isArray(block) ? (
+                  <ul key={blockIndex} className="case-study__tab-list">
+                    {block.map((entry) => <li key={entry}>{entry}</li>)}
+                  </ul>
+                ) : (
+                  <p key={blockIndex} className="case-study__tab-content">{block}</p>
+                )
+              )}
             </div>
           ) : null}
 

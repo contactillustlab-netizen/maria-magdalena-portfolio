@@ -3,16 +3,32 @@ import SmartImage from './SmartImage';
 
 function GalleryItem({ item, onSelect }) {
   if (item.video) {
+    // `video` is either a YouTube embed URL or a path to a file in /public —
+    // the latter plays inline, muted and looping, like the hero videos do.
+    const isVideoFile = /\.(mp4|webm|mov)$/i.test(item.video);
+
     return (
       <article className="gallery-item">
-        <div className="gallery-item__video">
-          <iframe
-            src={item.video}
-            title={item.title}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-          />
+        <div className={`gallery-item__video${isVideoFile ? ' gallery-item__video--file' : ''}`}>
+          {isVideoFile ? (
+            <video
+              src={item.video}
+              aria-label={item.title}
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
+            />
+          ) : (
+            <iframe
+              src={item.video}
+              title={item.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            />
+          )}
         </div>
       </article>
     );

@@ -1,9 +1,26 @@
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HeroSection from '../../components/HeroSection';
 import SmartImage from '../../components/SmartImage';
 import { marketingDesignProjects } from '../../data/marketingDesignProjects';
 
 function MarketingDesignPage() {
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    document.querySelectorAll('.branding-grid__item').forEach((node) => observer.observe(node));
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <>
       <HeroSection
@@ -15,10 +32,14 @@ function MarketingDesignPage() {
       />
 
       <section className="section section--branding">
-        <div className="branding-grid">
-          {marketingDesignProjects.map((project) => (
-            <Link key={project.id} to={`/design/marketing-design/${project.slug}`} className="branding-grid__item">
-              <div className="branding-grid__image" style={{ aspectRatio: project.aspectRatio }}>
+        <div className="branding-grid branding-grid--uniform">
+          {marketingDesignProjects.map((project, index) => (
+            <Link
+              key={project.id}
+              to={`/design/marketing-design/${project.slug}`}
+              className={`branding-grid__item ${index % 2 === 0 ? 'branding-grid__item--from-left' : 'branding-grid__item--from-right'}`}
+            >
+              <div className="branding-grid__image">
                 <SmartImage src={project.image} alt={project.title} loading="lazy" />
                 <span className="branding-grid__year">{project.year}</span>
               </div>
