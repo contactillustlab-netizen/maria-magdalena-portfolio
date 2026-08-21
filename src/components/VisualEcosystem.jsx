@@ -44,11 +44,7 @@ function VisualEcosystem({
                 </span>
               </div>
               <div className="visual-ecosystem__scene">
-                <span
-                  className="visual-ecosystem__art"
-                  style={{ '--art': `url(${step.illustration})` }}
-                  aria-hidden="true"
-                />
+                <img className="visual-ecosystem__art" src={step.illustration} alt="" loading="lazy" />
               </div>
             </Link>
             {index < steps.length - 1 && (

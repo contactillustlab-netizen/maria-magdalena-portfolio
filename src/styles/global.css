@@ -742,23 +742,14 @@ body[data-theme="design"] .scroll-gallery__cta--overlay { color: #0f0f0f; }
   transition: border-color var(--transition), transform var(--transition);
 }
 .visual-ecosystem__scene {
-  display: flex; align-items: stretch; justify-content: center; min-height: 320px;
+  display: flex; align-items: center; justify-content: center; min-height: 320px;
   padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md);
   background: var(--color-surface);
   transition: border-color var(--transition), transform var(--transition);
 }
-/* The illustrations are flat monochrome line art, so they're painted with the
-   project's own contrast token and the file is used as the mask. That keeps
-   them on the palette and inverting with the theme, without pulling ~170KB of
-   path data into the JS bundle the way inline SVG would. */
-.visual-ecosystem__art {
-  flex: 1; min-width: 0; min-height: 0;
-  background-color: var(--color-contrast);
-  -webkit-mask-image: var(--art); mask-image: var(--art);
-  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-  -webkit-mask-position: center; mask-position: center;
-  -webkit-mask-size: contain; mask-size: contain;
-}
+/* Never taller or wider than the box it sits in, and never distorted or
+   cropped — the image just scales down to fit and keeps its own ratio. */
+.visual-ecosystem__art { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; }
 .visual-ecosystem__step-link:hover .visual-ecosystem__step-body,
 .visual-ecosystem__step-link:focus-visible .visual-ecosystem__step-body,
 .visual-ecosystem__step-link:hover .visual-ecosystem__scene,
@@ -1471,7 +1462,7 @@ body[data-theme="design"] .about-page__tool-logo--chatgpt { filter: brightness(0
   .visual-ecosystem__step-link { grid-template-columns: minmax(0, 1fr); gap: var(--space-2); }
   .visual-ecosystem__step-link--reversed .visual-ecosystem__scene { order: 0; }
   .visual-ecosystem__step-body { min-height: 0; padding: var(--space-4); }
-  .visual-ecosystem__scene { min-height: 0; aspect-ratio: 4 / 3; padding: var(--space-3); }
+  .visual-ecosystem__scene { min-height: 0; padding: var(--space-3); }
   .visual-ecosystem__cta { margin-top: var(--space-3); padding-top: 0; }
   .concept-project__grid { grid-template-columns: 1fr; }
   .concept-project__grid:not(.concept-project__grid--solo) .concept-project__cover-cell { position: static; }
