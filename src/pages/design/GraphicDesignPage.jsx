@@ -21,7 +21,6 @@ function GraphicDesignPage() {
         video="/videos/design-hero.webm"
         variant="design"
         titleVariant="sentence"
-        scrollLabel="Scroll to see"
       />
 
       <section className="section section--graphic-design">
