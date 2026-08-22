@@ -21,9 +21,13 @@ function LandingPage() {
 
       <div className="landing__background" />
 
-      <div className="landing__actions">
-        <Link to="/art" className="landing__cta">Art</Link>
-        <Link to="/design" className="landing__cta">Design</Link>
+      <div className="landing__intro">
+        <h1 className="landing__title">Maria-Magdalena Vizireanu</h1>
+        <p className="landing__subtitle">Illustrator &amp; Graphic Designer</p>
+        <div className="landing__actions">
+          <Link to="/art" className="landing__cta">Art</Link>
+          <Link to="/design" className="landing__cta">Design</Link>
+        </div>
       </div>
     </div>
   );

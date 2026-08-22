@@ -217,8 +217,22 @@ body[data-theme="design"] .mode-switch__icon img { filter: none; }
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.15) 32%, rgba(0,0,0,0) 55%);
 }
-.landing__actions {
+/* Name, role and the two entrances stack as one block, so the spacing between
+   them is set once here rather than positioning each piece against the frame. */
+.landing__intro {
   position: absolute; left: 0; right: 0; bottom: 8vh; z-index: 1;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 0 1.5rem; text-align: center;
+}
+.landing__title {
+  margin: 0; color: #ffffff; font-family: var(--font-family-primary);
+  font-size: 48px; line-height: 56px; font-weight: 600; text-wrap: balance;
+}
+.landing__subtitle {
+  margin: .75rem 0 2rem; color: rgba(255,255,255,.72);
+  font-size: 16px; line-height: 24px; text-transform: uppercase; letter-spacing: .18em;
+}
+.landing__actions {
   display: flex; justify-content: center; gap: 1.5rem;
 }
 .landing__cta {
@@ -235,7 +249,11 @@ body[data-theme="design"] .mode-switch__icon img { filter: none; }
 .landing__cta:focus-visible { outline: 2px solid #ffffff; outline-offset: 3px; }
 
 @media (max-width: 560px) {
-  .landing__actions { bottom: 10vh; gap: 1rem; }
+  /* A 48px name wraps to three lines on a phone, so it steps down here. */
+  .landing__intro { bottom: 10vh; }
+  .landing__title { font-size: 32px; line-height: 38px; }
+  .landing__subtitle { margin: .5rem 0 1.5rem; font-size: 14px; letter-spacing: .14em; }
+  .landing__actions { gap: 1rem; }
   .landing__cta { min-width: 130px; padding: .9rem 1.75rem; }
 }
 
