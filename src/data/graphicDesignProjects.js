@@ -1,3 +1,4 @@
+import { brandingProjects } from './brandingProjects';
 import { uiDesignProjects } from './uiDesignProjects';
 
 export const graphicDesignTags = [
@@ -12,10 +13,12 @@ export const graphicDesignTags = [
   'Web Design'
 ];
 
-// Same project as on the UI Design page, reused rather than copied so the
+// Same projects as on the UI Design page, reused rather than copied so the
 // images and case-study copy stay in one place — only the carousel's own id
 // and section tag differ.
 const youngMoney = uiDesignProjects.find((project) => project.slug === 'youngmoney-app');
+const marsaga = brandingProjects.find((project) => project.slug === 'marsaga');
+const designSystems = uiDesignProjects.find((project) => project.slug === 'design-systems');
 
 export const graphicDesignProjects = [
   {
@@ -24,27 +27,14 @@ export const graphicDesignProjects = [
     tag: 'UI Design'
   },
   {
+    ...marsaga,
     id: 11,
-    slug: 'marsaga',
-    title: 'Marsaga - Brand Identity',
-    tag: 'Branding',
-    year: 2026,
-    role: 'Lead Brand Designer',
-    client: 'Marsaga Print & Design Studio',
-    aspectRatio: '4 / 3',
-    image: '/pictures/marsaga-cover.webp',
-    images: [
-      '/pictures/marsaga-2.webp',
-      '/pictures/marsaga-3.webp',
-      '/pictures/marsaga-4.webp',
-      '/pictures/marsaga-5.webp',
-      '/pictures/marsaga-6.webp',
-      '/pictures/marsaga-7.webp',
-      '/pictures/marsaga-8.webp',
-      '/pictures/marsaga-9.webp'
-    ],
-    description: 'A bold identity for a print-and-design studio, built around a confident sunburst mark and a saturated orange-on-black palette carried through signage, packaging, stationery and retail environments.',
-    galleryCount: 8
+    tag: 'Branding'
+  },
+  {
+    ...designSystems,
+    id: 15,
+    tag: 'UI Design'
   },
   {
     id: 12,
