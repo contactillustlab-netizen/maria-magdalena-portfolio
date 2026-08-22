@@ -18,6 +18,24 @@
         document.head.insertAdjacentHTML('beforeend', '<meta name="robots" content="noindex" />');
       }
     </script>
+    <!-- Tells Google that this domain and this person are the same entity. The
+         sameAs list points at the profiles that already rank for her name, so
+         the site is read as part of that identity rather than a stranger. -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Maria-Magdalena Vizireanu",
+        "url": "https://magdavizireanu.com",
+        "jobTitle": "Illustrator & Graphic Designer",
+        "sameAs": [
+          "https://www.linkedin.com/in/maria-magdalena-vizireanu/",
+          "https://www.behance.net/mady21v",
+          "https://vizireanumariamagdalena.artstation.com/",
+          "https://www.instagram.com/magdamariav/"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
