@@ -123,7 +123,68 @@ export const graphicDesignProjects = [
       '/pictures/raven-5.webp',
       '/pictures/raven-6.webp'
     ],
-    description: 'A sharp, human-centered identity for a recruitment consultancy, built around a stylized raven-in-flight mark in black and blue, carried from signage and stationery through candidate and client-facing materials.',
-    galleryCount: 9
+    description: 'Raven Consulting is a brand identity project created for a consulting company focused on HR, people and organizational support. The objective was to build a professional visual identity that could communicate intelligence, adaptability and trust, while still feeling distinctive within a traditionally corporate industry. The final concept is built around the raven as the core symbol of the brand \u2014 a visual metaphor for intelligence, transformation and adaptability.',
+    caseStudy: {
+      challenge: [
+        'The main challenge was to create an identity suitable for the consulting and HR industry without relying on the predictable visual language often associated with corporate services.',
+        'The brand needed to feel:',
+        [
+          'Professional',
+          'Trustworthy',
+          'Intelligent',
+          'People-focused',
+          'Adaptable',
+          'Contemporary'
+        ],
+        'At the same time, it needed a recognizable symbol that could give Raven Consulting a stronger personality and differentiate it from more generic consulting brands.',
+        'Because the company works with people and organizations, the identity also needed to balance strategic expertise with a human-centric approach.'
+      ],
+      approach: [
+        'The visual concept started from the meaning of the raven itself. Across different cultures, ravens are often associated with:',
+        [
+          'Intelligence',
+          'Wisdom',
+          'Transformation',
+          'Adaptability'
+        ],
+        'These qualities aligned naturally with the positioning of a consulting company that helps organizations and people navigate change.',
+        'I developed a stylized raven silhouette as the primary logomark and combined it with a circular element. The circle introduces another layer of meaning, suggesting:',
+        [
+          'Continuity',
+          'Connection',
+          'Cycles',
+          'Collaboration',
+          'Adaptability'
+        ],
+        'Together, the raven and circular structure create a symbol that represents both the strategic and human aspects of the business.',
+        'The wider visual identity uses a clean, restrained layout and a strong blue palette to reinforce credibility and professionalism.',
+        'Photography showing people interacting and collaborating was introduced to keep the brand connected to its HR and consulting focus.'
+      ],
+      outcome: [
+        'The result is a clear and recognizable identity that positions Raven Consulting as a professional, intelligent and people-oriented consulting brand.',
+        'The raven gives the company a distinctive visual signature, while the broader identity remains flexible enough to work across corporate communication, presentations, digital platforms and recruitment or HR-related materials.',
+        'The combination of the symbolic mark, structured typography and people-focused imagery creates a brand that feels strategic without becoming cold or overly institutional.',
+        'The identity provides Raven Consulting with a consistent visual foundation that can grow alongside the company services and communication needs.'
+      ],
+      whatWeDid: [
+        [
+          'Brand identity direction',
+          'Brand concept development',
+          'Logo and logomark design',
+          'Raven symbol exploration',
+          'Symbolism and visual concept definition',
+          'Logo construction and proportion refinement',
+          'Primary logo configuration',
+          'Color palette development',
+          'Typography direction',
+          'Visual hierarchy',
+          'Photography direction',
+          'Corporate brand applications',
+          'HR and consulting communication direction',
+          'Brand presentation',
+          'Logo usage and visual consistency guidelines'
+        ]
+      ]
+    }
   }
 ];
