@@ -3,6 +3,7 @@ import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SmartImage from './SmartImage';
 import SectionHeader from './SectionHeader';
+import LottieAnimation from './LottieAnimation';
 
 // On desktop, vertical scroll through this section is mapped 1:1 to horizontal
 // track movement (a "pinned" section, like Apple/Trionn-style project rails).
@@ -186,7 +187,14 @@ function ScrollGallery({ eyebrow, title, items, basePath }) {
           {items.map((item) => (
             <Link key={item.id} to={`${basePath}/${item.slug}`} className="scroll-gallery__card">
               <div className="scroll-gallery__image">
-                <SmartImage src={item.image} alt={item.title} loading="lazy" />
+                {item.animation ? (
+                  <LottieAnimation
+                    src={Array.isArray(item.animation) ? item.animation[0] : item.animation}
+                    label={item.title}
+                  />
+                ) : (
+                  <SmartImage src={item.image} alt={item.title} loading="lazy" />
+                )}
                 <span className="scroll-gallery__image-overlay">
                   <span className="scroll-gallery__cta scroll-gallery__cta--overlay">
                     Explore project <ArrowRight size={16} />
