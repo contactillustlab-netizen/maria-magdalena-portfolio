@@ -76,14 +76,14 @@ export const graphicDesignProjects = [
     aspectRatio: '4 / 3',
     image: '/pictures/raven-cover.webp',
     images: [
+      '/pictures/raven-8.webp',
+      '/pictures/raven-7.webp',
       '/pictures/raven-9.webp',
       '/pictures/raven-2.webp',
       '/pictures/raven-3.webp',
       '/pictures/raven-4.webp',
       '/pictures/raven-5.webp',
-      '/pictures/raven-6.webp',
-      '/pictures/raven-7.webp',
-      '/pictures/raven-8.webp'
+      '/pictures/raven-6.webp'
     ],
     description: 'A sharp, human-centered identity for a recruitment consultancy, built around a stylized raven-in-flight mark in black and blue, carried from signage and stationery through candidate and client-facing materials.',
     galleryCount: 9
