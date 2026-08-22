@@ -65,50 +65,5 @@ export const coversProjects = [
       outcome: "The final image reads as its own cover-ready composition — moody, warm and instantly tied to the source material's tone — while still standing as an original piece of fan art.",
       whatWeDid: 'Concept development, lighting and color exploration, and digital illustration for a single tribute cover piece.'
     }
-  },
-  {
-    id: 2,
-    slug: 'storm-bear',
-    title: 'Storm Bear',
-    tag: 'Poster Illustration',
-    aspectRatio: '4 / 3',
-    image: '/pictures/storm-bear.webp',
-    description: 'A towering storm-spirit bears down on a lone van racing the coastline — a personal poster piece.',
-    caseStudy: {
-      challenge: 'The challenge was making a single still image feel like a moment mid-story — a towering storm-spirit and a fleeing van needed to read instantly as a chase, without any surrounding panels or text to explain it.',
-      approach: 'I pushed scale and silhouette hard, keeping the bear looming and abstract against the coastline while grounding the van and road in more concrete detail, using color contrast between the storm and the headlights to direct the eye.',
-      outcome: 'The final poster reads clearly as a single dramatic beat — scale, weather and light do the storytelling instead of any explicit narrative detail.',
-      whatWeDid: 'Concept development, composition, lighting and color work, and digital illustration for a personal poster piece.'
-    }
-  },
-  {
-    id: 3,
-    slug: 'blood-moon-alley',
-    title: 'Blood Moon Alley',
-    tag: 'Cover Illustration',
-    aspectRatio: '4 / 3',
-    image: '/pictures/blood-moon-owl.webp',
-    description: 'A gothic urban-fantasy cover concept, champagne and crimson under a rising moon.',
-    caseStudy: {
-      challenge: 'The goal was a gothic urban-fantasy cover concept that felt cinematic at a glance — strong enough as a single image to carry a book cover\'s worth of mood and genre signaling.',
-      approach: "I leaned into champagne and crimson tones against a rising moon, using the alley's architecture and lighting to build depth and atmosphere around the central figure.",
-      outcome: 'The result is a cover-ready composition with a clear gothic urban-fantasy identity, built to read its genre instantly.',
-      whatWeDid: 'Concept development, lighting and color exploration, and digital illustration for a gothic urban-fantasy cover concept.'
-    }
-  },
-  {
-    id: 4,
-    slug: 'crimson-vow',
-    title: 'Crimson Vow',
-    tag: 'Cover Illustration',
-    aspectRatio: '4 / 3',
-    image: null,
-    description: 'A star-crossed cover composition for a gothic romance, scorpion and moonlight as motifs.',
-    caseStudy: {
-      challenge: 'This piece needed to carry the tone of a gothic romance cover — star-crossed, a little dangerous — using a single composition and a tight, recurring set of motifs.',
-      approach: 'I built the piece around the scorpion and moonlight as connected motifs, letting color and lighting suggest the tension between attraction and danger central to the story.',
-      outcome: 'The final image works as a self-contained gothic romance cover concept, with its motifs and lighting carrying the emotional tone without any accompanying text.',
-      whatWeDid: 'Concept development, motif and color exploration, and digital illustration for a gothic romance cover concept.'
-    }
   }
 ];
