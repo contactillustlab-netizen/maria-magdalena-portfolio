@@ -59,6 +59,95 @@ export const uiDesignProjects = [
     galleryCount: 9
   },
   {
+    id: 6,
+    slug: 'design-systems',
+    title: 'Design Systems',
+    tag: 'UI Foundations',
+    year: 2026,
+    role: 'Product Designer',
+    aspectRatio: '4 / 3',
+    image: null,
+    animation: [
+      '/animations/design-systems.json',
+      '/animations/design-systems-2.json'
+    ],
+    video: [
+      '/videos/design-systems.webm',
+      '/videos/design-systems-variants.webm'
+    ],
+    videoLast: true,
+    images: [
+      '/pictures/design-systems-button.webp'
+    ],
+    description: 'A design system is more than a component library. It is a shared language between design and development that defines how interfaces look, behave and scale across products. Through different digital products and collaborative design system work, I developed a structured approach to creating reusable UI foundations \u2014 from visual primitives and variables to components, states and documentation that can be translated consistently into production.',
+    caseStudy: {
+      challenge: [
+        'As digital products grow, maintaining consistency becomes increasingly difficult.',
+        'Colors start to differ between screens, spacing becomes inconsistent, components are recreated instead of reused, and small visual changes require updates across dozens of designs.',
+        'The challenge is to create a system that is flexible enough to support different product scenarios while remaining predictable for both designers and developers.',
+        'Another important consideration is the transition from design to production. A design system should not exist only inside Figma \u2014 its structure and naming should make it easy to reproduce and maintain in code.'
+      ],
+      approach: [
+        'I start by identifying the core visual foundations of the product and structuring them into reusable design tokens. This includes variables for:',
+        [
+          'Color primitives and semantic colors',
+          'Light and dark modes',
+          'Spacing and padding',
+          'Border radius',
+          'Border widths',
+          'Typography',
+          'Icon styles',
+          'Surface colors',
+          'Component states'
+        ],
+        'Instead of assigning raw values directly to components, I use Figma Variables to create a consistent layer between foundations and UI components. For example, a button does not simply use a specific hex value or padding value. It inherits predefined variables that can later be updated globally.',
+        'I then use these foundations to build reusable component families with clearly defined variants and states such as Default, Hover, Active, Focus, Disabled, Error and Success. Components can include buttons, inputs, alerts, badges, tabs, toggles, notifications, cards and other recurring interface elements.',
+        'The same structure can be expanded to support multiple themes, including Light and Dark modes, without rebuilding individual components.',
+        'A key part of the process is establishing clear and predictable naming conventions. These names can later be reflected in the development environment, creating a direct relationship between Figma variable, design token, component and code. This makes collaboration with developers much easier and helps keep the implemented product aligned with the original design.'
+      ],
+      outcome: [
+        'The result is a scalable UI foundation that can support multiple screens, applications and websites while maintaining visual and functional consistency.',
+        'Using variables makes global updates significantly easier. A change to a primary color, spacing value or border radius can propagate across the entire system instead of being manually updated component by component.',
+        'It also creates a stronger bridge between design and development. Because values and components follow an established naming structure, developers can recreate the same token architecture in code, making the design system easier to maintain after the product enters production.',
+        'The system becomes a shared source of truth rather than simply a collection of UI elements. This approach improves:',
+        [
+          'Consistency across products',
+          'Design efficiency',
+          'Component reuse',
+          'Accessibility management',
+          'Light and dark theme support',
+          'Developer handoff',
+          'Long-term scalability',
+          'Maintenance in production'
+        ]
+      ],
+      whatWeDid: [
+        'My work across design systems includes:',
+        [
+          'Defining color primitives and semantic color systems',
+          'Creating Light and Dark mode foundations',
+          'Building spacing and sizing scales',
+          'Defining padding, radius and border variables',
+          'Structuring typography foundations',
+          'Creating reusable Figma Variables',
+          'Establishing naming conventions for design tokens',
+          'Building component libraries',
+          'Creating component properties and variants',
+          'Defining interaction and accessibility states',
+          'Creating scalable buttons, inputs, badges, alerts, notifications, tabs, toggles and other UI components',
+          'Applying variables directly across component libraries',
+          'Testing consistency across different product scenarios',
+          'Supporting accessibility and contrast requirements',
+          'Structuring components for easier developer handoff',
+          'Aligning Figma token naming with implementation logic',
+          'Collaborating on design system structure and development-ready UI foundations',
+          'Documenting how foundations and components should be used'
+        ],
+        'The goal is always the same: create a system that makes designing faster today while making the product easier to scale and maintain tomorrow.'
+      ]
+    }
+  },
+  {
     id: 1,
     slug: 'aria-banking-app',
     title: 'Aria Banking App',

@@ -12,13 +12,13 @@ const defaultSteps = [
   {
     number: '02', label: 'Product',
     illustration: '/illustrations/ecosystem-product.svg',
-    text: 'I translate the brand into clear, intuitive digital experiences where usability, hierarchy and visual consistency work together.',
+    text: 'I understand the product and business plan first, then research, structure and translate requirements into intuitive flows, scalable components and consistent digital experiences.',
     cta: 'Explore UI Design', href: '/design/ui-design'
   },
   {
     number: '03', label: 'Marketing', reversed: true,
     illustration: '/illustrations/ecosystem-marketing.svg',
-    text: 'I extend the brand into campaigns and communication that stay consistent, engaging and recognizable across every channel.',
+    text: 'I create campaign visuals that improve clarity and visibility. Including infographics, illustrations, flyers, social assets and other branded communication materials.',
     cta: 'Explore Marketing Design', href: '/design/marketing-design'
   }
 ];
@@ -56,6 +56,7 @@ function VisualEcosystem({
 
   return (
     <div className="visual-ecosystem" ref={rootRef}>
+      <span className="hairline" aria-hidden="true" />
       <h2 className="visual-ecosystem__title">{title}</h2>
       <p className="visual-ecosystem__note">{note}</p>
       <ol className="visual-ecosystem__steps">

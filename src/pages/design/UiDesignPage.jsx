@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import HeroSection from '../../components/HeroSection';
+import LottieAnimation from '../../components/LottieAnimation';
 import SmartImage from '../../components/SmartImage';
 import { uiDesignProjects } from '../../data/uiDesignProjects';
 
@@ -40,7 +41,14 @@ function UiDesignPage() {
               className={`branding-grid__item ${index % 2 === 0 ? 'branding-grid__item--from-left' : 'branding-grid__item--from-right'}`}
             >
               <div className="branding-grid__image">
-                <SmartImage src={project.image} alt={project.title} loading="lazy" />
+                {project.animation ? (
+                  <LottieAnimation
+                    src={Array.isArray(project.animation) ? project.animation[0] : project.animation}
+                    label={project.title}
+                  />
+                ) : (
+                  <SmartImage src={project.image} alt={project.title} loading="lazy" />
+                )}
                 <span className="branding-grid__year">{project.year}</span>
               </div>
               <div className="branding-grid__caption">

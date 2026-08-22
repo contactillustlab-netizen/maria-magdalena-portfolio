@@ -43,17 +43,33 @@ function ProjectCaseStudyPage({ projects, listPath, basePath, sectionLabel }) {
     .map((src) => getYoutubeEmbedUrl(src) ?? src)
     .filter(Boolean);
 
+  // `animation` is one Lottie file or a list of them. The first one doubles as
+  // the project's cover, so it heads the gallery; the rest follow it.
+  const animationSources = (Array.isArray(project.animation) ? project.animation : [project.animation])
+    .filter(Boolean);
+
+  const videoItems = videoSources.map((src, i) => ({
+    id: `video-${i}`,
+    title: `${project.title} — Video${videoSources.length > 1 ? ` ${i + 1}` : ''}`,
+    category: project.tag,
+    video: src
+  }));
+
+  const imageItems = project.images
+    ? project.images.map((src, i) => ({ id: i + 1, title: `${project.title} — Visual ${i + 1}`, category: project.tag, image: src }))
+    : Array.from({ length: project.galleryCount ?? 0 }, (_, i) => ({ id: i + 1, title: `${project.title} — Visual ${i + 1}`, category: project.tag, image: null }));
+
+  // Videos normally follow the cover, ahead of the stills. `videoLast` flips
+  // that for projects where the stills set the video up rather than recap it.
   const galleryItems = [
-    { id: 0, title: project.title, category: project.tag, image: project.image },
-    ...videoSources.map((src, i) => ({
-      id: `video-${i}`,
-      title: `${project.title} — Video${videoSources.length > 1 ? ` ${i + 1}` : ''}`,
+    { id: 0, title: project.title, category: project.tag, image: project.image, animation: animationSources[0] },
+    ...animationSources.slice(1).map((src, i) => ({
+      id: `animation-${i}`,
+      title: `${project.title} — Animation ${i + 2}`,
       category: project.tag,
-      video: src
+      animation: src
     })),
-    ...(project.images
-      ? project.images.map((src, i) => ({ id: i + 1, title: `${project.title} — Visual ${i + 1}`, category: project.tag, image: src }))
-      : Array.from({ length: project.galleryCount ?? 0 }, (_, i) => ({ id: i + 1, title: `${project.title} — Visual ${i + 1}`, category: project.tag, image: null })))
+    ...(project.videoLast ? [...imageItems, ...videoItems] : [...videoItems, ...imageItems])
   ];
 
   return (

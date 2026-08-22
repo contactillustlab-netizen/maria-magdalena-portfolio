@@ -1,7 +1,18 @@
 import { ArrowUpRight } from 'lucide-react';
+import LottieAnimation from './LottieAnimation';
 import SmartImage from './SmartImage';
 
 function GalleryItem({ item, onSelect }) {
+  if (item.animation) {
+    return (
+      <article className="gallery-item">
+        <div className="gallery-item__animation">
+          <LottieAnimation src={item.animation} label={item.title} />
+        </div>
+      </article>
+    );
+  }
+
   if (item.video) {
     // `video` is either a YouTube embed URL or a path to a file in /public —
     // the latter plays inline, muted and looping, like the hero videos do.

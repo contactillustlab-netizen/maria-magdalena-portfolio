@@ -95,6 +95,10 @@ body[data-theme="design"] .cursor-glow {
   background: radial-gradient(circle, rgba(0,0,0,.12) 0%, rgba(0,0,0,.05) 45%, rgba(0,0,0,0) 72%);
 }
 
+/* A single 1px rule for framing a section's opening. Meant to be rare —
+   sparse enough to read as editorial structure, never as a grid. */
+.hairline { display: block; width: 72px; height: 1px; margin: 0 auto 2rem; background: var(--color-border); }
+
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; overflow-x: clip; }
 body { margin: 0; background: var(--color-bg); color: var(--color-text); min-height: 100vh; overflow-x: clip; }
@@ -377,6 +381,7 @@ video.hero__image { width: 100%; height: 100%; object-fit: cover; }
    cropped to 16/9 — same behaviour as the images in this gallery. */
 .gallery-item__video--file { aspect-ratio: auto; }
 .gallery-item__video--file video { position: static; height: auto; object-fit: initial; }
+.gallery-item__animation { width: 100%; aspect-ratio: 4 / 3; border-radius: 16px; overflow: hidden; background: var(--color-surface); }
 .gallery-item__button img { width: 100%; height: auto; display: block; transition: transform .5s ease; }
 .gallery-item__button .image-placeholder { min-height: 0; aspect-ratio: 4 / 5; }
 .gallery-item__button .image-placeholder--landscape { aspect-ratio: 3 / 2; }
@@ -502,6 +507,12 @@ body[data-theme="design"] .gallery-item__category { color: rgba(0,0,0,.6); }
   width: 100%; height: 100%; object-fit: cover; min-height: 0; transition: transform .5s ease;
 }
 .branding-grid__item:hover .branding-grid__image img, .branding-grid__item:focus-visible .branding-grid__image img { transform: scale(1.04); }
+/* A Lottie cover stands in for the cover image: it fills the same ratio box
+   and lifts on hover exactly like an <img> would. */
+.lottie-animation { width: 100%; height: 100%; }
+.lottie-animation svg { display: block; width: 100%; height: 100%; transition: transform .5s ease; }
+.branding-grid__item:hover .lottie-animation svg,
+.branding-grid__item:focus-visible .lottie-animation svg { transform: scale(1.04); }
 .branding-grid__year {
   position: absolute; right: 16px; bottom: 16px; z-index: 1; color: #ffffff; font-size: var(--text-label-lg); line-height: var(--leading-label-lg); letter-spacing: .02em;
   text-shadow: 0 1px 6px rgba(0,0,0,.55);

@@ -30,13 +30,13 @@ function ArtworkModal({ items, index, startImage, onClose, onNavigate }) {
   const hasSiblingProjects = item && items.length > 1;
   const canNavigate = projectImages ? projectImages.length > 1 : hasSiblingProjects;
 
-  // Video entries aren't viewable inside this image modal — step past them
-  // when cycling through sibling items instead of landing on a blank stage.
+  // Video and animation entries aren't viewable inside this image modal — step
+  // past them when cycling through siblings instead of landing on a blank stage.
   const stepIndex = useCallback((from, direction) => {
     let next = from;
     for (let i = 0; i < items.length; i += 1) {
       next = (next + direction + items.length) % items.length;
-      if (!items[next]?.video) return next;
+      if (!items[next]?.video && !items[next]?.animation) return next;
     }
     return from;
   }, [items]);
