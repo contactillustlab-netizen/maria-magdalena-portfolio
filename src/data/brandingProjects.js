@@ -160,8 +160,46 @@ export const brandingProjects = [
       '/pictures/miredent-4.webp',
       '/pictures/miredent-5.webp'
     ],
-    description: 'A calm, elevated identity for a dental clinic, built around a hand-lettered tooth-shaped monogram in navy and gold, carried from signage and interiors through stationery and a patient care kit.',
-    galleryCount: 5
+    description: 'Miredent is a branding project created for a dental practice founded by Mirela, who also happened to be my own dentist. The name combines Mirela and Dent, and the visual identity was built around the same idea: something personal, elegant and easy to recognize, while still feeling professional and appropriate for a medical environment.',
+    caseStudy: {
+      challenge: [
+        'The client wanted the brand to feel simple, refined and trustworthy, without falling into the very clinical or generic visual language often used by dental practices.',
+        'The identity needed to communicate professionalism and care, but also feel warm and approachable.',
+        'Another important requirement was to create a logo that could connect naturally to the name Miredent, while subtly referencing dentistry without relying on obvious or overly literal dental symbols.',
+        'The final identity also needed to work across different applications, from the clinic environment and signage to digital communication and promotional materials.'
+      ],
+      approach: [
+        'I started from the name itself \u2014 Mirela and Dent \u2014 and explored how the personal side of the brand could be combined with a recognizable dental reference.',
+        'The final logo integrates a subtle tooth shape into the initial structure of the wordmark, while keeping the overall composition light and elegant.',
+        'A handwritten-style type treatment was used to give the identity a more personal and human character, balancing the precision expected from a dental practice with a softer visual tone.',
+        'The supporting visual direction was kept minimal, with a restrained palette and clean layouts that allow the logo to remain the main recognizable element.',
+        'The identity was designed to feel calm, premium and professional rather than overly medical.'
+      ],
+      outcome: [
+        'The result is a simple and distinctive identity that reflects both the personality of the dentist and the professional nature of the practice.',
+        'The Miredent logo works as a recognizable signature across different contexts, from the clinic entrance to photography, printed materials and digital communication.',
+        'Its minimal visual language makes the brand flexible and easy to apply consistently, while the subtle dental reference keeps it clearly connected to the field without becoming too literal.',
+        'The final identity gives the practice a more personal and polished presence while maintaining the sense of trust that is essential in healthcare.'
+      ],
+      whatWeDid: [
+        [
+          'Brand identity direction',
+          'Logo concept development',
+          'Wordmark design',
+          'Dental symbol integration',
+          'Typography exploration',
+          'Color palette definition',
+          'Visual style direction',
+          'Logo usage variations',
+          'Brand application concepts',
+          'Clinic signage mockups',
+          'Photography integration',
+          'Digital communication examples',
+          'Visual consistency guidelines',
+          'Final brand presentation'
+        ]
+      ]
+    }
   },
   {
     id: 9,
