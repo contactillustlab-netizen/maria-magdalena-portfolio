@@ -1,10 +1,11 @@
-// GA4 Measurement ID from analytics.google.com (Admin → Data Streams). Leave the
-// placeholder in place and analytics stays fully inactive — no script is ever loaded.
-export const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+// GA4 Measurement ID from analytics.google.com (Admin → Data Streams). Swap in a
+// placeholder containing XXXX and analytics goes inert — no script is ever loaded.
+export const GA_MEASUREMENT_ID = 'G-2PGQEWWW34';
 
 const isConfigured = () => Boolean(GA_MEASUREMENT_ID) && !GA_MEASUREMENT_ID.includes('XXXX');
 
 let scriptLoaded = false;
+let currentPath = null;
 
 function gtag(...args) {
   window.dataLayer = window.dataLayer || [];
@@ -29,7 +30,24 @@ function loadGtagScript() {
   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
   document.head.appendChild(script);
   gtag('js', new Date());
-  gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true });
+  gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true, send_page_view: false });
+  // Consent can arrive mid-visit; record the page they are on right now.
+  if (currentPath) sendPageView();
+}
+
+function sendPageView() {
+  gtag('event', 'page_view', {
+    page_location: window.location.href,
+    page_title: document.title
+  });
+}
+
+// Called on every route change. React Router swaps pages without a document
+// load, so without this the whole visit would report as a single page view.
+export function trackPageView(path) {
+  currentPath = path;
+  if (!isConfigured() || !scriptLoaded) return;
+  sendPageView();
 }
 
 export function applyStoredConsent(choice) {
