@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Send, X } from 'lucide-react';
+import LogoMark from './icons/LogoMark';
 import WhatsAppIcon from './icons/WhatsAppIcon';
 import { useMountTransition } from '../lib/useMountTransition';
 
@@ -25,9 +26,9 @@ function WhatsAppWidget() {
       {mounted ? (
         <div className={`whatsapp-widget__panel${visible ? ' is-open' : ''}`} role="dialog" aria-label="WhatsApp chat">
           <div className="whatsapp-widget__header">
-            <span className="whatsapp-widget__avatar">MV</span>
+            <span className="whatsapp-widget__avatar"><LogoMark size={22} /></span>
             <div className="whatsapp-widget__header-text">
-              <p className="whatsapp-widget__name">Maria Vizireanu</p>
+              <p className="whatsapp-widget__name">Magda</p>
               <p className="whatsapp-widget__status">Usually replies within a day</p>
             </div>
             <button type="button" className="whatsapp-widget__close" onClick={() => setOpen(false)} aria-label="Close chat">
@@ -35,7 +36,7 @@ function WhatsAppWidget() {
             </button>
           </div>
           <div className="whatsapp-widget__body">
-            <p className="whatsapp-widget__bubble">Hi, I’m Maria! Send me a message here and I’ll get back to you personally.</p>
+            <p className="whatsapp-widget__bubble">Hi, I’m Magda! Send me a message here and I’ll get back to you personally.</p>
           </div>
           <form className="whatsapp-widget__form" onSubmit={handleSubmit}>
             <input

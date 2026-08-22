@@ -1391,8 +1391,9 @@ body[data-theme="design"] .about-page__tool-logo--chatgpt { filter: brightness(0
 .whatsapp-widget__avatar {
   width: 40px; height: 40px; flex-shrink: 0; display: grid; place-items: center;
   border-radius: 50%; background: var(--color-bg); color: var(--color-contrast);
-  font-size: var(--text-label-lg); line-height: var(--leading-label-lg); font-weight: 700; letter-spacing: .02em;
 }
+/* The mark inherits the avatar's colour, so it flips with the theme on its own. */
+.whatsapp-widget__avatar svg { display: block; }
 .whatsapp-widget__header-text { flex: 1; min-width: 0; }
 .whatsapp-widget__name { margin: 0; font-size: var(--text-title-md); line-height: var(--leading-title-md); font-weight: 600; }
 .whatsapp-widget__status { margin: 0; font-size: var(--text-label-md); line-height: var(--leading-label-md); opacity: .65; }

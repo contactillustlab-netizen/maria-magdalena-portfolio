@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 47 283.465 189" width="283" height="189">
+  <!-- The tab icon follows the browser's own theme: near-black on light
+       chrome, white on dark, so the mark never sinks into the bar. -->
+  <style>
+    .mark { fill: #0f0f0f; }
+    @media (prefers-color-scheme: dark) {
+      .mark { fill: #ffffff; }
+    }
+  </style>
+  <g class="mark">
+    <polygon points="225.573,128.405 207.169,160.061 243.61,225.794 281.523,225.794" />
+    <path d="M222.28,90.823c0,0,17.65-35.835,49.581-30.552V57.67h-30.593L222.28,90.823z" />
+    <polygon points="158.431,186.871 232.398,57.67 241.325,57.67 144.698,225.794 102.094,154.479 121.234,122.271" />
+    <path d="M51.522,192.642c0,0-17.65,35.835-49.581,30.552v2.601h30.593L51.522,192.642z" />
+    <polygon points="115.372,96.594 41.405,225.794 32.478,225.794 129.105,57.67 171.709,128.986 152.568,161.194" />
+  </g>
+</svg>
