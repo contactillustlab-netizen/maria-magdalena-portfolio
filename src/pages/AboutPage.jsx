@@ -169,7 +169,7 @@ function AboutPage() {
               ))}
             </ol>
             <div className="about-page__block-footer">
-              <a href="/cv.pdf" download className="cta-pill">
+              <a href="/cv.pdf" download="Maria-Magdalena-Vizireanu-CV.pdf" className="cta-pill">
                 Download CV
                 <span className="cta-pill__icon"><FileText size={18} /></span>
               </a>
