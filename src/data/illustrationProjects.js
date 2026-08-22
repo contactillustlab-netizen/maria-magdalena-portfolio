@@ -75,7 +75,7 @@ export const illustrationProjects = [
   },
   {
     id: 48,
-    title: 'Neon Riot',
+    title: 'Jinx Fan Art',
     category: 'Character Illustration',
     image: '/pictures/neon-riot.webp',
     orientation: 'portrait',
