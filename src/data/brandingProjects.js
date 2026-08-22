@@ -1,10 +1,75 @@
 export const brandingProjects = [
   {
+    id: 7,
+    slug: 'marsaga',
+    title: 'Marsaga - Brand Identity',
+    tag: 'Brand Identity',
+    year: 2026,
+    role: 'Lead Brand Designer',
+    client: 'Marsaga Print & Design Studio',
+    aspectRatio: '4 / 3',
+    image: '/pictures/marsaga-cover.webp',
+    images: [
+      '/pictures/marsaga-2.webp',
+      '/pictures/marsaga-3.webp',
+      '/pictures/marsaga-4.webp',
+      '/pictures/marsaga-5.webp',
+      '/pictures/marsaga-6.webp',
+      '/pictures/marsaga-7.webp',
+      '/pictures/marsaga-8.webp',
+      '/pictures/marsaga-9.webp'
+    ],
+    description: 'A bold identity for a print, design and laser-cutting studio, built around a confident starburst mark and a saturated orange-on-black palette carried through signage, packaging, stationery and engraved material samples.',
+    caseStudy: {
+      challenge: [
+        'Marsaga was created at the request of a client who was opening her own print and laser-cutting studio and needed a finished identity ready before the doors were. The brand had to address two audiences at once — businesses commissioning print runs, packaging and signage, and individuals coming in for one-off engraved or laser-cut pieces.',
+        'The harder constraint was that the studio itself is a production house. Whatever mark I designed would be printed, engraved, etched, burned and pressed by the client every day as a live demonstration of what her machines can do, so it had to survive all of those processes without losing its character — including at the scales where a laser cutter stops forgiving fine detail.'
+      ],
+      approach: [
+        'I built the identity around a single starburst — eight strokes radiating from a center point — that reads at once as a spark, a cutting head and a burst of light. Its geometry is deliberately simple and evenly weighted, so it holds whether it is engraved into acrylic, etched into metal, burned into wood, embossed on uncoated stock or printed at business-card scale.',
+        'The symbol lives inside the wordmark, taking the place of the bowl of the “g” in marsaga, which ties name and mark together while letting either one stand alone. A heavy geometric sans in saturated orange on near-black gives the studio a confident, industrial voice, with the “Print & Design Studio” descriptor locked into a solid orange block as a secondary signal.',
+        'The system was then worked through the studio’s own range of output:',
+        [
+          'Primary, horizontal and stacked logo configurations',
+          'Standalone starburst mark for small-scale and engraved use',
+          'Orange-on-black and reversed color applications',
+          'A repeating starburst pattern for packaging and interiors',
+          'Illuminated studio signage and interior application',
+          'Stationery, business cards, folders and notebooks',
+          'Material samples — engraved acrylic, etched metal, laser-burned wood, embossed and debossed paper',
+          'Packaging, tote bags and promotional collateral'
+        ]
+      ],
+      outcome: [
+        'The finished identity gave the studio a mark that doubles as a product sample: on every surface it lands, a customer can see exactly what the machines would do to their own artwork. The orange-on-black palette makes the studio easy to recognize in a category that usually defaults to neutral and technical.',
+        'The client has since taken the business in a different direction and no longer uses this identity — which happens, and takes nothing away from the work. It stays one of the projects I most enjoyed making, largely because her craft gave the brand somewhere real to go: a symbol designed to be cut, burned and pressed into things rather than only printed on them.'
+      ],
+      whatWeDid: [
+        [
+          'Brand identity direction',
+          'Starburst logomark design and construction',
+          'Custom wordmark with the mark integrated into the lettering',
+          'Primary, horizontal and stacked logo systems',
+          'Color palette and reversed-application rules',
+          'Typography selection and pairing',
+          'Starburst pattern and supporting graphic elements',
+          'Stationery and business card design',
+          'Packaging and tote bag application',
+          'Illuminated signage and studio interior mockups',
+          'Laser-cut, engraved and embossed material samples',
+          'Promotional and service-list collateral',
+          'Brand presentation and guideline structure'
+        ]
+      ]
+    },
+    galleryCount: 8
+  },
+  {
     id: 10,
     slug: 'georgiana-bacescu',
     title: 'Georgiana Băcescu - Brand Identity',
     tag: 'Brand Identity',
-    year: 2026,
+    year: 2025,
     role: 'Lead Brand Designer',
     client: 'Georgiana Băcescu Hairstyling Salon',
     aspectRatio: '4 / 3',
@@ -80,29 +145,6 @@ export const brandingProjects = [
     galleryCount: 10
   },
   {
-    id: 7,
-    slug: 'marsaga',
-    title: 'Marsaga - Brand Identity',
-    tag: 'Brand Identity',
-    year: 2026,
-    role: 'Lead Brand Designer',
-    client: 'Marsaga Print & Design Studio',
-    aspectRatio: '4 / 3',
-    image: '/pictures/marsaga-cover.webp',
-    images: [
-      '/pictures/marsaga-2.webp',
-      '/pictures/marsaga-3.webp',
-      '/pictures/marsaga-4.webp',
-      '/pictures/marsaga-5.webp',
-      '/pictures/marsaga-6.webp',
-      '/pictures/marsaga-7.webp',
-      '/pictures/marsaga-8.webp',
-      '/pictures/marsaga-9.webp'
-    ],
-    description: 'A bold identity for a print-and-design studio, built around a confident sunburst mark and a saturated orange-on-black palette carried through signage, packaging, stationery and retail environments.',
-    galleryCount: 8
-  },
-  {
     id: 8,
     slug: 'miredent',
     title: 'Miredent - Brand Identity',
@@ -143,83 +185,5 @@ export const brandingProjects = [
     ],
     description: 'A sharp, human-centered identity for a recruitment consultancy, built around a stylized raven-in-flight mark in black and blue, carried from signage and stationery through candidate and client-facing materials.',
     galleryCount: 9
-  },
-  {
-    id: 1,
-    slug: 'solstice-coffee-roasters',
-    title: 'Solstice Coffee Roasters',
-    tag: 'Brand Identity',
-    year: 2024,
-    role: 'Lead Brand Designer',
-    client: 'Solstice Coffee Roasters',
-    aspectRatio: '4 / 5',
-    image: null,
-    description: 'Solstice needed an identity that felt as warm as the beans they roast. I built a mark, palette and packaging system drawn from sunrise light and slow mornings.',
-    galleryCount: 6
-  },
-  {
-    id: 2,
-    slug: 'nordlys-skincare',
-    title: 'Nordlys Skincare',
-    tag: 'Visual System',
-    year: 2024,
-    role: 'Lead Brand Designer',
-    client: 'Nordlys Skincare',
-    aspectRatio: '1 / 1',
-    image: null,
-    description: 'A restrained, clinical-meets-natural visual system for a Nordic skincare line, built to feel calm on shelf and confident online.',
-    galleryCount: 5
-  },
-  {
-    id: 3,
-    slug: 'halcyon-studio',
-    title: 'Halcyon Studio',
-    tag: 'Logo & Identity',
-    year: 2023,
-    role: 'Lead Brand Designer',
-    client: 'Halcyon Studio',
-    aspectRatio: '3 / 4',
-    image: null,
-    description: 'A logo and identity suite for an interior design studio, built around a single confident mark that scales from business card to storefront.',
-    galleryCount: 6
-  },
-  {
-    id: 4,
-    slug: 'marrow-and-oak',
-    title: 'Marrow & Oak',
-    tag: 'Packaging Design',
-    year: 2023,
-    role: 'Lead Brand Designer',
-    client: 'Marrow & Oak',
-    aspectRatio: '5 / 4',
-    image: null,
-    description: 'Packaging and shelf identity for a small-batch butchery, balancing craft-market warmth with a system tidy enough to scale to retail.',
-    galleryCount: 4
-  },
-  {
-    id: 5,
-    slug: 'terra-verde-wines',
-    title: 'Terra Verde Wines',
-    tag: 'Brand Strategy',
-    year: 2022,
-    role: 'Lead Brand Designer',
-    client: 'Terra Verde Wines',
-    aspectRatio: '16 / 9',
-    image: null,
-    description: 'A full repositioning for a family vineyard, from naming direction through label design, built to read as premium without losing warmth.',
-    galleryCount: 5
-  },
-  {
-    id: 6,
-    slug: 'kindred-press',
-    title: 'Kindred Press',
-    tag: 'Editorial Identity',
-    year: 2022,
-    role: 'Lead Brand Designer',
-    client: 'Kindred Press',
-    aspectRatio: '4 / 5',
-    image: null,
-    description: 'An editorial identity for an independent publisher, pairing a quiet wordmark with a flexible grid system built for covers and campaigns alike.',
-    galleryCount: 5
   }
 ];
