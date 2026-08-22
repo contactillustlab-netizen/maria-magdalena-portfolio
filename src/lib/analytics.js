@@ -2,7 +2,13 @@
 // placeholder containing XXXX and analytics goes inert — no script is ever loaded.
 export const GA_MEASUREMENT_ID = 'G-2PGQEWWW34';
 
-const isConfigured = () => Boolean(GA_MEASUREMENT_ID) && !GA_MEASUREMENT_ID.includes('XXXX');
+// The same build is also served from the workers.dev address, and from any
+// local or preview run. Only the live domain should ever reach Analytics.
+const LIVE_HOSTS = ['magdavizireanu.com', 'www.magdavizireanu.com'];
+const isLiveHost = () => LIVE_HOSTS.includes(window.location.hostname);
+
+const isConfigured = () =>
+  Boolean(GA_MEASUREMENT_ID) && !GA_MEASUREMENT_ID.includes('XXXX') && isLiveHost();
 
 let scriptLoaded = false;
 let currentPath = null;
