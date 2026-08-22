@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# The CV stays downloadable from the About page, but out of search results —
+# a full work history is for people who come looking, not for search engines.
+Disallow: /cv.pdf
+
 Sitemap: https://magdavizireanu.com/sitemap.xml
