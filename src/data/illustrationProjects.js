@@ -10,6 +10,30 @@ export const illustrationTags = [
 
 export const illustrationProjects = [
   {
+    id: 25,
+    title: 'West',
+    category: 'Environment Illustration',
+    image: '/pictures/west.webp',
+    orientation: 'landscape',
+    description: 'A sweeping westward landscape bathed in atmospheric light.'
+  },
+  {
+    id: 22,
+    title: 'The Archaeologist',
+    category: 'Character Illustration',
+    image: '/pictures/the-archaeologist.webp',
+    orientation: 'landscape',
+    description: 'A field archaeologist raises a hand to her hat, sketchbook and satchel in tow, her own ghostly likeness looming faint behind her.'
+  },
+  {
+    id: 33,
+    title: 'Swamp Hunt',
+    category: 'Narrative Illustration',
+    image: '/pictures/swamp-hunt.webp',
+    orientation: 'landscape',
+    description: 'A centaur archer draws her bow at full gallop, arrows already spent against a monstrous scorpion rising from the swamp.'
+  },
+  {
     id: 43,
     title: 'Tricks',
     category: 'Character Illustration',
@@ -106,14 +130,6 @@ export const illustrationProjects = [
     description: 'A figure hauls herself out of a drawing tablet, dragging a whole street with her as the screen breaks apart.'
   },
   {
-    id: 25,
-    title: 'West',
-    category: 'Environment Illustration',
-    image: '/pictures/west.webp',
-    orientation: 'landscape',
-    description: 'A sweeping westward landscape bathed in atmospheric light.'
-  },
-  {
     id: 1,
     title: 'Lilith',
     category: 'Character Illustration',
@@ -202,14 +218,6 @@ export const illustrationProjects = [
     description: 'A plumed privateer leans against a vine-draped balcony, her white cockatoo perched close as a bridge stretches into the mist.'
   },
   {
-    id: 22,
-    title: 'The Archaeologist',
-    category: 'Character Illustration',
-    image: '/pictures/the-archaeologist.webp',
-    orientation: 'landscape',
-    description: 'A field archaeologist raises a hand to her hat, sketchbook and satchel in tow, her own ghostly likeness looming faint behind her.'
-  },
-  {
     id: 23,
     title: 'Crimson Embrace',
     category: 'Narrative Illustration',
@@ -280,14 +288,6 @@ export const illustrationProjects = [
     image: '/pictures/the-haunting.webp',
     orientation: 'portrait',
     description: "A crumbling Gothic manor glows from within as crows gather on its rooftops and jack-o'-lanterns line a cobweb-draped porch."
-  },
-  {
-    id: 33,
-    title: 'Swamp Hunt',
-    category: 'Narrative Illustration',
-    image: '/pictures/swamp-hunt.webp',
-    orientation: 'landscape',
-    description: 'A centaur archer draws her bow at full gallop, arrows already spent against a monstrous scorpion rising from the swamp.'
   },
   {
     id: 34,
