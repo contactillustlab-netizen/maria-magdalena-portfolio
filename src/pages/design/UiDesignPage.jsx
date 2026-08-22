@@ -28,7 +28,7 @@ function UiDesignPage() {
         eyebrow="Design"
         title="UI Design"
         subtitle="Digital products built with clarity and restraint"
-        image="/images/gallery/design/hero.webp"
+        image="/pictures/ui-design-hero.webp"
         variant="design"
       />
 
