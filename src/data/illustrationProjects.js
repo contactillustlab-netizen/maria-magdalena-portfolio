@@ -10,6 +10,102 @@ export const illustrationTags = [
 
 export const illustrationProjects = [
   {
+    id: 43,
+    title: 'Tricks',
+    category: 'Character Illustration',
+    image: '/pictures/tricks.webp',
+    orientation: 'portrait',
+    description: 'A blue-curled harlequin leans across a tiled table, a dagger hanging in the air beside her and a drink she has not touched.'
+  },
+  {
+    id: 44,
+    title: 'Protect',
+    category: 'Narrative Illustration',
+    image: '/pictures/protect-poster.webp',
+    orientation: 'portrait',
+    description: 'A campaign poster for Dincolo de Masca: a woman holds a lit sign above an emptied street, her hair spilling down into the buildings below.'
+  },
+  {
+    id: 45,
+    title: 'Violet Window',
+    category: 'Character Illustration',
+    image: '/pictures/violet-window.webp',
+    orientation: 'portrait',
+    description: 'A woman in violet silk waits at a latticed window, purple mist curling up around her gloved hands.'
+  },
+  {
+    id: 46,
+    title: 'Smoke Witch',
+    category: 'Character Illustration',
+    image: '/pictures/smoke-witch.webp',
+    orientation: 'portrait',
+    description: 'Drawn entirely in greys, a witch under a wide brimmed hat dissolves into the smoke circling her shoulders.'
+  },
+  {
+    id: 47,
+    title: 'Centaur Clash',
+    category: 'Narrative Illustration',
+    image: '/pictures/centaur-clash.webp',
+    orientation: 'portrait',
+    description: 'Centaurs collide mid-charge beneath a burst of firelight, torches and axes raised through the dust.'
+  },
+  {
+    id: 48,
+    title: 'Neon Riot',
+    category: 'Character Illustration',
+    image: '/pictures/neon-riot.webp',
+    orientation: 'portrait',
+    description: 'A blue-haired troublemaker leaps through her own graffiti, weapon swinging, against a wall of neon spray paint.'
+  },
+  {
+    id: 49,
+    title: 'Joan of Arc',
+    category: 'Character Illustration',
+    image: '/pictures/joan-of-arc.webp',
+    orientation: 'portrait',
+    description: 'Joan of Arc in plate armour, wings spread behind her, a banner held steady against a pale sky.'
+  },
+  {
+    id: 50,
+    title: 'Haunted House',
+    category: 'Environment Illustration',
+    image: '/pictures/haunted-house.webp',
+    orientation: 'portrait',
+    description: 'A shuttered mansion under a blood-red sky, its lit windows the only warm thing for miles.'
+  },
+  {
+    id: 51,
+    title: 'Run After Every Dream',
+    category: 'Narrative Illustration',
+    image: '/pictures/run-after-dreams.webp',
+    orientation: 'portrait',
+    description: 'A hand-lettered poster where a caravan of dreamers rides an elephant along the shoreline at dusk.'
+  },
+  {
+    id: 52,
+    title: 'Desert Vulture',
+    category: 'Environment Illustration',
+    image: '/pictures/desert-vulture.webp',
+    orientation: 'landscape',
+    description: 'A vulture keeps watch from a dead tree while a loaded van rolls past on a cracked desert road.'
+  },
+  {
+    id: 53,
+    title: 'Gallery Dance',
+    category: 'Character Illustration',
+    image: '/pictures/gallery-dance.webp',
+    orientation: 'portrait',
+    description: 'A woman in a green coat and red-soled heels turns mid-step across an empty gallery floor.'
+  },
+  {
+    id: 54,
+    title: 'Stick to Creativity',
+    category: 'Narrative Illustration',
+    image: '/pictures/stick-to-creativity.webp',
+    orientation: 'landscape',
+    description: 'A figure hauls herself out of a drawing tablet, dragging a whole street with her as the screen breaks apart.'
+  },
+  {
     id: 25,
     title: 'West',
     category: 'Environment Illustration',
