@@ -1,6 +1,10 @@
 {
   "name": "maria-magdalena-portfolio",
   "compatibility_date": "2026-08-04",
+  // The site is reachable only at magdavizireanu.com. Without this, a deploy
+  // re-enables the workers.dev route, which would serve the whole portfolio a
+  // second time on a hostname Google could index alongside the real one.
+  "workers_dev": false,
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application"
