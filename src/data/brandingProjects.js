@@ -185,5 +185,101 @@ export const brandingProjects = [
     ],
     description: 'A sharp, human-centered identity for a recruitment consultancy, built around a stylized raven-in-flight mark in black and blue, carried from signage and stationery through candidate and client-facing materials.',
     galleryCount: 9
-  }
+  },
+  {
+    id: 11,
+    slug: 'macao',
+    title: 'Macao - Card Game',
+    tag: 'Brand Identity',
+    year: 2024,
+    role: 'Lead Brand Designer',
+    client: 'macaothegame.com',
+    clientUrl: 'https://www.macaothegame.com/en',
+    aspectRatio: '4 / 3',
+    image: '/pictures/macao-cover.webp',
+    images: [
+      '/pictures/macao-logo-construction.webp',
+      '/pictures/macao-mark-construction.webp',
+      '/pictures/macao-clearspace.webp',
+      '/pictures/macao-minimum-size.webp',
+      '/pictures/macao-alternative-backgrounds.webp',
+      '/pictures/macao-mono-color.webp',
+      '/pictures/macao-logo-misuse.webp',
+      '/pictures/macao-primary-colors.webp',
+      '/pictures/macao-secondary-colors.webp',
+      '/pictures/macao-typography.webp',
+      '/pictures/macao-typography-scale.webp',
+      '/pictures/macao-imagery.webp',
+      '/pictures/macao-cards.webp',
+      '/pictures/macao-game-design.webp',
+      '/pictures/macao-ui-screens.webp',
+      '/pictures/macao-button-spec.webp'
+    ],
+    description: 'Macao is an online card game concept developed as a complete digital product, from brand identity to the game interface itself. The project included defining the visual language of the brand, creating usage guidelines, designing the digital experience and developing a custom playing card system that could work consistently across the entire game.',
+    caseStudy: {
+      challenge: [
+        'The main challenge was to create an identity that could feel recognizable and distinctive as a brand, while also functioning naturally inside a digital card game environment.',
+        'The visual system needed to work across multiple layers of the product:',
+        [
+          'Brand communication',
+          'Game interface',
+          'Playing cards',
+          'Game states and interactions',
+          'Digital assets',
+          'Supporting graphic elements'
+        ],
+        'Another important consideration was consistency. The brand could not exist separately from the game UI \u2014 both needed to feel like parts of the same visual world.',
+        'The playing cards also needed to remain easy to read during gameplay, even when displayed at smaller sizes or alongside multiple interface elements.'
+      ],
+      approach: [
+        'I started by building the brand identity and defining the visual rules that would guide the rest of the product. This included establishing:',
+        [
+          'Logo usage',
+          'Brand colors',
+          'Typography',
+          'Graphic language',
+          'Spacing and composition principles',
+          'Visual consistency rules',
+          'Usage across digital environments'
+        ],
+        'Once the identity was defined, I translated the same visual language into the online game interface. The UI was designed around clarity and fast interaction, making sure players could easily understand:',
+        [
+          'Their cards',
+          'Whose turn it is',
+          'Game status',
+          'Available actions',
+          'Player information',
+          'Round progression'
+        ],
+        'I also created the complete playing card design, treating the cards as a core extension of the brand rather than a separate asset. The card system was designed to balance personality with usability, keeping values and suits readable while giving the deck its own visual identity.'
+      ],
+      outcome: [
+        'The result is a cohesive game experience where brand identity, interface and playing cards work as one system.',
+        'Macao has a distinctive visual language that can scale from promotional materials to the actual gameplay environment. The identity gives the product a recognizable personality, while the interface remains clear enough to support fast and intuitive play.',
+        'By defining the brand rules before designing the product interface, the final experience maintains consistency across every touchpoint and is easier to extend with future screens, game modes or communication assets.'
+      ],
+      whatWeDid: [
+        [
+          'Brand identity development',
+          'Logo direction and visual language',
+          'Brand usage rules',
+          'Color palette definition',
+          'Typography system',
+          'Graphic language and supporting elements',
+          'Digital brand guidelines',
+          'Online card game UI design',
+          'Game screen structure and information hierarchy',
+          'Gameplay interaction design',
+          'Player and game status components',
+          'Playing card visual system',
+          'Custom card design',
+          'Card hierarchy and readability refinement',
+          'UI states and feedback',
+          'Brand-to-product visual consistency',
+          'Reusable interface components',
+          'Final visual presentation and mockups'
+        ]
+      ]
+    }
+  },
 ];
