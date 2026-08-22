@@ -4,5 +4,10 @@
   "assets": {
     "directory": "./dist",
     "not_found_handling": "single-page-application"
+  },
+  // Request logs stay off: this Worker only serves static files, so there is
+  // nothing to debug in them. Declared here so a deploy cannot flip it back.
+  "observability": {
+    "enabled": false
   }
 }
