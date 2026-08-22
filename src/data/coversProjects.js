@@ -1,5 +1,65 @@
 export const coversProjects = [
   {
+    id: 2,
+    slug: 'sherlock-holmes-221b',
+    title: 'Notebook Cover - Sherlock Holmes 221B',
+    tag: 'Notebook Cover Illustration',
+    client: 'The Sherlock Holmes Museum, London',
+    aspectRatio: '4 / 3',
+    image: '/pictures/sherlock-cover.webp',
+    images: [
+      '/pictures/sherlock-notebook-2.webp',
+      '/pictures/sherlock-linework.webp',
+      '/pictures/sherlock-spread-1.webp',
+      '/pictures/sherlock-spread-2.webp',
+      '/pictures/sherlock-spread-3.webp',
+      '/pictures/sherlock-spread-4.webp',
+      '/pictures/sherlock-spread-5.webp',
+      '/pictures/sherlock-notebook-3.webp',
+      '/pictures/sherlock-notebook-4.webp',
+      '/pictures/sherlock-design-elements.webp',
+      '/pictures/sherlock-pattern.webp'
+    ],
+    description: 'A notebook cover illustration created for The Sherlock Holmes Museum in London, inspired by the atmosphere, visual language and iconic objects associated with Sherlock Holmes and 221B Baker Street. The project combined illustration and cover design to create an object that could feel both collectible and immediately recognizable to fans of the character.',
+    caseStudy: {
+      challenge: [
+        'The challenge was to translate the world of Sherlock Holmes into a single notebook cover without relying only on a portrait of the character.',
+        'The design needed to communicate the mystery, intelligence and Victorian atmosphere associated with Sherlock while still functioning as a visually balanced cover.',
+        'Another important consideration was creating a composition that could incorporate multiple recognizable references \u2014 221B Baker Street, the magnifying glass, violin, pocket watch, books and Sherlock himself \u2014 without making the final artwork feel overcrowded.'
+      ],
+      approach: [
+        'I began by exploring different compositions and visual directions, from monochrome sketches to more decorative and illustrated alternatives.',
+        'The final direction was built around Sherlock seated in his chair, surrounded by objects that reference his personality and world. Elements such as the magnifying glass with 221B, violin, books and pocket watch were integrated into the illustration to create a visual narrative rather than simply decorating the cover.',
+        'I also experimented with watercolor textures, aged paper effects, ornamental typography and muted vintage tones to reinforce the feeling of a classic detective story.',
+        'The front and back covers were designed as one continuous composition, with typography and decorative details helping balance the more illustrative side of the design.'
+      ],
+      outcome: [
+        'The final notebook cover combines character illustration, storytelling and editorial composition into a piece that feels connected to the Sherlock Holmes universe while maintaining its own visual personality.',
+        'The mix of hand-drawn elements, vintage textures and recognizable objects creates a cover that feels nostalgic and collectible, while still being practical as a product design.',
+        'The project was ultimately developed as a notebook cover for The Sherlock Holmes Museum, London.'
+      ],
+      whatWeDid: [
+        [
+          'Cover concept development',
+          'Visual research',
+          'Composition exploration',
+          'Character illustration',
+          'Supporting object illustrations',
+          'Sherlock Holmes visual references',
+          'Front and back cover design',
+          'Typography selection and layout',
+          'Decorative ornament design',
+          'Watercolor and texture exploration',
+          'Color palette development',
+          'Vintage paper treatment',
+          'Print composition preparation',
+          'Final notebook cover artwork',
+          'Mockup and project presentation'
+        ]
+      ]
+    }
+  },
+  {
     id: 0,
     slug: 'a-moment-in-the-animal-world',
     title: 'A Moment in the Animal World - Vol I & II Covers',
